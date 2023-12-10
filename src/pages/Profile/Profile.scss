@@ -1,0 +1,45 @@
+.profile {
+    margin: 20px auto;
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  .profileContainer {
+    h1 {
+      font-family: "ADLaM Display", "cursive";
+      text-align: center;
+      padding-top: 10px;
+    }
+    .profileSmContainer{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 40px 0px;
+
+      .userImg {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 200px;
+          border-radius: 50%;
+        }
+      }
+
+      .userInfo {
+        width: 50%;
+        .userSmInfo {
+          display: flex;
+          flex-direction: column;
+          padding: 10px 0px;
+          label {
+            font-family: "Dosis", sans-serif;
+
+            font-size: 16px;
+          }
+          span {
+            margin-top: 10px;
+            font-size: 20px;
+            font-family: "Inconsolata", monospace;
+            border-bottom: 2px solid aqua;
+          }
+        }
+      }}
+    }
+  }

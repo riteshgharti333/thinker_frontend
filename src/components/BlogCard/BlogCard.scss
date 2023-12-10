@@ -1,0 +1,81 @@
+@import '../../style/responsive.scss';
+
+.blogcard {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    .cardImg {
+      flex: 4;
+    }
+    .blogInfo {
+      flex: 6;
+      margin-left: 10px;
+
+      span{
+        left: 0;
+      }
+    }
+  }
+
+
+  
+  .cardImg {
+    flex: 4;
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 200px;
+      display: flex;
+      border-radius: 3px;
+    @include sm{
+      height: 150px;
+    }
+    }
+  }
+  .blogInfo {
+    flex: 6;
+    margin-left: 10px;
+    position: relative;
+    h3 {
+      font-family: "Inconsolata", monospace;
+      font-size: 30px;
+      display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include sm{
+          font-size: 25px;
+        }
+
+        &:hover{
+            color: aqua;
+        }
+    }
+    p {
+      font-family: "Dosis", sans-serif;
+      font-size: 20px;
+      display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include sm{
+          font-size: 15px;
+        }
+    }
+
+    span{
+      position: absolute;
+      bottom: 0px;
+      right: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      color: aqua;
+      cursor: pointer;
+    }
+  }
+}

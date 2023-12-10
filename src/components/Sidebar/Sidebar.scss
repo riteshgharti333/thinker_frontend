@@ -1,0 +1,54 @@
+.sidebar{
+    margin-left: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    .siderbarHeader{
+        font-size: 20px;
+      font-family: "Inconsolata", monospace;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      width: 70%;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .sidebarImg{
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        img{
+            height: 300px;
+            border-radius: 4px;
+        }
+    }
+
+    .about{
+       p{
+        text-align: center;
+      font-family: "Dosis", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+       }
+    }
+
+    .categories{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        span{
+      font-family: "Dosis", sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 5px;
+
+      &:hover{
+        color: aqua;
+      }
+        }
+    }
+}

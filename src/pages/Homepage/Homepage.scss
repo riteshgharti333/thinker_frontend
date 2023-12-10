@@ -1,0 +1,20 @@
+@import '../../style/responsive.scss';
+
+.homepage {
+    display: flex;
+    margin: 20px;
+
+    .blog-container {
+      flex: 8;
+    }
+    
+    .sidebar {
+      flex: 2;
+      
+      @include sm{
+        display: none;
+      }
+    }
+    
+  }
+  
