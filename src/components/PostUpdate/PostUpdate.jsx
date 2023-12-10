@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import "./postUpdate.scss";
+import "./PostUpdate.scss";
 import { baseUrl } from "../../main";
 import axios from "axios";
 import { Context } from "../../context/Context";
-import Singlpost from "../../pages/Singlpost/Singlpost";
 
 const PostUpdate = ({
   showPopUp,
