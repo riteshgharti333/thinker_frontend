@@ -14,8 +14,6 @@ const PostUpdate = ({
   postId
 }) => {
 
-  console.log(postId);
-
   const { user } = useContext(Context);
 
   const [title, setTitle] = useState("");

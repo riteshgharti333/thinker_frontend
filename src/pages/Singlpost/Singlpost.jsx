@@ -49,7 +49,6 @@ const Singlpost = () => {
  
   const date = new Date(singlepost.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
 
-  console.log(singlepost);
 
   return (
     <div className="singlepost">
