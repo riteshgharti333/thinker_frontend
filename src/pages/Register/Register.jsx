@@ -6,7 +6,7 @@ import { IoMdMail } from "react-icons/io";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../schemas/index";
 import { baseUrl } from "../../main";
-import axios from 'axios';
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const initialvalues = {
@@ -17,7 +17,6 @@ const initialvalues = {
 };
 
 export default function Register() {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -30,19 +29,22 @@ export default function Register() {
       validationSchema: signUpSchema,
       onSubmit: async (values) => {
         try {
-        const res = await axios.post(`${baseUrl}/api/auth/register`, values);
-        res.data && window.location.replace("/login");
-        toast.success(res.data.message);
-        console.log(res.data.message)
+          const res = await axios.post(`${baseUrl}/api/auth/register`, values);
+          res.data && window.location.replace("/login");
+          toast.success(res.data.message);
+          console.log(res.data.message);
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
       },
     });
 
   return (
     <div className="register">
-      <div className="top">
+      <div className="logo">
+        <h1>
+          Thinker<span>.</span>
+        </h1>
       </div>
       <form className="input" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>

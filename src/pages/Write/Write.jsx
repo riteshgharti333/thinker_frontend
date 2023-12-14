@@ -5,6 +5,7 @@ import uploadToCloudinary from '../../upload';
 import { useContext, useState } from 'react';
 import {baseUrl} from "../../main"
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Write = () => {
 
@@ -36,6 +37,7 @@ const Write = () => {
       const res = await axios.post(`${baseUrl}/api/posts`, newPost);
       const postId = res.data.savedPost._id;
       window.location.replace(`/posts/` + postId);
+      toast.success( `Post Created` , {duration : 5000});
     } catch (error) {
       console.error("Error creating post:", error);
     }

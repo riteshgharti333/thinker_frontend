@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../../main";
 import { Context } from "../../context/Context";
 import PostUpdate from "../../components/PostUpdate/PostUpdate";
+import toast from "react-hot-toast";
 
 const Singlpost = () => {
   const location = useLocation();
@@ -16,7 +17,6 @@ const Singlpost = () => {
   const [singlepost, setSinglepost] = useState({});
 
   const { user } = useContext(Context);
-
 
   useEffect(() => {
     const getPost = async () => {
@@ -34,7 +34,7 @@ const Singlpost = () => {
         data: { username: user.username },
       });
       window.location.replace("/");
-      console.log("post deleted");
+      toast.success(`Post Deleted`, { duration: 5000 });
     } catch (err) {
       console.log(err);
     }
@@ -46,9 +46,11 @@ const Singlpost = () => {
     setShowUpdate(true);
   };
 
- 
-  const date = new Date(singlepost.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
-
+  const date = new Date(singlepost.createdAt).toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
   return (
     <div className="singlepost">
@@ -60,18 +62,19 @@ const Singlpost = () => {
           <span className="singlePostAuthor">
             Author: {singlepost.username}
           </span>
-          <span className="date">
-  Date: {date}
-</span>
-
+          <span className="date">Date: {date}</span>
         </div>
         <div className="userDoneIcon">
-          <div className="edit">
-            <FaEdit onClick={showPopUp} />
-          </div>
-          <div className="delete">
-            <MdDelete onClick={handleDelete} />
-          </div>
+          {singlepost.username === user?.username && (
+            <>
+              <div className="edit">
+                <FaEdit onClick={showPopUp} />
+              </div>
+              <div className="delete">
+                <MdDelete onClick={handleDelete} />
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className="postDesc">
@@ -86,7 +89,6 @@ const Singlpost = () => {
           authorName={singlepost.username}
           postDate={date}
           postId={path}
-
         />
       )}
     </div>

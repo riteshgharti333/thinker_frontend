@@ -35,7 +35,7 @@
   
   /* General sidebar styles */
   .bm-menu {
-    background: #373a47;
+    background: white;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
   }
@@ -59,7 +59,6 @@
   /* Individual item */
   .bm-item {
     display: inline-block;
-    color: #d1d1d1;
     margin-bottom: 10px;
     text-align: left;
     text-decoration: none;
@@ -76,27 +75,16 @@
     margin: 20px 0px;
   }
 
-
-  .subscribe {
-    font-family: "Bebas Neue", sans-serif;
-        margin-right: 20px;
-        font-size: 20px;
-        padding: 5px 10px;
-          border-radius: 9px;
-          background: #d5f365;
-          border: none;
-          text-align: center;
-          cursor: pointer;
-          transition: 0.4s;
-          color: black;
-         
-        &:hover {
-          box-shadow: 7px 5px 56px -14px #C3D900;
-         }
-         
-         &:active {
-          transform: scale(0.97);
-          box-shadow: 7px 5px 56px -10px #C3D900;
-         }
-        }
-  
+  .user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .userIcon{
+        border-radius: 50%;
+        background: aqua;
+        padding: 2px;
+        font-size: 30px;
+        color: white;
+    }
+  }

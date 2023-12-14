@@ -1,0 +1,10 @@
+.single{
+    display: flex;
+    margin: 20px;
+    .singlepost{
+      flex: 8;
+    }
+    .sidebar{
+        flex: 2;
+    }
+}

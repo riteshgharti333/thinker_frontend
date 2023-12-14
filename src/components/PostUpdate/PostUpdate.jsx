@@ -3,6 +3,7 @@ import "./PostUpdate.scss";
 import { baseUrl } from "../../main";
 import axios from "axios";
 import { Context } from "../../context/Context";
+import toast from "react-hot-toast";
 
 const PostUpdate = ({
   showPopUp,
@@ -32,6 +33,7 @@ const PostUpdate = ({
         desc,
       });
       window.location.reload();
+      toast.success( `Post Updated` , {duration : 5000});
     } catch (err) {
       console.log(err)
     }
