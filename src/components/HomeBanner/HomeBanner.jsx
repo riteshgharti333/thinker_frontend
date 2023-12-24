@@ -1,28 +1,90 @@
-import './HomeBanner.scss'
-import hp from "../../assets/images/hp.jpg"
-import girl from "../../assets/images/girl.png"
-import { FaPen } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import "./HomeBanner.scss";
+import MainFeature from "../MainFeature/MainFeature.jsx";
+import SmFeature from "../SmFeature/SmFeature";
+import Slide from "../Slide/Slide";
+import { blogs } from "../../assets/data";
+import RightSlide from "../RightSlider/RightSlide.jsx";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../../main.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 const HomeBanner = () => {
+  const [featurePosts, setFeaturePosts] = useState([]);
+  const [moviePosts, setMoviePosts] = useState([]);
+  const [foodPosts, setFoodPosts] = useState([]);
+
+  useEffect(() => {
+    const getFeaturePosts = async () => {
+      try {
+        const res = await  axios.get(`${baseUrl}/api/posts/random`);
+        setFeaturePosts(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const getPostsByCategory = async (category) => {
+      try {
+        const res = await axios.get(`${baseUrl}/api/posts?cat=${category}`);
+        return res.data;
+      } catch (error) {
+        console.log(error);
+        return [];
+      }
+    };
+
+    const fetchData = async () => {
+      await getFeaturePosts();
+      const movieData = await getPostsByCategory("Movies");
+      const foodData = await getPostsByCategory("Foods");
+
+      setMoviePosts(movieData);
+      setFoodPosts(foodData);
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className='homeBanner'>  
-      <div className="bgImg">
-        <img src={hp} alt="" />
-        <div className="homeInfo">
-            <div className="left">
-            <h1>Embark on a journey where every pixel promises discovery. Explore <span className='logo'>Thinker.</span> </h1>
-            <Link to={"/write"}>
-            <button> <FaPen className='pen' /> Write</button>
-            </Link>
-            </div>
-          <div className="right">
-          <img src={girl} alt="" />
-          </div>
+    <div className="homeBanner">
+      <div className="leftFeature">
+        {Array.isArray(featurePosts) && featurePosts.length > 0 ? (
+          <Slide slidesToShow={1} arrowsScroll={1}>
+            {featurePosts.map((post) => (
+              <MainFeature key={post._id} {...post} />
+            ))}
+          </Slide>
+        ) : (
+          <Loader />
+        )}
+      </div>
+      <div className="rightFeature">
+        <div className="rightTopFeature">
+          {Array.isArray(foodPosts) && foodPosts.length > 0 ? (
+            <RightSlide slidesToShow={1} arrowsScroll={1}>
+              {foodPosts.map((post) => (
+                <SmFeature key={post._id} tag="Foods" {...post}/>
+              ))}
+            </RightSlide>
+          ) : (
+           <Loader />
+          )}
+        </div>
+        <div className="rightBottomFeature">
+          {Array.isArray(moviePosts) && moviePosts.length > 0 ? (
+            <RightSlide slidesToShow={1} arrowsScroll={1}>
+              {moviePosts.map((post) => (
+                <SmFeature key={post._id} tag="Movies" {...post} />
+              ))}
+            </RightSlide>
+          ) : (
+           <Loader />
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeBanner
+export default HomeBanner;

@@ -28,7 +28,7 @@ export default function Login() {
           const res = await axios.post(`${baseUrl}/api/auth/login`, values);
           dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
           window.location.replace("/");
-          toast.success(`Welcome to Thinker.`, { duration: 5000 });
+          toast.success(`Welcome to Thinker.`);
         } catch (error) {
           dispatch({ type: "LOGIN_FAILURE" });
           toast.error(error.response.data); 

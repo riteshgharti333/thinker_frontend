@@ -1,28 +1,19 @@
-@import '../../style/responsive.scss';
+@import "../../style/responsive.scss";
 
 .blogcard {
-  display: flex;
+  width: 300px;
+  height: 360px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin-bottom: 10px;
   padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  transition: all .4s ease-in-out;
 
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-    .cardImg {
-      flex: 4;
-    }
-    .blogInfo {
-      flex: 6;
-      margin-left: 10px;
-
-      span{
-        left: 0;
-      }
-    }
+  &:hover{
+    transform: scale(1.07);
   }
 
-
-  
   .cardImg {
     flex: 4;
     img {
@@ -31,51 +22,48 @@
       height: 200px;
       display: flex;
       border-radius: 3px;
-    @include sm{
-      height: 150px;
-    }
+      @include sm {
+        height: 150px;
+      }
     }
   }
   .blogInfo {
     flex: 6;
-    margin-left: 10px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     h3 {
+      margin-top: 10px;
       font-family: "Inconsolata", monospace;
-      font-size: 30px;
       display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
 
-        @include sm{
-          font-size: 25px;
-        }
+      @include sm {
+        font-size: 25px;
+      }
 
-        &:hover{
-            color: aqua;
-        }
+      &:hover {
+        color: aqua;
+      }
     }
     p {
       font-family: "Dosis", sans-serif;
-      font-size: 20px;
       display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-weight: 500;
 
-        @include sm{
-          font-size: 15px;
-        }
+      @include sm {
+        font-size: 15px;
+      }
     }
 
-    span{
-      position: absolute;
-      bottom: 0px;
-      right: 10px;
-      font-family: 'Space Grotesk', sans-serif;
-      color: aqua;
-      cursor: pointer;
+    span {
+      font-family: "Dosis", sans-serif;
+      font-weight: 600;
     }
   }
 }

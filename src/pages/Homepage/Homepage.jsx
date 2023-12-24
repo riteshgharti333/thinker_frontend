@@ -6,11 +6,11 @@ import  './Homepage.scss'
 const Homepage = () => {
   return (
     <>
-      <HomeBanner />
     <div className='homepage'>
-    <p className='recent'>Recent Blog Posts</p>
+    <HomeBanner />
+    
+    <p className='recent'>Recent Posts</p>
       <div className="article">
-
       <div className="blog-container">
         <BlogCards />
       </div>

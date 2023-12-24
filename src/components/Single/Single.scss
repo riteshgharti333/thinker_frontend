@@ -1,8 +1,17 @@
+.back{
+  margin-left: 50px;
+  font-size: 34px;
+
+  &:hover{
+    color: teal;
+  }
+}
 .single{
     display: flex;
-    margin: 20px;
+    margin: 30px 50px;
     .singlepost{
       flex: 8;
+      margin-right: 20px;
     }
     .sidebar{
         flex: 2;

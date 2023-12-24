@@ -1,0 +1,85 @@
+.footer {
+  background-color: teal;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+
+  //   align-items: center;
+  .footerLeft {
+    .logo {
+      cursor: pointer;
+      h1 {
+        font-family: "ADLaM Display", "cursive";
+        color: #fff;
+        font-size: 40px;
+        span {
+          color: red;
+        }
+      }
+    }
+    .socilMediaIcon {
+      font-size: 30px;
+      margin-top: 10px;
+      .leftIcon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .footerCenter {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 30px;
+      font-weight: 600;
+      font-family: "Dosis", sans-serif;
+    }
+    .tags {
+      margin-top: 10px;
+      margin-left: 10px;
+      span {
+        font-size: 18px;
+        font-family: "Dosis", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.footerRight {
+  font-family: "Dosis", sans-serif;
+  cursor: pointer;
+  color: white;
+
+  h1 {
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .contactLinks {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      align-items: flex-start;
+
+      span {
+        display: flex;
+        align-items: center;
+        .contactIcon {
+          color: orange;
+          margin-right: 10px;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

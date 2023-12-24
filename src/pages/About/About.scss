@@ -1,0 +1,88 @@
+.about {
+  height: 80vh;
+  position: relative;
+
+  &::before {
+    content: "";
+    background-color: #d9d9d9;
+    height: 60vh;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .aboutContainer {
+    margin: 30px auto;
+    display: flex;
+    width: 80%;
+
+    .aboutLeft {
+      img {
+        width: 350px;
+        height: 400px;
+        object-fit: cover;
+        z-index: 1;
+        border-radius: 6px;
+      }
+    }
+
+    .aboutRight {
+      padding: 0px 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .heading {
+        h1 {
+          font-size: 40px;
+        }
+      }
+
+      .aboutInfo {
+        p {
+          font-family: "Dosis", sans-serif;
+          font-size: 22px;
+          font-weight: 600;
+        }
+        .socialIcon {
+          margin-top: 20px;
+
+        
+          .icons {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            cursor: pointer;
+
+            &:nth-child(2){
+              color: #0a66c2;
+            }
+
+            &:last-child{
+              color: white;
+            }
+
+            .sIcon {
+              font-size: 30px;
+          
+            
+            }
+            span {
+              margin-left: 5px;
+              font-family: "Dosis", sans-serif;
+              font-weight: 600;
+              font-size: 20px;
+            }
+
+            &:hover {
+              color: orange;
+            }
+          }
+        }
+      }
+    }
+  }
+}

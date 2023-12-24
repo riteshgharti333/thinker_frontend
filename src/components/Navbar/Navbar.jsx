@@ -3,21 +3,47 @@ import "./Navbar.scss";
 import { FaUser } from "react-icons/fa";
 import MobileBurger from "../MobileBurger/MobileBurger";
 import { Context } from "../../context/Context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const { user, dispatch } = useContext(Context);
 
   const handLogout = () => {
     dispatch({ type: "LOGOUT" });
-    toast.success("Logout", { duration: 5000 });
+    toast.success("Logout");
   };
+
+
+  const handleScroll = () => {
+    setIsScrolled(window.pageYOffset !== 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="nav">
       <div className="left">
-        <div className="logo">
+       <FaGithub className="leftIcon" />
+       <FaLinkedin className="Linkedin" />
+      </div>
+
+      <div className="hamburger">
+        <MobileBurger />
+      </div>
+
+      <div className="center">
+      <div className="logo">
           <Link to="/">
             <h1>
               Thinker<span>.</span>
@@ -26,19 +52,15 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="hamburger">
-        <MobileBurger />
-      </div>
-
       <div className="right">
         <div className="links">
           <Link to={"/write"}>
             <span>Write</span>
           </Link>
-          <Link>
+          <Link to={"/about"}>
             <span>About</span>
           </Link>
-          <Link>
+          <Link to={"/contact"}>
             <span>Contact</span>
           </Link>
         </div>

@@ -1,0 +1,128 @@
+.contact {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .contactContainer {
+    background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    width: 70%;
+    padding: 60px;
+    border-radius: 5px;
+
+    .contactLeft {
+      display: flex;
+      flex-direction: column;
+      flex: 5;
+      gap: 20px;
+
+      input {
+        padding: 10px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        background: transparent;
+        border-bottom: 3px solid aqua;
+
+        &::placeholder {
+          font-size: 18px;
+          color: white;
+          font-weight: 600;
+        }
+      }
+
+      textarea {
+        padding: 5px 0px 0px 5px;
+        font-size: 18px;
+        resize: none;
+        outline: none;
+        background-color: transparent;
+        border: 3px solid aqua;
+        border-radius: 5px;
+        &::placeholder {
+          font-size: 18px;
+          color: white;
+
+          font-weight: 600;
+        }
+      }
+
+      button {
+        background-color: aqua;
+        border: none;
+        padding: 6px 0px;
+        font-size: 25px;
+        border-radius: 5px;
+        font-family: "Inconsolata", monospace;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    .contactRight {
+      flex: 5;
+      margin-left: 30px;
+      .contactIcons {
+        .icons {
+          display: flex;
+          align-items: center;
+
+          &:last-child {
+            margin-top: 20px;
+          }
+          .contactIcon {
+            color: orange;
+            font-size: 30px;
+    
+          }
+
+          span {
+            font-family: "Dosis", sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            margin-left: 30px;
+            color: #fff;
+          }
+        }
+      }
+
+      .lineborder {
+        margin: 20px 0px;
+      }
+
+      .socialIcons {
+        display: flex;
+        justify-content: space-around;
+        .socialIcon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+
+          .sIcon {
+            font-size: 30px;
+          }
+
+          .Linkedin{
+            color: #0a66c2;
+          }
+
+          .Resume{
+            color: orange;
+          }
+
+          span {
+            font-size: 25px;
+            font-family: "Dosis", sans-serif;
+            font-weight: 600;
+            color: #fff;
+          }
+
+        
+        }
+      }
+    }
+  }
+}
