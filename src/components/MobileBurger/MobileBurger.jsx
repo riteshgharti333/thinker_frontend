@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import "./MobileBurger.scss";
 import { Link } from "react-router-dom";
+import "./MobileBurger.scss";
 import { Context } from "../../context/Context";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
@@ -22,7 +22,7 @@ const MobileBurger = () => {
 
   const { user, dispatch } = useContext(Context);
 
-  const handLogout = () => {
+  const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     toast.success("Logout");
   };
@@ -47,23 +47,22 @@ const MobileBurger = () => {
           <Link to={"/profile"}>
             <FaUser className="userIcon" />
           </Link>
-          {/* <span>{user.username}</span> */}
         </div>
 
-        <a className="menu-item" href="/">
+        <Link to="/" className="menu-item" onClick={handleLinkClick}>
           Home
-        </a>
-        <a className="menu-item" href="/write">
+        </Link>
+        <Link to="/write" className="menu-item" onClick={handleLinkClick}>
           Write
-        </a>
-        <a className="menu-item" href="/about">
+        </Link>
+        <Link to="/about" className="menu-item" onClick={handleLinkClick}>
           About
-        </a>
-        <a className="menu-item" href="/contact">
+        </Link>
+        <Link to="/contact" className="menu-item" onClick={handleLinkClick}>
           Contact
-        </a>
+        </Link>
         {user ? (
-          <Link to="/login" onClick={handLogout}>
+          <Link to="/login" onClick={handleLogout}>
             <span>Logout</span>
           </Link>
         ) : (
@@ -81,11 +80,11 @@ const MobileBurger = () => {
             )}
           </span>
           {showTags && (
-            <div className="bugerCategories">
+            <div className="burgerCategories">
               {tags.map((tag) => (
-                <a href={`/posts?cat=${tag}`}>
+                <Link to={`/posts?cat=${tag}`} key={tag} onClick={handleLinkClick}>
                   <span>{tag}</span>
-                </a>
+                </Link>
               ))}
             </div>
           )}
