@@ -1,33 +1,45 @@
-import { Link } from 'react-router-dom';
-import './Sidebar.scss';
+import { Link } from "react-router-dom";
+import "./Sidebar.scss";
+import aboutImg from "../../assets/images/about.png";
 
 const Sidebar = () => {
-
-  const tags = ['Personal', 'Foods', 'Travel', 'Health', 'Lifestyle', 'Sports', 'Tech', 'Science', 'Movies'];
+  const tags = [
+    "Personal",
+    "Foods",
+    "Travel",
+    "Health",
+    "Lifestyle",
+    "Sports",
+    "Tech",
+    "Science",
+    "Movies",
+  ];
 
   const handleLinkClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
-
   return (
-    <div className='sidebar'>
-      <p className='sidebarHeader'>About Me</p>
+    <div className="sidebar">
+      <p className="sidebarHeader">About Me</p>
       <div className="sidebarImg">
-        <img src="https://w0.peakpx.com/wallpaper/86/560/HD-wallpaper-i-m-groot-newyear19-marvel-imgroot-thumbnail.jpg" alt="" />
+        <img src={aboutImg} alt="" />
       </div>
       <div className="aboutMe">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet repellendus quod dolor pariatur incidunt illum voluptas quas corporis saepe tempora itaque ex, impedit quisquam perspiciatis suscipit, laborum laudantium. Quod quia ipsam et doloremque obcaecati blanditiis id placeat quidem. Fugiat, nihil!
+          Hi,👋 I'm Ritesh, your friendly neighborhood full-stack developer 🚀.
+          Obsessed with turning ideas into lines of code. 💻 Problem-solving is
+          my superpower, and I thrive on the thrill of overcoming coding
+          challenges. Always eager to learn and explore new tech horizons 🌐
         </p>
       </div>
-      <p className='sidebarHeader'>Categories</p>
+      <p className="sidebarHeader">Categories</p>
       <div className="categories">
         {tags.map((tag) => (
-          <Link key={tag} to={`/posts?cat=${tag}`}  onClick={handleLinkClick}>
+          <Link key={tag} to={`/posts?cat=${tag}`} onClick={handleLinkClick}>
             <span>{tag}</span>
           </Link>
         ))}

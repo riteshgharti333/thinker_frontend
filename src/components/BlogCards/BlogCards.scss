@@ -1,4 +1,10 @@
-.blogcards{
-    display: flex;
-    flex-wrap: wrap;
+@import "../../style/responsive.scss";
+
+.blogcards {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include sm {
+    justify-content: center;
+  }
 }

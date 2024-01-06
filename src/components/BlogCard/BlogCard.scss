@@ -3,14 +3,24 @@
 .blogcard {
   width: 300px;
   height: 360px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin-bottom: 10px;
   padding: 10px;
   margin-right: 20px;
   margin-bottom: 30px;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 
-  &:hover{
+  @include sm {
+    height: 330px;
+  }
+
+  @include xxl {
+    width: 290px;
+  }
+
+  &:hover {
     transform: scale(1.07);
   }
 

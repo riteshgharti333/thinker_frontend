@@ -1,27 +1,33 @@
-@import '../../style/responsive.scss';
+@import "../../style/responsive.scss";
 
 .homepage {
-    margin: 20px 50px;
-  .recent{
+  margin: 20px 50px;
+
+  @include sm {
+    margin: 20px 5px;
+  }
+  .recent {
     font-family: "Dosis", sans-serif;
     font-weight: 600;
     font-size: 20px;
     margin: 40px 0px 10px 0px;
   }
-    .article{
-      display: flex;
+  .article {
+    display: flex;
     .blog-container {
       flex: 8;
     }
-    
+
     .sidebar {
       flex: 2;
-      
-      @include sm{
+
+      @include sm {
+        display: none;
+      }
+
+      @include md {
         display: none;
       }
     }
-    
   }
-  }
-  
+}

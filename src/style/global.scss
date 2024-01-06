@@ -1,24 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&family=Inconsolata:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&family=Inconsolata:wght@500;600;700&display=swap");
 
-
-
-*{
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.app{
-    background-color: #f9fcff;
-background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
-
+.app {
+  background-color: #f9fcff;
+  background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
 }

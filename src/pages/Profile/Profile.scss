@@ -1,45 +1,150 @@
-.profile {
-    margin: 20px auto;
-    width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  .profileContainer {
-    h1 {
-      font-family: "ADLaM Display", "cursive";
-      text-align: center;
-      padding-top: 10px;
-    }
-    .profileSmContainer{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 40px 0px;
+@import "../../style/responsive.scss";
 
-      .userImg {
-        display: flex;
-        justify-content: center;
-        img {
-          width: 200px;
-          border-radius: 50%;
+.settings {
+  display: flex;
+  margin: 20px 50px;
+
+  @include sm {
+    margin: 20px;
+  }
+
+  .sidebar {
+    flex: 2;
+
+    @include sm {
+      display: none;
+    }
+  }
+
+  .settingsWrapper {
+    flex: 8;
+    padding: 20px;
+
+    .settingsTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .settingsUpdateTitle {
+        font-size: 40px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-family: "Inconsolata", monospace;
+
+        @include sm {
+          font-size: 30px;
         }
       }
 
-      .userInfo {
-        width: 50%;
-        .userSmInfo {
-          display: flex;
-          flex-direction: column;
-          padding: 10px 0px;
-          label {
-            font-family: "Dosis", sans-serif;
+      .settingsDeleteTitle {
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+        font-family: "Inconsolata", monospace;
+      }
+    }
 
-            font-size: 16px;
-          }
-          span {
-            margin-top: 10px;
-            font-size: 20px;
-            font-family: "Inconsolata", monospace;
-            border-bottom: 2px solid aqua;
+    .settingsForm {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      .settingsPP {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+
+        .userIcon {
+          width: 100px;
+          height: 100px;
+          border-radius: 20px;
+          border: 1px solid;
+          padding-top: 5px;
+        }
+
+        label {
+          cursor: pointer;
+          .plusIcon {
+            position: absolute;
+            top: 140px;
+            left: 32px;
+            background-color: aqua;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
           }
         }
-      }}
+
+        > img {
+          width: 100px;
+          height: 100px;
+          border-radius: 20px;
+          object-fit: cover;
+        }
+      }
+
+      .username {
+        margin: 10px 0px;
+
+        h1 {
+          background: teal;
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 50%;
+          text-transform: uppercase;
+          color: aliceblue;
+        }
+      }
+
+      .settingsPPIcon {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: lightcoral;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      label {
+        font-size: 20px;
+        margin-top: 20px;
+        font-family: "Dosis", sans-serif;
+        font-weight: 600;
+      }
+
+      input {
+        color: black;
+        margin: 10px 0;
+        height: 30px;
+        border: none;
+        font-size: 18px;
+        border-bottom: 2px solid aqua;
+        background-color: transparent;
+        outline: none;
+      }
+
+      .formError {
+        color: red;
+        font-size: 18px;
+        font-family: "Inconsolata", monospace;
+      }
+
+      .settingsSubmit {
+        width: 150px;
+        align-self: center;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        background: teal;
+        padding: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
     }
   }
+}

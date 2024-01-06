@@ -1,10 +1,15 @@
+@import "../../style/responsive.scss";
+
 .footer {
   background-color: teal;
   display: flex;
   justify-content: space-between;
   padding: 40px;
 
-  //   align-items: center;
+  @include sm {
+    padding: 10px;
+  }
+
   .footerLeft {
     .logo {
       cursor: pointer;
@@ -12,6 +17,10 @@
         font-family: "ADLaM Display", "cursive";
         color: #fff;
         font-size: 40px;
+
+        @include sm {
+          font-size: 30px;
+        }
         span {
           color: red;
         }
@@ -20,8 +29,18 @@
     .socilMediaIcon {
       font-size: 30px;
       margin-top: 10px;
+
+      @include sm {
+        font-size: 25px;
+      }
       .leftIcon {
         margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .rightIcon {
+        color: blue;
+        cursor: pointer;
       }
     }
   }
@@ -30,6 +49,15 @@
     color: white;
     display: flex;
     flex-direction: column;
+
+    @include sm {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+
     p {
       font-size: 30px;
       font-weight: 600;
@@ -44,6 +72,16 @@
         font-weight: 600;
         cursor: pointer;
         margin-right: 10px;
+
+        @include md {
+          display: flex;
+          flex-direction: column;
+        }
+
+        @include lg {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
   }
@@ -55,6 +93,9 @@
   color: white;
 
   h1 {
+    @include sm {
+      font-size: 30px;
+    }
   }
 
   .links {
@@ -74,6 +115,10 @@
       span {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        @include sm {
+          font-size: 16px;
+        }
         .contactIcon {
           color: orange;
           margin-right: 10px;

@@ -1,15 +1,17 @@
-import './RightSlide.scss'
+import "./RightSlide.scss";
 import Slider from "infinite-react-carousel";
 
-const settings =  {
-};
+const settings = {};
 
 const RightSlide = ({ children, slidesToShow, arrowsScroll }) => {
-
   return (
     <div className="slide">
       <div className="container">
-        <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll} {...settings}>
+        <Slider
+          slidesToShow={slidesToShow}
+          arrowsScroll={arrowsScroll}
+          {...settings}
+        >
           {children}
         </Slider>
       </div>

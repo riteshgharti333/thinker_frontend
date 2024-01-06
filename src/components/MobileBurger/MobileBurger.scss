@@ -1,90 +1,113 @@
-/* Position and sizing of burger button */
 .bm-burger-button {
-    position: fixed;
-    width: 30px;
-    height: 25px;
-    right: 20px;
-    top: 20px;
-    
-  }
-  
-  .bm-burger-bars {
-    background: black;
-  }
-  
-  .bm-burger-bars-hover {
-    background: #a90000;
-  }
-  
-  .bm-cross-button {
-    height: 24px;
-    width: 24px;
-    
-  }
-  
-  /* Color/shape of close button cross */
-  .bm-cross {
-    background: #bdc3c7;
-  }
-  
-  .bm-menu-wrap {
-    position: fixed;
-    top: 0;
-    height: 100%;
-  }
-  
-  /* General sidebar styles */
-  .bm-menu {
-    background: white;
-    padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
-  }
-  
-  /* Morph shape necessary with bubble or elastic */
-  .bm-morph-shape {
-    fill: #373a47;
-  }
-  
-  /* Wrapper for item list */
-  .bm-item-list {
-    color: #b8b7ad;
-    padding: 0.8em;
-  }
-  
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Individual item */
-  .bm-item {
-    display: inline-block;
-    margin-bottom: 10px;
-    text-align: left;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-family: 'Gabarito', sans-serif;
+  position: fixed;
+  width: 30px;
+  height: 25px;
+  right: 20px;
+  top: 20px;
+}
 
-  }
-  
-  .bm-item:hover {
-    color: #ffffff;
+.bm-burger-bars {
+  background: black;
+}
+
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+.bm-cross-button {
+  height: 50px;
+  width: 50px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background-color: black;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  top: 0;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: white;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Styling of overlay */
+body .bm-overlay {
+  background: none !important;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  margin-bottom: 5px;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: "Dosis", sans-serif;
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.cat {
+  position: relative;
+  cursor: none;
+
+  .dA {
+    font-size: 30px;
+    position: absolute;
+    top: 4px;
   }
 
-  .topListItem{
-    margin: 20px 0px;
-  }
-
-  .user{
+  .bugerCategories {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    .userIcon{
-        border-radius: 50%;
-        background: aqua;
-        padding: 2px;
-        font-size: 30px;
-        color: white;
+    flex-direction: column;
+
+    span {
+      font-size: 20px;
+      margin-left: 30px;
+      color: black;
     }
   }
+}
+
+.bm-item:hover {
+  color: gray;
+}
+
+.topListItem {
+  margin: 20px 0px;
+}
+
+.user {
+  //  display: flex;
+  //  align-items: center;
+  //  justify-content: center;
+
+  .userIcon {
+    border-radius: 50%;
+    background: aqua;
+    padding: 2px;
+    font-size: 30px;
+    color: white;
+    margin-right: 5px;
+  }
+}

@@ -31,7 +31,7 @@ export default function Login() {
           toast.success(`Welcome to Thinker.`);
         } catch (error) {
           dispatch({ type: "LOGIN_FAILURE" });
-          toast.error(error.response.data); 
+          toast.error(error.response.data);
         }
       },
     });

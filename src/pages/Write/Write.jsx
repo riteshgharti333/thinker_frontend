@@ -92,28 +92,21 @@ const Write = () => {
     }
   };
 
-
-
   return (
     <div className="write">
-          <input
-              type="file"
-              id="inputFile"
-              hidden
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files[0])}
-            />
+      <input
+        type="file"
+        id="inputFile"
+        hidden
+        accept="image/*"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
       <label htmlFor="inputFile" className="dropSection">
         {file ? (
-             <img
-            className="uploadImg"
-            src={URL.createObjectURL(file)}
-          />
-         
+          <img className="uploadImg" src={URL.createObjectURL(file)} />
         ) : (
           <div className="droparea">
-        
-            <img src={dropImg}/>
+            <img src={dropImg} />
             <p>Drag and Drop or click here to upload image</p>
             <span>Upload any images from desktop</span>
           </div>
@@ -121,7 +114,7 @@ const Write = () => {
       </label>
 
       <div className="tags">
-        <span>Tags : </span>
+        <span>Tags: </span>
         <div className="tagsCat">
           {tags.map((tag) => (
             <div
@@ -147,8 +140,7 @@ const Write = () => {
           <button type="submit">Publish</button>
         </div>
         <div className="textarea">
-
-        <ReactQuill
+          <ReactQuill
             className="editor"
             theme="snow"
             value={desc}

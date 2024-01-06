@@ -1,19 +1,38 @@
-.back{
+@import "../../style/responsive.scss";
+
+.back {
   margin-left: 50px;
   font-size: 34px;
 
-  &:hover{
+  @include sm {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  &:hover {
     color: teal;
   }
 }
-.single{
-    display: flex;
-    margin: 30px 50px;
-    .singlepost{
-      flex: 8;
-      margin-right: 20px;
+.single {
+  display: flex;
+  margin: 30px 50px;
+
+  @include sm {
+    margin: 20px;
+  }
+  .singlepost {
+    flex: 8;
+    margin-right: 20px;
+
+    @include sm {
+      margin-right: 0;
     }
-    .sidebar{
-        flex: 2;
+  }
+  .sidebar {
+    flex: 2;
+
+    @include sm {
+      display: none;
     }
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.scss";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BiSolidLock, BiSolidUser, BiShow, BiHide } from "react-icons/bi";
 import { IoMdMail } from "react-icons/io";
 import { useFormik } from "formik";
@@ -32,9 +32,9 @@ export default function Register() {
           const res = await axios.post(`${baseUrl}/api/auth/register`, values);
           res.data && window.location.replace("/login");
           toast.success(res.data.message);
-          console.log(res.data.message);
         } catch (error) {
           console.log(error);
+          toast.error(error.response.data);
         }
       },
     });
@@ -134,7 +134,7 @@ export default function Register() {
           Sign Up
         </button>
         <span>
-          Already have an account?{" "}
+          Already have an account?
           <span className="loginLink">
             <Link to="/login"> Login</Link>
           </span>

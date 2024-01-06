@@ -1,14 +1,14 @@
 @import "../../style/responsive.scss";
 
 .slide {
-    display: flex;
-    justify-content: center;
-    .container {
-      width: 100%;
-      position: relative;
-    }
-  
-    .carousel-initialized {
-      position: static;
-    }
+  display: flex;
+  justify-content: center;
+  .container {
+    width: 100%;
+    position: relative;
   }
+
+  .carousel-initialized {
+    position: static;
+  }
+}

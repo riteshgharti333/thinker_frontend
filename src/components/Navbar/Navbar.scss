@@ -10,28 +10,29 @@
   z-index: 99;
   background-color: beige;
   align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .left {
-    font-size: 30px; 
+    font-size: 30px;
     cursor: pointer;
     flex: 3;
- 
-    .Linkedin{
+
+    @include sm {
+      display: none;
+      flex: 0;
+    }
+
+    @include md {
+      display: none;
+    }
+
+    .Linkedin {
       color: #0a66c2;
-      
     }
-    .leftIcon{
+    .leftIcon {
       margin-right: 10px;
-    }
-
-    @include sm{
-      display: none;
-    }
-
-    @include md{
-      display: none;
     }
   }
 
@@ -41,26 +42,30 @@
     }
   }
 
-  .center{
+  .center {
     flex: 3;
-    .logo{
+
+    @include sm {
+    }
+
+    .logo {
       cursor: pointer;
-        h1{
-            font-family: 'ADLaM Display', 'cursive';
-            color: blueviolet;
-            text-align: center;
+      h1 {
+        font-family: "ADLaM Display", "cursive";
+        color: blueviolet;
+        text-align: center;
 
-            @include sm{
-               text-align: left;
-            }
-
-            @include md{
-              text-align: left;
-            }
-      span{
-        color: red;
-      }
+        @include sm {
+          text-align: left;
         }
+
+        @include md {
+          text-align: left;
+        }
+        span {
+          color: red;
+        }
+      }
     }
   }
 
@@ -70,18 +75,19 @@
     justify-content: flex-end;
     align-items: center;
 
-    @include sm{
+    @include sm {
       display: none;
+      flex: 0;
     }
 
     .links {
       span {
         margin-right: 20px;
-      font-family: "Dosis", sans-serif;
+        font-family: "Dosis", sans-serif;
         font-size: 20px;
         font-weight: 600;
         cursor: pointer;
-        &:hover{
+        &:hover {
           border-bottom: 2px solid aqua;
         }
       }
@@ -89,41 +95,40 @@
 
     .userInfo {
       display: flex;
-       
+
       button {
         margin-right: 20px;
         color: #090909;
         font-size: 20px;
         padding: 8px 10px;
         background: #e8e8e8;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        box-shadow:
+          rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         cursor: pointer;
-      border-radius: 4px;
+        border-radius: 4px;
         font-weight: 600;
         background-color: aqua;
         border: none;
-      font-family: "Inconsolata", monospace;
+        font-family: "Inconsolata", monospace;
 
-
-        &:hover{
+        &:hover {
           background-color: aquamarine;
         }
-        
       }
 
-      .user{
+      .user {
         display: flex;
         align-items: center;
         cursor: pointer;
-        .userIcon{
-            border-radius: 50%;
-            background: aqua;
-            padding: 2px;
-            font-size: 30px;
-            color: white;
+        .userIcon {
+          border-radius: 50%;
+          background: aqua;
+          padding: 2px;
+          font-size: 30px;
+          color: white;
         }
       }
-
-  }
+    }
   }
 }

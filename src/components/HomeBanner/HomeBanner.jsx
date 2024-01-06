@@ -17,7 +17,7 @@ const HomeBanner = () => {
   useEffect(() => {
     const getFeaturePosts = async () => {
       try {
-        const res = await  axios.get(`${baseUrl}/api/posts/random`);
+        const res = await axios.get(`${baseUrl}/api/posts/random`);
         setFeaturePosts(res.data);
       } catch (error) {
         console.log(error);
@@ -64,11 +64,11 @@ const HomeBanner = () => {
           {Array.isArray(foodPosts) && foodPosts.length > 0 ? (
             <RightSlide slidesToShow={1} arrowsScroll={1}>
               {foodPosts.map((post) => (
-                <SmFeature key={post._id} tag="Foods" {...post}/>
+                <SmFeature key={post._id} tag="Foods" {...post} />
               ))}
             </RightSlide>
           ) : (
-           <Loader />
+            <Loader />
           )}
         </div>
         <div className="rightBottomFeature">
@@ -79,7 +79,7 @@ const HomeBanner = () => {
               ))}
             </RightSlide>
           ) : (
-           <Loader />
+            <Loader />
           )}
         </div>
       </div>

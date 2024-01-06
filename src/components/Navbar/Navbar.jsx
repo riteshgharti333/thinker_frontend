@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -18,7 +17,6 @@ const Navbar = () => {
     dispatch({ type: "LOGOUT" });
     toast.success("Logout");
   };
-
 
   const handleScroll = () => {
     setIsScrolled(window.pageYOffset !== 0);
@@ -34,8 +32,12 @@ const Navbar = () => {
   return (
     <div className="nav">
       <div className="left">
-       <FaGithub className="leftIcon" />
-       <FaLinkedin className="Linkedin" />
+        <a href="https://github.com/riteshgharti333">
+          <FaGithub className="leftIcon" />
+        </a>
+        <a href="https://www.linkedin.com/in/riteshgharti333">
+          <FaLinkedin className="Linkedin" />
+        </a>
       </div>
 
       <div className="hamburger">
@@ -43,7 +45,7 @@ const Navbar = () => {
       </div>
 
       <div className="center">
-      <div className="logo">
+        <div className="logo">
           <Link to="/">
             <h1>
               Thinker<span>.</span>
