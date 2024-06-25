@@ -86,8 +86,10 @@
           font-family: "Gabarito", sans-serif;
           &::placeholder {
             color: black;
-            font-size: 18px;
+            font-size: 15px;
+            font-weight: 550;
             font-family: "Gabarito", sans-serif;
+
           }
 
           &:focus {

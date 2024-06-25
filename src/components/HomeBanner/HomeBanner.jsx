@@ -58,7 +58,7 @@ const HomeBanner = () => {
           <Loader />
         )}
       </div>
-      <div className="rightFeature">
+     <div className="rightFeature">
         <div className="rightTopFeature">
           {Array.isArray(foodPosts) && foodPosts.length > 0 ? (
             <RightSlide slidesToShow={1} arrowsScroll={1}>
@@ -69,7 +69,7 @@ const HomeBanner = () => {
           ) : (
             <Loader />
           )}
-        </div>
+        </div> 
         <div className="rightBottomFeature">
           {Array.isArray(moviePosts) && moviePosts.length > 0 ? (
             <RightSlide slidesToShow={1} arrowsScroll={1}>

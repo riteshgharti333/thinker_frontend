@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Register.scss";
 import { Link } from "react-router-dom";
 import { BiSolidLock, BiSolidUser, BiShow, BiHide } from "react-icons/bi";
@@ -8,9 +8,10 @@ import { signUpSchema } from "../../schemas/index";
 import { baseUrl } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Context } from "../../context/Context";
 
 const initialvalues = {
-username: "",
+  username: "",
   email: "",
   password: "",
   // confirm_password: "",
@@ -18,6 +19,7 @@ username: "",
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,13 +30,16 @@ export default function Register() {
       initialValues: initialvalues,
       validationSchema: signUpSchema,
       onSubmit: async (values) => {
+        setIsSubmitting(true); // Set loading state to true
         try {
           const res = await axios.post(`${baseUrl}/api/auth/register`, values);
-          res.data && window.location.replace("/login");
           toast.success(res.data.message);
+          setIsSubmitting(false); // Set loading state to false
+          res.data && window.location.replace("/");
         } catch (error) {
           console.log(error);
           toast.error(error.response.data);
+          setIsSubmitting(false); // Set loading state to false
         }
       },
     });
@@ -129,8 +134,8 @@ export default function Register() {
           ) : null}
         </div> */}
 
-        <button className="registerButton" type="submit">
-          Sign Up
+        <button className="registerButton" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Signing Up..." : "Sign Up"}
         </button>
         <span>
           Already have an account?

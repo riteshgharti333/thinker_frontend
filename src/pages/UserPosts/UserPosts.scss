@@ -1,10 +1,11 @@
 @import "../../style/responsive.scss";
 
 .queryPostsContainer {
-  height: 165vh;
+  // height: 165vh;
+  height: 100%;
 
   @include sm {
-    height: 100vh;
+    height: 100%;
   }
 }
 
@@ -49,7 +50,14 @@
     display: flex;
     flex-wrap: wrap;
     flex: 8;
+
+    .errorMessage{
+      font-family: "Dosis", sans-serif;
+      font-weight: 600;
+    }
   }
+
+
 
   .sidebar {
     flex: 2;

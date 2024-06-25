@@ -7,7 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../../main";
 import { Context } from "../../context/Context";
 import toast from "react-hot-toast";
-import { CiCirclePlus } from "react-icons/ci";
+import { category } from "../../assets/data";
 
 const Singlpost = () => {
   const location = useLocation();
@@ -20,8 +20,7 @@ const Singlpost = () => {
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
-
-  const tags = [
+  const [tags, setTags] = useState([
     "Personal",
     "Foods",
     "Travel",
@@ -31,28 +30,22 @@ const Singlpost = () => {
     "Tech",
     "Science",
     "Movies",
-  ];
+  ]);
 
-  const handleTagClick = (tag) => {
-    setSelectedTags((prevSelectedTags) => {
-      if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter((selectedTag) => selectedTag !== tag);
-      } else {
-        return [tag];
-      }
-    });
-  };
+  // State to track form submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const getPost = async () => {
       try {
         const res = await axios.get(`${baseUrl}/api/posts/${path}`);
         setSinglepost(res.data);
-        console.log(res.data)
         setTitle(res.data.title);
         setDesc(res.data.desc);
         setSelectedTags(res.data.categories || []);
-      } catch (error) {}
+      } catch (error) {
+        console.log("Error fetching post:", error);
+      }
     };
     getPost();
   }, [path]);
@@ -65,11 +58,14 @@ const Singlpost = () => {
       window.location.replace("/");
       toast.success(`Post Deleted`, { duration: 5000 });
     } catch (err) {
-      console.log(err);
+      console.log("Error deleting post:", err);
     }
   };
 
   const handleUpdate = async () => {
+    // Start form submission
+    setIsSubmitting(true);
+
     try {
       await axios.put(`${baseUrl}/api/posts/${path}`, {
         username: user.username,
@@ -80,8 +76,22 @@ const Singlpost = () => {
       window.location.reload();
       toast.success(`Post Updated`, { duration: 5000 });
     } catch (err) {
-      console.log(err);
+      console.log("Error updating post:", err);
+      toast.error(`Error updating post: ${err.message}`);
+    } finally {
+      // End form submission
+      setIsSubmitting(false);
     }
+  };
+
+  const handleTagClick = (tag) => {
+    setSelectedTags((prevSelectedTags) => {
+      if (prevSelectedTags.includes(tag)) {
+        return prevSelectedTags.filter((selectedTag) => selectedTag !== tag);
+      } else {
+        return [...prevSelectedTags, tag];
+      }
+    });
   };
 
   const date = new Date(singlepost.createdAt).toLocaleDateString(undefined, {
@@ -99,30 +109,22 @@ const Singlpost = () => {
       {updateMode ? (
         <>
           <div className="tags">
-            <span>Tags : </span>
+            <span>Tags:</span>
             <div className="tagsCat">
               {tags.map((tag) => (
                 <div
                   key={tag}
-                  className={`tag ${
-                    selectedTags.includes(tag) ? "selected" : ""
-                  }`}
+                  className={`tag ${selectedTags.includes(tag) ? "selected" : ""}`}
                   onClick={() => handleTagClick(tag)}
                 >
                   {tag}
-                  {selectedTags.includes(tag) && (
-                    <FaCheck className="rightIcon" />
-                  )}
+                  {selectedTags.includes(tag) && <FaCheck className="rightIcon" />}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="writeFormGroup">
-            <label htmlFor="fileInput">
-              <CiCirclePlus className="plusIcon" />
-            </label>
-
             <input
               type="text"
               value={title}
@@ -130,10 +132,12 @@ const Singlpost = () => {
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
             />
-            <button className="cencel" onClick={() => setUpdateMode(false)}>
-              Cencel
+            <button className="cancel" onClick={() => setUpdateMode(false)}>
+              Cancel
             </button>
-            <button onClick={handleUpdate}>Publish</button>
+            <button onClick={handleUpdate} disabled={isSubmitting}>
+              {isSubmitting ? "Updating..." : "Update"}
+            </button>
           </div>
         </>
       ) : (
@@ -160,7 +164,11 @@ const Singlpost = () => {
           </div>
           <div className="postDesc">
             <h1>{singlepost.title} </h1>
-            <span>{singlepost.categories}</span>
+            <div className="tags">
+              {singlepost.categories && singlepost.categories.map((cat) => (
+                <span key={cat} className="tag">{cat}</span>
+              ))}
+            </div>
             <p>{singlepost.desc}</p>
           </div>
         </>

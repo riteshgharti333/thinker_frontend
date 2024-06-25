@@ -8,9 +8,13 @@
   top: 0;
   position: sticky;
   z-index: 99;
-  background-color: beige;
   align-items: center;
-  
+  transition: background-color 0.8s ease-in-out;
+
+  &.scrolled {
+    background-color: lightgreen; // Change the background color to gray
+  }
+
 
   .left {
     font-size: 30px;

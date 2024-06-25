@@ -16,13 +16,15 @@ const initialvalues = {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { dispatch, isFetching } = useContext(Context);
+  const { dispatch } = useContext(Context);
 
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialvalues,
       onSubmit: async (values) => {
+        setIsSubmitting(true); // Set loading state to true
         dispatch({ type: "LOGIN_START" });
         try {
           const res = await axios.post(`${baseUrl}/api/auth/login`, values);
@@ -32,6 +34,8 @@ export default function Login() {
         } catch (error) {
           dispatch({ type: "LOGIN_FAILURE" });
           toast.error(error.response.data);
+        } finally {
+          setIsSubmitting(false); // Set loading state to false
         }
       },
     });
@@ -97,8 +101,8 @@ export default function Login() {
           ) : null}
         </div>
 
-        <button className="loginButton" type="submit" disabled={isFetching}>
-          Login
+        <button className="loginButton" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Logging in..." : "Login"}
         </button>
         <span>
           New to Thinker.

@@ -6,50 +6,56 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../main";
 import { Context } from "../../context/Context";
-import { updatePasswordSchema } from "../../schemas";
-import { useFormik } from "formik";
-
-const initialvalues = {
-    currentPassword : "",
-    newPassword : "",
-    confirmPassword : "",
-  };
 
 const UpdatePassword = () => {
-
   const { user } = useContext(Context);
-
-
-  // const [currentPassword, setCurrentPassword] = useState("");
-  // const [newPassword, setNewPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-
   const navigate = useNavigate();
+
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const goBack = () => {
     navigate(-1);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-
-  const {values, errors, handleBlur, touched, handleChange, handleSubmit} = useFormik({
-    initialValues: initialvalues,
-    validationSchema: updatePasswordSchema,
-
-    onSubmit: async (values) => {
-      console.log("Helo")
-      try {
-        const response = await axios.put(`${baseUrl}/api/changepassword/${user._id}`, values);
-        console.log(response.data);
-        res.data && window.location.replace("/profile");
-        toast.success("Password changed successfully");
-      } catch (error) {
-        console.error("Error changing password:", error);
-        toast.error(error.response.data.message);
-        console.log(error.response.data.message)
-      }
+    // Validate inputs
+    let validationErrors = {};
+    if (newPassword.length < 6) {
+      validationErrors.newPassword = "Password must be at least 6 characters long";
     }
-  })
+    if (newPassword !== confirmPassword) {
+      validationErrors.confirmPassword = "Passwords do not match";
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+
+    setIsSubmitting(true); // Set submitting state to true
+
+    try {
+      const response = await axios.put(`${baseUrl}/api/changepassword/${user._id}`, {
+        currentPassword,
+        newPassword,
+      });
+      console.log(response.data);
+      toast.success("Password changed successfully");
+      navigate("/profile");
+    } catch (error) {
+      console.error("Error changing password:", error);
+      toast.error(error.response?.data?.message || "Error changing password");
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
+    }
+  };
 
   return (
     <div className="updatePassword">
@@ -62,49 +68,41 @@ const UpdatePassword = () => {
         <h1>Change Password</h1>
         <form onSubmit={handleSubmit}>
           <div className="formData">
-            <label htmlFor="">Add Current Password</label>
+            <label htmlFor="currentPassword">Add Current Password</label>
             <input
               type="password"
               name="currentPassword"
               placeholder="Add Current Password"
-              value={values.currentPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
             />
-              {errors.currentPassword && touched.currentPassword ? (
-            <p className="formError">{errors.currentPassword}</p>
-          ) : null}
           </div>
           <div className="formData">
-            <label htmlFor="">Add New Password</label>
+            <label htmlFor="newPassword">Add New Password</label>
             <input
               type="password"
               name="newPassword"
               placeholder="Add New Password"
-              value={values.newPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
-             {/* {errors.newPassword && touched.newPassword ? (
-            <p className="formError">{errors.newPassword}</p>
-          ) : null} */}
+            {errors.newPassword && <p className="formError">{errors.newPassword}</p>}
           </div>
           <div className="formData">
-            <label htmlFor="">Confirm New Password</label>
+            <label htmlFor="confirmPassword">Confirm New Password</label>
             <input
               type="password"
               name="confirmPassword"
               placeholder="Confirm New Password"
-              value={values.confirmPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
-             {errors.confirmPassword && touched.confirmPassword ? (
-            <p className="formError">{errors.confirmPassword}</p>
-          ) : null}
+            {errors.confirmPassword && <p className="formError">{errors.confirmPassword}</p>}
           </div>
 
-          <button type="submit">Change Password</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Changing Password..." : "Change Password"}
+          </button>
         </form>
       </div>
     </div>

@@ -15,7 +15,7 @@ export const profileSchema = Yup.object({
 
 export const updatePasswordSchema = Yup.object({
 
-  currentPassword: Yup.string().min(6).max(25).required("Please enter your password"),
+  // currentPassword: Yup.string().min(6).max(25).required("Please enter your password"),
 
   newPassword: Yup.string().min(6).max(25).required("Please enter your new password"),
 

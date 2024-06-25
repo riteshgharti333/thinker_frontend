@@ -28,14 +28,20 @@ const About = () => {
             </p>
 
             <div className="socialIcon">
-              <div className="icons">
-                <FaGithub className="sIcon" />
-                <span>GITHUB</span>
-              </div>
-              <div className="icons">
-                <FaLinkedin className="sIcon" />
-                <span>LINKEDIN</span>
-              </div>
+              {/* <div className="icons"> */}
+                <a className="icons" href="https://github.com/riteshgharti333">
+                  <FaGithub className="sIcon" />
+                  <span>GITHUB</span>
+                </a>
+              {/* </div> */}
+
+              {/* <div className="icons"> */}
+                <a className="icons" href="https://www.linkedin.com/in/riteshgharti333">
+                  <FaLinkedin className="sIcon" />
+                  <span>LINKEDIN</span>
+                </a>
+              {/* </div> */}
+
               {/* <div className="icons">
                 <GrNotes className="sIcon" />
 

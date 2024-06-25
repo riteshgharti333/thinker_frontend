@@ -87,6 +87,13 @@
       }
 
       .profileInputForm {
+
+        .formError{
+          color: red;
+          font-weight: 600;
+          margin-top: 5px;
+        }
+
         input {
           border: none;
           width: 100%;

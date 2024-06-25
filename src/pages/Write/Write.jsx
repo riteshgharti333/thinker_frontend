@@ -1,24 +1,29 @@
 import "./Write.scss";
-import { CiCirclePlus } from "react-icons/ci";
-import { Context } from "../../context/Context";
-import uploadToCloudinary from "../../upload";
-import { useContext, useRef, useState } from "react";
-import { baseUrl } from "../../main";
+import { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { FaCheck } from "react-icons/fa";
-import dropImg from "../../assets/images/drop.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { category } from "../../assets/data";
+import { Context } from "../../context/Context";
+import uploadToCloudinary from "../../upload";
+import { FaCheck } from "react-icons/fa";
+import dropImg from "../../assets/images/drop.png";
+import { baseUrl } from "../../main";
 
 const Write = () => {
   const { user, isFetching } = useContext(Context);
-
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Function to remove HTML tags
+  const removeHtmlTags = (html) => {
+    const regex = /(<([^>]+)>)/ig;
+    return html.replace(regex, "");
+  };
 
   const handleTagClick = (category) => {
     setSelectedTags((prevSelectedTags) => {
@@ -33,8 +38,13 @@ const Write = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
+
+    // Prevent multiple submissions
+    if (isSubmitting) {
+      return;
+    }
+
     if (!file || selectedTags.length === 0 || !title || !desc) {
       let errorMessage = "Please fill in all the required fields.";
 
@@ -52,21 +62,25 @@ const Write = () => {
       return;
     }
 
+    setIsSubmitting(true); // Start submitting
+
     const newPost = {
-      userId : user._id, 
+      userId: user._id,
       username: user.username,
       title,
-      desc,
+      desc: removeHtmlTags(desc), // Remove HTML tags from description
       categories: selectedTags,
     };
 
     if (file) {
       try {
-        const cloudinaryRespose = await uploadToCloudinary(file);
-
-        newPost.photo = cloudinaryRespose.secure_url;
+        const cloudinaryResponse = await uploadToCloudinary(file);
+        newPost.photo = cloudinaryResponse.secure_url;
       } catch (error) {
         console.error("Error uploading image to Cloudinary:", error);
+        toast.error("Failed to upload image");
+        setIsSubmitting(false); // Reset submission state
+        return;
       }
     }
 
@@ -80,6 +94,8 @@ const Write = () => {
     } catch (error) {
       console.error("Error creating post:", error);
       toast.error("Could not create the post.");
+    } finally {
+      setIsSubmitting(false); // Reset submission state
     }
   };
 
@@ -94,10 +110,14 @@ const Write = () => {
       />
       <label htmlFor="inputFile" className="dropSection">
         {file ? (
-          <img className="uploadImg" src={URL.createObjectURL(file)} />
+          <img
+            className="uploadImg"
+            src={URL.createObjectURL(file)}
+            alt="Uploaded"
+          />
         ) : (
           <div className="droparea">
-            <img src={dropImg} />
+            <img src={dropImg} alt="Drop area" />
             <p>Drag and Drop or click here to upload image</p>
             <span>Upload any images from desktop</span>
           </div>
@@ -126,10 +146,11 @@ const Write = () => {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <button type="submit" disabled={isFetching}>
-            {isFetching ? "Publishing..." : "Publish"}
+          <button type="submit" disabled={isFetching || isSubmitting}>
+            {isSubmitting ? "Publishing..." : "Publish"}
           </button>
         </div>
         <div className="textarea">
