@@ -38,3 +38,16 @@ export const blogs = [
     image: bg,
   },
 ];
+
+
+export const category = [
+  "Personal",
+  "Foods",
+  "Travel",
+  "Health",
+  "Lifestyle",
+  "Sports",
+  "Tech",
+  "Science",
+  "Movies",
+]

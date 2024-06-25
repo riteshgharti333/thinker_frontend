@@ -2,7 +2,6 @@ import "./HomeBanner.scss";
 import MainFeature from "../MainFeature/MainFeature.jsx";
 import SmFeature from "../SmFeature/SmFeature";
 import Slide from "../Slide/Slide";
-import { blogs } from "../../assets/data";
 import RightSlide from "../RightSlider/RightSlide.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";

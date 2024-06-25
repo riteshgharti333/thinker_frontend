@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scroll, setScroll] = useState(false);
 
   const { user, dispatch } = useContext(Context);
 
@@ -18,19 +18,25 @@ const Navbar = () => {
     toast.success("Logout");
   };
 
-  const handleScroll = () => {
-    setIsScrolled(window.pageYOffset !== 0);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const navbarClass = scroll ? "nav scrolled" : "nav";
+
   return (
-    <div className="nav">
+    <div className={navbarClass}>
       <div className="left">
         <a href="https://github.com/riteshgharti333">
           <FaGithub className="leftIcon" />

@@ -10,40 +10,31 @@ import { FaCheck } from "react-icons/fa";
 import dropImg from "../../assets/images/drop.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { category } from "../../assets/data";
 
 const Write = () => {
-  const tags = [
-    "Personal",
-    "Foods",
-    "Travel",
-    "Health",
-    "Lifestyle",
-    "Sports",
-    "Tech",
-    "Science",
-    "Movies",
-  ];
+  const { user, isFetching } = useContext(Context);
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
-  const { user } = useContext(Context);
   const [selectedTags, setSelectedTags] = useState([]);
-  const fileInputRef = useRef(null);
 
-  const handleTagClick = (tag) => {
+  const handleTagClick = (category) => {
     setSelectedTags((prevSelectedTags) => {
-      if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter((selectedTag) => selectedTag !== tag);
+      if (prevSelectedTags.includes(category)) {
+        return prevSelectedTags.filter(
+          (selectedTag) => selectedTag !== category
+        );
       } else {
-        return [tag];
+        return [category];
       }
     });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
+    e.preventDefault();
     if (!file || selectedTags.length === 0 || !title || !desc) {
       let errorMessage = "Please fill in all the required fields.";
 
@@ -62,6 +53,7 @@ const Write = () => {
     }
 
     const newPost = {
+      userId : user._id, 
       username: user.username,
       title,
       desc,
@@ -80,7 +72,6 @@ const Write = () => {
 
     try {
       const res = await axios.post(`${baseUrl}/api/posts`, newPost);
-
       const loadingToast = toast.loading("Creating Post...");
       toast.dismiss(loadingToast.id);
       const postId = res.data.savedPost._id;
@@ -88,7 +79,7 @@ const Write = () => {
       toast.success("Post Created", { duration: 5000 });
     } catch (error) {
       console.error("Error creating post:", error);
-      toast.error("Could not create the post.", { duration: 5000 });
+      toast.error("Could not create the post.");
     }
   };
 
@@ -116,14 +107,14 @@ const Write = () => {
       <div className="tags">
         <span>Tags: </span>
         <div className="tagsCat">
-          {tags.map((tag) => (
+          {category.map((cat) => (
             <div
-              key={tag}
-              className={`tag ${selectedTags.includes(tag) ? "selected" : ""}`}
-              onClick={() => handleTagClick(tag)}
+              key={cat}
+              className={`tag ${selectedTags.includes(cat) ? "selected" : ""}`}
+              onClick={() => handleTagClick(cat)}
             >
-              {tag}
-              {selectedTags.includes(tag) && <FaCheck className="rightIcon" />}
+              {cat}
+              {selectedTags.includes(cat) && <FaCheck className="rightIcon" />}
             </div>
           ))}
         </div>
@@ -137,7 +128,9 @@ const Write = () => {
             autoFocus={true}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <button type="submit">Publish</button>
+          <button type="submit" disabled={isFetching}>
+            {isFetching ? "Publishing..." : "Publish"}
+          </button>
         </div>
         <div className="textarea">
           <ReactQuill
@@ -145,15 +138,8 @@ const Write = () => {
             theme="snow"
             value={desc}
             placeholder="write your blog..."
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(content) => setDesc(content)}
           />
-
-          {/* <textarea
-            placeholder="write your blog..."
-            type="text"
-            className="writeInput writeText"
-            onChange={(e) => setDesc(e.target.value)}
-          ></textarea> */}
         </div>
       </form>
     </div>

@@ -1,25 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.scss";
 import aboutImg from "../../assets/images/about.png";
+import { category } from "../../assets/data.js";
 
 const Sidebar = () => {
-  const tags = [
-    "Personal",
-    "Foods",
-    "Travel",
-    "Health",
-    "Lifestyle",
-    "Sports",
-    "Tech",
-    "Science",
-    "Movies",
-  ];
+  const navigate = useNavigate();
 
   const handleLinkClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    navigate(`/posts?cat=${cat}`);
   };
 
   return (
@@ -38,9 +26,9 @@ const Sidebar = () => {
       </div>
       <p className="sidebarHeader">Categories</p>
       <div className="categories">
-        {tags.map((tag) => (
-          <Link key={tag} to={`/posts?cat=${tag}`} onClick={handleLinkClick}>
-            <span>{tag}</span>
+        {category.map((cat) => (
+          <Link key={cat} to={`/posts?cat=${cat}`} onClick={handleLinkClick}>
+            <span>{cat}</span>
           </Link>
         ))}
       </div>

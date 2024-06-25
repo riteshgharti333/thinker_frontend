@@ -19,6 +19,8 @@ import Single from "./components/Single/Single";
 import Foooter from "./components/Foooter/Foooter";
 import QueryPosts from "./pages/QueryPosts/QueryPosts";
 import "./style/global.scss";
+import UpdatePassword from "./pages/UpdatePassword/UpdatePassword";
+import UserPosts from "./pages/UserPosts/UserPosts";
 
 function App() {
   const { user } = useContext(Context);
@@ -30,7 +32,6 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* Add a default route for unknown paths when user is not authenticated */}
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         ) : (
@@ -42,9 +43,11 @@ function App() {
               <Route path="/write" element={<Write />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/posts" element={<QueryPosts />} />
+              <Route path="/user/:id/posts" element={<UserPosts />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              {/* Add a default route for unknown paths when user is authenticated */}
+              <Route path="/changepassword" element={<UpdatePassword />} />
+
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Foooter />

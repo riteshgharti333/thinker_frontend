@@ -36,11 +36,11 @@ const About = () => {
                 <FaLinkedin className="sIcon" />
                 <span>LINKEDIN</span>
               </div>
-              <div className="icons">
+              {/* <div className="icons">
                 <GrNotes className="sIcon" />
 
                 <span>RESUME</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

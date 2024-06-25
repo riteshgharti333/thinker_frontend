@@ -69,7 +69,6 @@ body .bm-overlay {
 
 .cat {
   position: relative;
-  cursor: none;
 
   .dA {
     font-size: 30px;
@@ -77,20 +76,15 @@ body .bm-overlay {
     top: 4px;
   }
 
-  .bugerCategories {
+  .burgerCategories {
     display: flex;
     flex-direction: column;
 
     span {
       font-size: 20px;
       margin-left: 30px;
-      color: black;
     }
   }
-}
-
-.bm-item:hover {
-  color: gray;
 }
 
 .topListItem {

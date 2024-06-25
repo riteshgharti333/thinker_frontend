@@ -10,7 +10,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const initialvalues = {
-  username: "",
+username: "",
   email: "",
   password: "",
   // confirm_password: "",
@@ -53,7 +53,6 @@ export default function Register() {
             <BiSolidUser className="inputIcon" />
             <input
               type="text"
-              autoComplete="off"
               placeholder="Username"
               name="username"
               value={values.username}

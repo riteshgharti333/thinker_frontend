@@ -1,5 +1,5 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./QueryPosts.scss";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import "./UserPosts.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BlogCard from "../../components/BlogCard/BlogCard";
@@ -7,28 +7,27 @@ import { baseUrl } from "../../main";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-const QueryPosts = () => {
+const UserPosts = () => {
+  
   const location = useLocation();
-  const path = location.search;
+  const path = location.pathname.split("/")[2];
 
-  console.log(path)
 
-  const searchParams = new URLSearchParams(location.search);
-  const categoryName = searchParams.get("cat");
-
-  const [categoryPosts, setCategoryPosts] = useState([]);
+  const [userPosts, setUserPosts] = useState([]);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    const fetchCategoryPosts = async () => {
+    const fetchUserPosts = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/posts${path}`);
-        setCategoryPosts(response.data);
+        const response = await axios.get(`${baseUrl}/api/user/${path}/posts`);
+        setUserPosts(response.data.posts);
+        setUser(response.data.posts[0].username.username)
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchCategoryPosts();
+    fetchUserPosts();
   }, []);
 
   const navigate = useNavigate();
@@ -44,12 +43,12 @@ const QueryPosts = () => {
           <IoMdArrowRoundBack className="backArrow" />
         </Link>
 
-        <h2> {categoryName} Posts</h2>
+        <h2>{user} Posts</h2>
       </div>
 
       <div className="queryPosts">
         <div className="catPosts">
-          {categoryPosts.map((post) => (
+          {userPosts.map((post) => (
             <BlogCard
               title={post.title}
               desc={post.desc}
@@ -58,7 +57,7 @@ const QueryPosts = () => {
               key={post._id}
               date={post.createdAt}
             />
-          ))}
+          ))} 
         </div>
         <div className="sidebar">
           <Sidebar />
@@ -68,4 +67,4 @@ const QueryPosts = () => {
   );
 };
 
-export default QueryPosts;
+export default UserPosts;

@@ -9,18 +9,26 @@ const Contact = () => {
   return (
     <div className="contact">
       <div className="contactContainer">
-        <div className="contactLeft">
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
+<h1>Contact Me</h1>
+        <div className="contactPart">
+        <form
+            className="contactLeft"
+            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdSUNJf-jO1uFhU76lnZ8Q1ulgiRTL-TbEizLS2RdR5OuDupA/formResponse"
+            method="POST"
+            target="_blank"
+          >
+
+          <input type="text" name="entry.1234567890" placeholder="Name" required />
+          <input type="email"  name="entry.0987654321" placeholder="Email" required />
           <textarea
-            name=""
-            id=""
+           name="entry.1122334455"
             cols="30"
             rows="6"
             placeholder="Message"
+            required
           ></textarea>
-          <button>Send</button>
-        </div>
+          <button type="submit">Send</button>
+        </form>
 
         <div className="contactRight">
           <div className="contactIcons">
@@ -46,13 +54,15 @@ const Contact = () => {
               <span> Linkedin </span>
             </div>
 
-            <div className="socialIcon">
+            {/* <div className="socialIcon">
               <GrNotes className="sIcon Resume" />
               <span> Resume </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
+      </div>
+
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import { Link } from "react-router-dom";
 import "./MobileBurger.scss";
+import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
@@ -22,7 +22,7 @@ const MobileBurger = () => {
 
   const { user, dispatch } = useContext(Context);
 
-  const handleLogout = () => {
+  const handLogout = () => {
     dispatch({ type: "LOGOUT" });
     toast.success("Logout");
   };
@@ -44,25 +44,29 @@ const MobileBurger = () => {
     <div>
       <Menu right>
         <div className="user">
-          <Link to={"/profile"}>
-            <FaUser className="userIcon" />
-          </Link>
+          <a href="/profile">
+            <Link to={"/profile"}>
+              <FaUser className="userIcon" />
+            </Link>
+          </a>
+
+          {/* <span>{user.username}</span> */}
         </div>
 
-        <Link to="/" className="menu-item" onClick={handleLinkClick}>
+        <a className="menu-item" href="/">
           Home
-        </Link>
-        <Link to="/write" className="menu-item" onClick={handleLinkClick}>
+        </a>
+        <a className="menu-item" href="/write">
           Write
-        </Link>
-        <Link to="/about" className="menu-item" onClick={handleLinkClick}>
+        </a>
+        <a className="menu-item" href="/about">
           About
-        </Link>
-        <Link to="/contact" className="menu-item" onClick={handleLinkClick}>
+        </a>
+        <a className="menu-item" href="/contact">
           Contact
-        </Link>
+        </a>
         {user ? (
-          <Link to="/login" onClick={handleLogout}>
+          <Link to="/login" onClick={handLogout}>
             <span>Logout</span>
           </Link>
         ) : (
@@ -82,9 +86,9 @@ const MobileBurger = () => {
           {showTags && (
             <div className="burgerCategories">
               {tags.map((tag) => (
-                <Link to={`/posts?cat=${tag}`} key={tag} onClick={handleLinkClick}>
+                <a href={`/posts?cat=${tag}`}>
                   <span>{tag}</span>
-                </Link>
+                </a>
               ))}
             </div>
           )}

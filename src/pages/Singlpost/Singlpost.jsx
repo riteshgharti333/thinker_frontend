@@ -48,6 +48,7 @@ const Singlpost = () => {
       try {
         const res = await axios.get(`${baseUrl}/api/posts/${path}`);
         setSinglepost(res.data);
+        console.log(res.data)
         setTitle(res.data.title);
         setDesc(res.data.desc);
         setSelectedTags(res.data.categories || []);
@@ -59,7 +60,7 @@ const Singlpost = () => {
   const handleDelete = async () => {
     try {
       await axios.delete(`${baseUrl}/api/posts/${path}`, {
-        data: { username: user.username },
+        data: { userId: user._id },
       });
       window.location.replace("/");
       toast.success(`Post Deleted`, { duration: 5000 });

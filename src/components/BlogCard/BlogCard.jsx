@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./BlogCard.scss";
-import Loader from "../Loader/Loader"; // Assuming you have a Loader component
+import Loader from "../Loader/Loader";
 
 const BlogCard = ({ title, desc, image, id, username, date, isLoading }) => {
   const newdate = new Date(date).toLocaleDateString(undefined, {

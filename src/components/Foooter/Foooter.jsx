@@ -2,22 +2,17 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./Foooter.scss";
 import { IoMdMail } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { category } from "../../assets/data";
 
 const Foooter = () => {
-  const tags = [
-    "Personal",
-    "Foods",
-    "Travel",
-    "Health",
-    "Lifestyle",
-    "Sports",
-    "Tech",
-    "Science",
-    "Movies",
-  ];
+  const navigate = useNavigate();
 
   const handleLinkClick = () => {
+    navigate(`/posts?cat=${cat}`);
+  };
+
+  const handleSpanClick = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -44,9 +39,9 @@ const Foooter = () => {
       <div className="footerCenter">
         <p>Tags :</p>
         <div className="tags">
-          {tags.map((tag) => (
-            <Link key={tag} to={`/posts?cat=${tag}`} onClick={handleLinkClick}>
-              <span key={tag}>{tag}</span>
+          {category.map((cat) => (
+            <Link key={cat} to={`/posts?cat=${cat}`} onClick={handleLinkClick}>
+              <span>{cat}</span>
             </Link>
           ))}
         </div>
@@ -54,7 +49,12 @@ const Foooter = () => {
       <div className="footerRight">
         <h1>Usefull Links</h1>
         <div className="links">
-          <span>About Us</span>
+          <Link to={"/about"}>
+            <span onClick={handleSpanClick}>About Me</span>
+          </Link>
+          <Link to={"/contact"}>
+            <span onClick={handleSpanClick}>Contact Me</span>
+          </Link>
           <div className="contactLinks">
             <a href="mailto:riteshgharti333@gmail.com">
               <span>
