@@ -1,14 +1,12 @@
-import "./Slide.scss";
+import "./FeatureSlide.scss";
 import Slider from "infinite-react-carousel";
 
 const settings = {
-  autoplay: true,
-  autoplaySpeed: 3000,
-  duration: 400,
-  arrows: false,
+    dots:true,
+    arrows: false
 };
 
-const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+const FeatureSlide = ({ children, slidesToShow, arrowsScroll }) => {
   return (
     <div className="slide">
       <div className="container">
@@ -24,4 +22,4 @@ const Slide = ({ children, slidesToShow, arrowsScroll }) => {
   );
 };
 
-export default Slide;
+export default FeatureSlide;

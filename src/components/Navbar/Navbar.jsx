@@ -5,8 +5,7 @@ import MobileBurger from "../MobileBurger/MobileBurger";
 import { Context } from "../../context/Context";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { CiSearch } from "react-icons/ci";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
@@ -37,20 +36,12 @@ const Navbar = () => {
 
   return (
     <div className={navbarClass}>
-      <div className="left">
-        <a href="https://github.com/riteshgharti333">
-          <FaGithub className="leftIcon" />
-        </a>
-        <a href="https://www.linkedin.com/in/riteshgharti333">
-          <FaLinkedin className="Linkedin" />
-        </a>
-      </div>
-
+     
       <div className="hamburger">
         <MobileBurger />
       </div>
 
-      <div className="center">
+      <div className="left">
         <div className="logo">
           <Link to="/">
             <h1>
@@ -58,9 +49,7 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-      </div>
 
-      <div className="right">
         <div className="links">
           <Link to={"/write"}>
             <span>Write</span>
@@ -72,6 +61,15 @@ const Navbar = () => {
             <span>Contact</span>
           </Link>
         </div>
+      </div>
+
+      <div className="right">
+
+        {/* <div className="search">
+          <input type="search" name="" id="" placeholder="search"/>
+          <button><CiSearch /></button>
+        </div> */}
+  
         <div className="userInfo">
           {user ? (
             <>

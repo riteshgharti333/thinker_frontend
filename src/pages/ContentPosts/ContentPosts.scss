@@ -1,0 +1,61 @@
+@import "../../style/responsive.scss";
+
+.ContentPostsContainer {
+  height: 165vh;
+
+  @include sm {
+    height: 100vh;
+  }
+}
+
+.postBack {
+  margin-top: 10px;
+  margin-left: 50px;
+  display: flex;
+
+  @include sm {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-family: "Dosis", sans-serif;
+    font-weight: 600;
+  }
+
+  .backArrow {
+    margin-right: 8px;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      color: teal;
+    }
+  }
+}
+
+.queryPosts {
+  margin: 30px 50px;
+  display: flex;
+
+  @include sm {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .catPosts {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 8;
+  }
+
+  .sidebar {
+    flex: 2;
+
+    @include sm {
+      display: none;
+    }
+  }
+}

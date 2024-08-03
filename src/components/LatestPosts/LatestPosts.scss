@@ -1,0 +1,65 @@
+.latest {
+  font-family: "Dosis", sans-serif;
+  display: flex;
+  //   background-color: aquamarine;
+    // padding: 0px 20px;
+  .leftLatest {
+    flex: 3;
+    margin-right: 10px;
+    margin-top: 40px;
+
+    .leftLatestTop {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .leftArticle{
+      margin-top: 20px;
+    }
+  }
+  .rightLatest {
+    flex: 7;
+    background-color: teal;
+    border-radius: 20px 0px 0px 0px;
+    padding: 30px;
+    gap: 10px;
+    margin-top: 40px;
+
+    h1{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    p{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: white;
+    }
+
+    .rightInfo {
+      display: flex;
+      align-items: center;
+
+      .line {
+        font-size: 20px;
+        color: red;
+        margin: 0px 5px;
+      }
+    }
+
+    .rightArticle {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 355px;
+      }
+    }
+  }
+}

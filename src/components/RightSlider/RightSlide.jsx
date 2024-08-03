@@ -1,7 +1,9 @@
 import "./RightSlide.scss";
 import Slider from "infinite-react-carousel";
 
-const settings = {};
+const settings = {
+  arrows: true
+};
 
 const RightSlide = ({ children, slidesToShow, arrowsScroll }) => {
   return (

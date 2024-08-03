@@ -3,6 +3,7 @@
 .homeBanner {
   height: 70vh;
   display: flex;
+  overflow: hidden; /* Ensure content doesn't overflow during animation */
 
   @include sm {
     display: block;
@@ -14,6 +15,7 @@
     flex: 7;
     margin-right: 10px;
     border-radius: 6px;
+    animation: slideInLeft 1.5s ease-out; /* Apply slide-in animation */
 
     @include sm {
       flex: 0;
@@ -32,9 +34,45 @@
 
     .rightTopFeature {
       margin-bottom: 5px;
+      animation: slideInTop 1.5s ease-out; /* Apply slide-in animation */
     }
 
     .rightBottomFeature {
+      animation: slideInBottom 1.5s ease-out; /* Apply slide-in animation */
     }
+  }
+}
+
+/* Define keyframe animations */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

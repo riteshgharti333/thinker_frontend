@@ -2,14 +2,16 @@ import "./Write.scss";
 import { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { category } from "../../assets/data";
 import { Context } from "../../context/Context";
 import uploadToCloudinary from "../../upload";
 import { FaCheck } from "react-icons/fa";
 import dropImg from "../../assets/images/drop.png";
 import { baseUrl } from "../../main";
+// import "jodit";
+// import "jodit/build/jodit.min.css";
+import JoditEditor from "jodit-react";
+
 
 const Write = () => {
   const { user, isFetching } = useContext(Context);
@@ -21,8 +23,9 @@ const Write = () => {
 
   // Function to remove HTML tags
   const removeHtmlTags = (html) => {
-    const regex = /(<([^>]+)>)/ig;
-    return html.replace(regex, "");
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
   };
 
   const handleTagClick = (category) => {
@@ -45,7 +48,18 @@ const Write = () => {
       return;
     }
 
-    if (!file || selectedTags.length === 0 || !title || !desc) {
+    // Remove HTML tags for validation
+    const plainTextDesc = removeHtmlTags(desc);
+
+    // Logging for debugging
+    console.log("Title:", title);
+    console.log("Description (with HTML):", desc);
+    console.log("Description (plain text):", plainTextDesc);
+    console.log("Selected Tags:", selectedTags);
+    console.log("File:", file);
+
+    // Validation
+    if (!file || selectedTags.length === 0 || !title || !plainTextDesc) {
       let errorMessage = "Please fill in all the required fields.";
 
       if (!file) {
@@ -54,8 +68,12 @@ const Write = () => {
         errorMessage = "Please select at least one tag.";
       } else if (!title) {
         errorMessage = "Please enter a title.";
-      } else if (!desc) {
+      } else if (title.length < 15) {
+        errorMessage = "Title must be at least 15 characters long.";
+      } else if (!plainTextDesc) {
         errorMessage = "Please enter a description.";
+      } else if (plainTextDesc.length < 30) {
+        errorMessage = "Description must be at least 30 characters long.";
       }
 
       toast.error(errorMessage, { duration: 5000 });
@@ -68,7 +86,7 @@ const Write = () => {
       userId: user._id,
       username: user.username,
       title,
-      desc: removeHtmlTags(desc), // Remove HTML tags from description
+      desc, // Store the HTML content
       categories: selectedTags,
     };
 
@@ -89,7 +107,7 @@ const Write = () => {
       const loadingToast = toast.loading("Creating Post...");
       toast.dismiss(loadingToast.id);
       const postId = res.data.savedPost._id;
-      window.location.replace(`/posts/` + postId);
+      window.location.replace(`/single/` + postId);
       toast.success("Post Created", { duration: 5000 });
     } catch (error) {
       console.error("Error creating post:", error);
@@ -154,12 +172,11 @@ const Write = () => {
           </button>
         </div>
         <div className="textarea">
-          <ReactQuill
-            className="editor"
-            theme="snow"
+          <JoditEditor
             value={desc}
-            placeholder="write your blog..."
-            onChange={(content) => setDesc(content)}
+            tabIndex={1}
+            onBlur={(newContent) => setDesc(newContent)}
+            onChange={(newContent) => setDesc(newContent)}
           />
         </div>
       </form>

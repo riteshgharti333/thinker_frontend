@@ -7,7 +7,7 @@
     #e6dee9 100%
   );
   border-radius: 4px;
-  height: 140vh;
+  height: 100%;
   .sidebarHeader {
     font-size: 20px;
     font-family: "Inconsolata", monospace;
@@ -52,7 +52,7 @@
       font-weight: 600;
       font-size: 18px;
       cursor: pointer;
-      margin-top: 10px;
+      margin: 10px 0px;
       &:hover {
         color: aqua;
       }

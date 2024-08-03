@@ -48,38 +48,33 @@ const HomeBanner = () => {
   return (
     <div className="homeBanner">
       <div className="leftFeature">
-        {Array.isArray(featurePosts) && featurePosts.length > 0 ? (
+        {Array.isArray(featurePosts) && featurePosts.length > 0 &&
           <Slide slidesToShow={1} arrowsScroll={1}>
             {featurePosts.map((post) => (
-              <MainFeature key={post._id} {...post} />
+              <MainFeature key={post._id} {...post} tagname="Feature"  />
             ))}
           </Slide>
-        ) : (
-          <Loader />
-        )}
+        
+        }
       </div>
      <div className="rightFeature">
         <div className="rightTopFeature">
-          {Array.isArray(foodPosts) && foodPosts.length > 0 ? (
+          {Array.isArray(foodPosts) && foodPosts.length > 0 &&
             <RightSlide slidesToShow={1} arrowsScroll={1}>
               {foodPosts.map((post) => (
                 <SmFeature key={post._id} tag="Foods" {...post} />
               ))}
             </RightSlide>
-          ) : (
-            <Loader />
-          )}
+  }
         </div> 
         <div className="rightBottomFeature">
-          {Array.isArray(moviePosts) && moviePosts.length > 0 ? (
+          {Array.isArray(moviePosts) && moviePosts.length > 0 &&
             <RightSlide slidesToShow={1} arrowsScroll={1}>
               {moviePosts.map((post) => (
                 <SmFeature key={post._id} tag="Movies" {...post} />
               ))}
             </RightSlide>
-          ) : (
-            <Loader />
-          )}
+        }
         </div>
       </div>
     </div>

@@ -12,7 +12,24 @@
     position: static;
   }
 
-  .carousel-prev:before {
+  .carousel-prev {
     display: none;
   }
+
+  .carousel-next {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -30x;
+    margin: auto;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 1, 1); // Ensure arrow icon is visible
+    z-index: 1; // Ensure arrow is above the slider content
+  }
+
 }

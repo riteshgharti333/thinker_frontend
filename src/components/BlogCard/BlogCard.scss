@@ -1,15 +1,8 @@
 @import "../../style/responsive.scss";
 
 .blogcard {
-  width: 300px;
-  height: 360px;
-  box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  margin-bottom: 10px;
   padding: 10px;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  font-family: "Dosis", sans-serif;
   transition: all 0.4s ease-in-out;
 
   @include sm {
@@ -17,19 +10,16 @@
   }
 
   @include xxl {
-    width: 290px;
+    width: 260px;
   }
 
-  &:hover {
-    transform: scale(1.07);
-  }
 
   .cardImg {
     flex: 4;
     img {
       width: 100%;
       object-fit: cover;
-      height: 200px;
+      height: 100px;
       display: flex;
       border-radius: 3px;
       @include sm {
@@ -37,6 +27,23 @@
       }
     }
   }
+
+  span {
+    font-family: "Dosis", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .smInfo {
+    display: flex;
+    align-items: center;
+    .line {
+      color: red;
+      font-size: 20px;
+      margin: 0px 5px;
+    }
+  }
+
   .blogInfo {
     flex: 6;
     display: flex;
@@ -44,7 +51,6 @@
     gap: 5px;
     h3 {
       margin-top: 10px;
-      font-family: "Inconsolata", monospace;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -70,10 +76,48 @@
         font-size: 15px;
       }
     }
+  }
+}
 
-    span {
-      font-family: "Dosis", sans-serif;
-      font-weight: 600;
+
+.blogcard.latest {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+
+  .cardImg{
+    flex: 2;
+    img{
+      width: 100px;
+      height: 80px;
+    }
+  }
+
+  .blogInfo{
+    h3{
+      font-size: 16px;
+    }
+  }
+
+}
+
+.blogcard.trending {
+  // Styles for BlogCard in TrendingPosts
+}
+
+.blogcard.popular {
+
+  width: 238px;
+
+  .cardImg{
+    img{
+     
+    }
+  }
+
+  .blogInfo{
+    h3{
+      font-size: 16px;
     }
   }
 }

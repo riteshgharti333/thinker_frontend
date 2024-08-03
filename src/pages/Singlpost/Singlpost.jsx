@@ -38,7 +38,8 @@ const Singlpost = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/posts/${path}`);
+        const res = await axios.get(`${baseUrl}/api/posts/single/${path}`);
+        console.log(res.data)
         setSinglepost(res.data);
         setTitle(res.data.title);
         setDesc(res.data.desc);
@@ -103,6 +104,14 @@ const Singlpost = () => {
   return (
     <div className="singlepost">
       <div className="postImg">
+      <h1>{singlepost.title} </h1>
+
+      <div className="tags">
+              {singlepost.categories && singlepost.categories.map((cat) => (
+                <span key={cat} className="tag">{cat}</span>
+              ))}
+            </div>
+
         <img src={singlepost.photo} alt="" />
       </div>
 
@@ -163,12 +172,6 @@ const Singlpost = () => {
             </div>
           </div>
           <div className="postDesc">
-            <h1>{singlepost.title} </h1>
-            <div className="tags">
-              {singlepost.categories && singlepost.categories.map((cat) => (
-                <span key={cat} className="tag">{cat}</span>
-              ))}
-            </div>
             <p>{singlepost.desc}</p>
           </div>
         </>

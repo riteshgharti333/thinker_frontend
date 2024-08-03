@@ -9,7 +9,7 @@ const Foooter = () => {
   const navigate = useNavigate();
 
   const handleLinkClick = () => {
-    navigate(`/posts?cat=${cat}`);
+    navigate(`/posts/?cat=${cat}`);
   };
 
   const handleSpanClick = () => {
@@ -40,7 +40,7 @@ const Foooter = () => {
         <p>Tags :</p>
         <div className="tags">
           {category.map((cat) => (
-            <Link key={cat} to={`/posts?cat=${cat}`} onClick={handleLinkClick}>
+            <Link key={cat} to={`/posts/query?cat=${cat}`} onClick={handleLinkClick}>
               <span>{cat}</span>
             </Link>
           ))}
