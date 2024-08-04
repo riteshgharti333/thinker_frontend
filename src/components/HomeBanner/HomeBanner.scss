@@ -14,7 +14,7 @@
   .leftFeature {
     flex: 7;
     margin-right: 10px;
-    border-radius: 6px;
+    border-radius: 10px;
     animation: slideInLeft 1.5s ease-out; /* Apply slide-in animation */
 
     @include sm {

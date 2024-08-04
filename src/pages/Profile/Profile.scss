@@ -43,6 +43,8 @@
 
         img {
           height: 150px;
+          object-fit: cover;
+          width: 150px;
           border-radius: 50%;
           transition: all 0.2s ease-in;
           cursor: pointer;

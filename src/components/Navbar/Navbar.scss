@@ -16,7 +16,7 @@ input[type="search"]::-ms-clear {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px  20px;
   top: 0;
   position: sticky;
   z-index: 99;
@@ -154,6 +154,21 @@ input[type="search"]::-ms-clear {
           color: white;
         }
       }
+    }
+  }
+}
+
+.catLinks{
+  font-family: "Dosis", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  span{
+    margin-right: 10px;
+    font-weight: 600;
+
+    &:hover{
+      color: aqua;
     }
   }
 }

@@ -6,6 +6,7 @@ import { Context } from "../../context/Context";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { CiSearch } from "react-icons/ci";
+import { category } from "../../assets/data";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
@@ -35,7 +36,10 @@ const Navbar = () => {
   const navbarClass = scroll ? "nav scrolled" : "nav";
 
   return (
+    <>
     <div className={navbarClass}>
+
+
      
       <div className="hamburger">
         <MobileBurger />
@@ -62,6 +66,8 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+
+   
 
       <div className="right">
 
@@ -90,7 +96,20 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+   
     </div>
+    {location.pathname === "/" && (
+        <div className="catLinks">
+          {category.map((cat) => (
+            <Link key={cat} to={`/posts/query?cat=${cat}`}>
+              <span>{cat}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+
+    </>
   );
 };
 

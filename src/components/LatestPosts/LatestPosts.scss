@@ -11,6 +11,11 @@
     .leftLatestTop {
       display: flex;
       justify-content: space-between;
+
+      p{
+        font-weight:600;
+
+      }
     }
 
     .leftArticle{
@@ -19,7 +24,8 @@
   }
   .rightLatest {
     flex: 7;
-    background-color: teal;
+    background-color: #e4b5cb;
+background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
     border-radius: 20px 0px 0px 0px;
     padding: 30px;
     gap: 10px;
@@ -43,6 +49,7 @@
     .rightInfo {
       display: flex;
       align-items: center;
+      color: white;
 
       .line {
         font-size: 20px;
@@ -55,10 +62,20 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      h1{
+
+      }
+
+      .latestDesc{
+        margin: 5px 0px;
+      }
+
       img {
         width: 100%;
         object-fit: cover;
         height: 355px;
+        border-radius: 10px;
       }
     }
   }

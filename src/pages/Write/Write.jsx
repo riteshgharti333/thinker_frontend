@@ -1,5 +1,5 @@
 import "./Write.scss";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { category } from "../../assets/data";
@@ -8,25 +8,24 @@ import uploadToCloudinary from "../../upload";
 import { FaCheck } from "react-icons/fa";
 import dropImg from "../../assets/images/drop.png";
 import { baseUrl } from "../../main";
-// import "jodit";
-// import "jodit/build/jodit.min.css";
 import JoditEditor from "jodit-react";
 
+// Function to remove HTML tags and return plain text
+const removeHtmlTags = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+};
 
 const Write = () => {
+  const editor = useRef(null);
+
   const { user, isFetching } = useContext(Context);
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [desc, setDesc] = useState(""); // HTML content
   const [file, setFile] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Function to remove HTML tags
-  const removeHtmlTags = (html) => {
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    return div.textContent || div.innerText || "";
-  };
 
   const handleTagClick = (category) => {
     setSelectedTags((prevSelectedTags) => {
@@ -48,15 +47,8 @@ const Write = () => {
       return;
     }
 
-    // Remove HTML tags for validation
+    // Extract plain text from HTML for validation
     const plainTextDesc = removeHtmlTags(desc);
-
-    // Logging for debugging
-    console.log("Title:", title);
-    console.log("Description (with HTML):", desc);
-    console.log("Description (plain text):", plainTextDesc);
-    console.log("Selected Tags:", selectedTags);
-    console.log("File:", file);
 
     // Validation
     if (!file || selectedTags.length === 0 || !title || !plainTextDesc) {
@@ -86,7 +78,7 @@ const Write = () => {
       userId: user._id,
       username: user.username,
       title,
-      desc, // Store the HTML content
+      desc, // HTML content for storage
       categories: selectedTags,
     };
 
@@ -173,7 +165,9 @@ const Write = () => {
         </div>
         <div className="textarea">
           <JoditEditor
+            className="editor"
             value={desc}
+            ref={editor}
             tabIndex={1}
             onBlur={(newContent) => setDesc(newContent)}
             onChange={(newContent) => setDesc(newContent)}

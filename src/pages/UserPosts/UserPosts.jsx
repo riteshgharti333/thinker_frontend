@@ -49,7 +49,7 @@ const UserPosts = () => {
           <IoMdArrowRoundBack className="backArrow" />
         </Link>
 
-        <h2>{user} Posts</h2>
+        <h2>My Posts</h2>
       </div>
 
       <div className="queryPosts">

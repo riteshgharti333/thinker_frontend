@@ -37,7 +37,7 @@ const LatestPosts = () => {
 
         </div>
         <div className="leftArticle">
-          <BlogCards context="latest" contentCat="/" limit={5} />
+          <BlogCards context="latest" contentCat="/" limit={6} />
         </div>
       </div>
       
@@ -55,7 +55,7 @@ const LatestPosts = () => {
             <>
             <Link  to={`/single/${mostRecentPost._id}`}>
               <h1>{mostRecentPost.title}</h1>
-              <p>{mostRecentPost.desc}</p>
+              <div className='latestDesc' dangerouslySetInnerHTML={{ __html: mostRecentPost.desc }}></div>
               <img src={mostRecentPost.photo} alt={mostRecentPost.title} />
             </Link>
 

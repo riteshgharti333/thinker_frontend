@@ -1,7 +1,8 @@
 @import "../../style/responsive.scss";
 
 .footer {
-  background-color: teal;
+  background-color: #e4b5cb;
+background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
   display: flex;
   justify-content: space-between;
   padding: 40px;

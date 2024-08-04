@@ -24,7 +24,6 @@ export default function Profile() {
       try {
         const res = await axios.get(`${baseUrl}/api/user/${user._id}/posts`);
         setPostCount(res.data.postCount);
-      
       } catch (error) {
         console.log("Error fetching post count:", error);
       }
@@ -76,9 +75,10 @@ export default function Profile() {
           toast.success("Profile Updated");
 
           // Re-fetch updated user data
-          const updatedUserData = await axios.get(`${baseUrl}/api/user/${user._id}`);
+          const updatedUserData = await axios.get(
+            `${baseUrl}/api/user/${user._id}`
+          );
           dispatch({ type: "REFRESH_USER", payload: updatedUserData.data });
-
         } catch (error) {
           console.log("Error updating profile:", error);
           toast.error("Failed to update profile");

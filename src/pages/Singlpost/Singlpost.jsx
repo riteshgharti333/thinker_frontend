@@ -9,6 +9,13 @@ import { Context } from "../../context/Context";
 import toast from "react-hot-toast";
 import { category } from "../../assets/data";
 
+// Function to remove HTML tags and return plain text
+const removeHtmlTags = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+};
+
 const Singlpost = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
@@ -17,33 +24,20 @@ const Singlpost = () => {
 
   const [singlepost, setSinglepost] = useState({});
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [desc, setDesc] = useState(""); // HTML content
   const [updateMode, setUpdateMode] = useState(false);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [tags, setTags] = useState([
-    "Personal",
-    "Foods",
-    "Travel",
-    "Health",
-    "Lifestyle",
-    "Sports",
-    "Tech",
-    "Science",
-    "Movies",
-  ]);
-
-  // State to track form submission
+  const [selectedTag, setSelectedTag] = useState(""); // Single tag
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const getPost = async () => {
       try {
         const res = await axios.get(`${baseUrl}/api/posts/single/${path}`);
-        console.log(res.data)
+        console.log(res.data);
         setSinglepost(res.data);
         setTitle(res.data.title);
-        setDesc(res.data.desc);
-        setSelectedTags(res.data.categories || []);
+        setDesc(res.data.desc); // HTML content
+        setSelectedTag(res.data.categories[0] || ""); // Assuming one category
       } catch (error) {
         console.log("Error fetching post:", error);
       }
@@ -53,7 +47,7 @@ const Singlpost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${baseUrl}/api/posts/${path}`, {
+      await axios.delete(`${baseUrl}/api/posts/single/${path}`, {
         data: { userId: user._id },
       });
       window.location.replace("/");
@@ -64,15 +58,13 @@ const Singlpost = () => {
   };
 
   const handleUpdate = async () => {
-    // Start form submission
     setIsSubmitting(true);
-
     try {
-      await axios.put(`${baseUrl}/api/posts/${path}`, {
+      await axios.put(`${baseUrl}/api/posts/single/${path}`, {
         username: user.username,
         title,
-        desc,
-        categories: selectedTags,
+        desc, // HTML content for storage
+        categories: [selectedTag], // Single category
       });
       window.location.reload();
       toast.success(`Post Updated`, { duration: 5000 });
@@ -80,19 +72,12 @@ const Singlpost = () => {
       console.log("Error updating post:", err);
       toast.error(`Error updating post: ${err.message}`);
     } finally {
-      // End form submission
       setIsSubmitting(false);
     }
   };
 
   const handleTagClick = (tag) => {
-    setSelectedTags((prevSelectedTags) => {
-      if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter((selectedTag) => selectedTag !== tag);
-      } else {
-        return [...prevSelectedTags, tag];
-      }
-    });
+    setSelectedTag(tag); // Only one tag can be selected
   };
 
   const date = new Date(singlepost.createdAt).toLocaleDateString(undefined, {
@@ -104,14 +89,12 @@ const Singlpost = () => {
   return (
     <div className="singlepost">
       <div className="postImg">
-      <h1>{singlepost.title} </h1>
-
-      <div className="tags">
-              {singlepost.categories && singlepost.categories.map((cat) => (
-                <span key={cat} className="tag">{cat}</span>
-              ))}
-            </div>
-
+        <h1>{singlepost.title}</h1>
+        <div className="tags">
+          {singlepost.categories && singlepost.categories.map((cat) => (
+            <span key={cat} className="tag">{cat}</span>
+          ))}
+        </div>
         <img src={singlepost.photo} alt="" />
       </div>
 
@@ -120,19 +103,18 @@ const Singlpost = () => {
           <div className="tags">
             <span>Tags:</span>
             <div className="tagsCat">
-              {tags.map((tag) => (
+              {category.map((tag) => (
                 <div
                   key={tag}
-                  className={`tag ${selectedTags.includes(tag) ? "selected" : ""}`}
+                  className={`tag ${selectedTag === tag ? "selected" : ""}`}
                   onClick={() => handleTagClick(tag)}
                 >
                   {tag}
-                  {selectedTags.includes(tag) && <FaCheck className="rightIcon" />}
+                  {selectedTag === tag && <FaCheck className="rightIcon" />}
                 </div>
               ))}
             </div>
           </div>
-
           <div className="writeFormGroup">
             <input
               type="text"
@@ -171,8 +153,9 @@ const Singlpost = () => {
               )}
             </div>
           </div>
+          <hr />
           <div className="postDesc">
-            <p>{singlepost.desc}</p>
+            <div dangerouslySetInnerHTML={{ __html: singlepost.desc }} />
           </div>
         </>
       )}
@@ -182,7 +165,7 @@ const Singlpost = () => {
           <textarea
             placeholder="write your blog..."
             type="text"
-            value={desc}
+            value={removeHtmlTags(desc)} // Strip HTML tags for editing
             className="writeInput writeText"
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>

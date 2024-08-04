@@ -48,7 +48,7 @@ const TrendingPosts = () => {
       <Link  to={`/single/${mostTrendingPost._id}`}>
               <h1>{mostTrendingPost.title}</h1>
               <img src={mostTrendingPost.photo} alt={mostTrendingPost.title} />
-              <p>{mostTrendingPost.desc}</p>
+              <div className='trendingDesc' dangerouslySetInnerHTML={{ __html: mostTrendingPost.desc }}></div>
               </Link>
             </>
           ) : (
