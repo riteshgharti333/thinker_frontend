@@ -1,19 +1,51 @@
 @import "../../style/responsive.scss";
 
 .blogcards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 
+
+   
+}
+
+.blogcards.latest {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.blogcards.trending {
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 0;
   @include sm {
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0;
+  }
+
+  @include md{
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+.blogcards.popular{
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 0;
 
-.blogcards.latest {
-  
-}
+  @include sm{
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 0;
 
-.blogcard.trending {
-  // Styles for BlogCard in TrendingPosts
+  }
+
+  @include md{
+  grid-template-columns: repeat(3, 1fr); 
+      
+  }
+
 }

@@ -43,7 +43,7 @@ const UserPosts = () => {
   };
 
   return (
-    <div className="queryPostsContainer">
+    <div className="userPostsContainer">
       <div className="postBack">
         <Link to="#" onClick={goBack}>
           <IoMdArrowRoundBack className="backArrow" />
@@ -52,8 +52,8 @@ const UserPosts = () => {
         <h2>My Posts</h2>
       </div>
 
-      <div className="queryPosts">
-        <div className="catPosts">
+      <div className="userPosts">
+        <div className="userCatPosts">
           {errorMessage ? (
             <p className="errorMessage">{errorMessage}</p>
           ) : (
@@ -65,6 +65,8 @@ const UserPosts = () => {
                 id={post._id}
                 key={post._id}
                 date={post.createdAt}
+              context="userposts"
+
               />
             ))
           )}

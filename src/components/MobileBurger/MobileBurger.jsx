@@ -86,7 +86,7 @@ const MobileBurger = () => {
           {showTags && (
             <div className="burgerCategories">
               {tags.map((tag) => (
-                <a href={`/posts?cat=${tag}`}>
+                <a href={`/posts/query/?cat=${tag}`}>
                   <span>{tag}</span>
                 </a>
               ))}

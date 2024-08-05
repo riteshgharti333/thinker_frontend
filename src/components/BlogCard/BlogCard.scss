@@ -4,14 +4,13 @@
   padding: 10px;
   font-family: "Dosis", sans-serif;
   transition: all 0.4s ease-in-out;
+  width: 260px;
 
   @include sm {
-    height: 330px;
+    // padding: 10px;
+    width: 200px;
   }
 
-  @include xxl {
-    width: 260px;
-  }
 
 
   .cardImg {
@@ -23,7 +22,7 @@
       display: flex;
       border-radius: 3px;
       @include sm {
-        height: 150px;
+        height: 100px;
       }
     }
   }
@@ -57,7 +56,7 @@
       overflow: hidden;
 
       @include sm {
-        font-size: 25px;
+        font-size: 16px;
       }
 
       &:hover {
@@ -84,9 +83,14 @@
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
 
   .cardImg{
     flex: 2;
+
+    @include md{
+      flex: 1;
+    }
     img{
       width: 100px;
       height: 80px;
@@ -102,13 +106,15 @@
 }
 
 .blogcard.trending {
-  // Styles for BlogCard in TrendingPosts
+  width: 250px;
+
+  @include sm{
+    width: 200px;
+  }
 }
 
 .blogcard.popular {
-
-  width: 238px;
-
+  width: 100%;
   .cardImg{
     img{
      
@@ -121,3 +127,12 @@
     }
   }
 }
+
+.blogcard.queryposts{
+  width: 300px;
+  @include sm{
+    width: 200px;
+
+  }
+}
+

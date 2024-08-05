@@ -1,6 +1,6 @@
 @import "../../style/responsive.scss";
 
-.queryPostsContainer {
+.userPostsContainer {
   // height: 165vh;
   height: 100%;
 
@@ -37,19 +37,24 @@
   }
 }
 
-.queryPosts {
+.userPosts {
   margin: 30px 50px;
   display: flex;
 
   @include sm {
-    align-items: center;
-    justify-content: center;
+    margin: 0;
   }
 
-  .catPosts {
+  .userCatPosts {
     display: flex;
     flex-wrap: wrap;
     flex: 8;
+
+    @include sm {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px; 
+    }
 
     .errorMessage{
       font-family: "Dosis", sans-serif;

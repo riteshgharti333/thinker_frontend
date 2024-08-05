@@ -1,15 +1,19 @@
 @import "../../style/responsive.scss";
 
+
 .homeBanner {
   height: 70vh;
   display: flex;
-  overflow: hidden; /* Ensure content doesn't overflow during animation */
+  // overflow: hidden; 
 
   @include sm {
-    display: block;
     height: 40vh;
-    overflow: hidden;
+    display: block;
   }
+
+  @include md{
+  }
+
 
   .leftFeature {
     flex: 7;
@@ -19,6 +23,7 @@
 
     @include sm {
       flex: 0;
+      margin-right: 0;
     }
   }
 
@@ -28,8 +33,18 @@
     flex-direction: column;
 
     @include sm {
+      flex-direction: row;
       display: none;
-      flex: 0;
+    }
+
+    @include md{
+      display: none;
+    }
+
+    .rightTopFeature,
+    .rightBottomFeature {
+      flex: 1; /* Ensure both features take up equal space */
+      margin: 0 5px; /* Adjust margins as needed */
     }
 
     .rightTopFeature {

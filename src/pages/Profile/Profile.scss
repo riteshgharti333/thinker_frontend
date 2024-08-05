@@ -7,6 +7,10 @@
   align-items: center;
   position: relative;
 
+  @include sm{
+   height: 70vh; 
+  }
+
   .profileBack {
     position: absolute;
     font-size: 34px;

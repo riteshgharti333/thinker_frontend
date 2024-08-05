@@ -1,10 +1,10 @@
 @import "../../style/responsive.scss";
 
 .ContentPostsContainer {
-  height: 165vh;
+  height: 100%;
 
   @include sm {
-    height: 100vh;
+    height: 100%;
   }
 }
 
@@ -36,20 +36,26 @@
   }
 }
 
-.queryPosts {
-  margin: 30px 50px;
+.contentPosts {
+  margin: 20px 30px;
   display: flex;
 
-  @include sm {
-    align-items: center;
-    justify-content: center;
+  @include sm{
+    margin: 0;
   }
 
-  .catPosts {
+  .contentCatPosts{
     display: flex;
-    flex-wrap: wrap;
     flex: 8;
+    flex-wrap: wrap;
+    @include sm {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px; 
+    }
   }
+
+ 
 
   .sidebar {
     flex: 2;

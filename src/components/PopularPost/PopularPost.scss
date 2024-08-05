@@ -1,15 +1,13 @@
-.popular{
+.popular {
   font-family: "Dosis", sans-serif;
 
-  .popularTop{
+  .popularTop {
     display: flex;
     justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  p{
-    font-weight:600;
-
-  }
-
+    margin-top: 30px;
+    margin-bottom: 10px;
+    p {
+      font-weight: 600;
+    }
   }
 }

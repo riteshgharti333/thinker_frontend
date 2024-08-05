@@ -6,23 +6,28 @@
   @include sm {
     margin: 20px 5px;
   }
-  
-  .trending{
+
+  @include md{
+    margin: 10px ;
+  }
+
+  .trending {
     margin-top: 30px;
-    animation: slideInBottom 1.5s ease-out; 
+    animation: slideInBottom 1.5s ease-out;
+
+    @include sm {
+      margin-top: 0;
+    }
   }
 
-  .latest{
+  .latest {
     // margin-top: 20px;
-    animation: slideInBottom 1.5s ease-out; 
-
+    animation: slideInBottom 1.5s ease-out;
   }
 
-  .popular{
-    animation: slideInBottom 1.5s ease-out; 
-
+  .popular {
+    animation: slideInBottom 1.5s ease-out;
   }
-
 }
 
 @keyframes slideInBottom {

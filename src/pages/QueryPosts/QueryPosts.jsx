@@ -57,6 +57,7 @@ const QueryPosts = () => {
               id={post._id}
               key={post._id}
               date={post.createdAt}
+              context="queryposts"
             />
           ))}
         </div>

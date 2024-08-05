@@ -27,6 +27,9 @@ input[type="search"]::-ms-clear {
     background-color: #fff; 
   }
 
+  @include sm{
+    display: block;
+  }
 
 
   .hamburger {
@@ -35,11 +38,14 @@ input[type="search"]::-ms-clear {
     }
   }
 
+
+
   .left {
   display: flex;
   justify-content: center;
   align-items: center;
     @include sm {
+      display: block;
     }
 
     .logo {
@@ -77,6 +83,11 @@ input[type="search"]::-ms-clear {
           border-bottom: 2px solid aqua;
         }
       }
+
+      @include sm{
+        display: none;
+      }
+
     }
   }
 
@@ -169,6 +180,10 @@ input[type="search"]::-ms-clear {
 
     &:hover{
       color: aqua;
+    }
+
+    @include sm{
+      display: none;
     }
   }
 }

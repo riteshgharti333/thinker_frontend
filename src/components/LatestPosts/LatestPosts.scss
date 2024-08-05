@@ -1,8 +1,16 @@
+@import "../../style/responsive.scss";
+
 .latest {
   font-family: "Dosis", sans-serif;
   display: flex;
   //   background-color: aquamarine;
-    // padding: 0px 20px;
+  // padding: 0px 20px;
+
+  @include sm {
+    display: block;
+  }
+
+ 
   .leftLatest {
     flex: 3;
     margin-right: 10px;
@@ -12,33 +20,40 @@
       display: flex;
       justify-content: space-between;
 
-      p{
-        font-weight:600;
-
+      p {
+        font-weight: 600;
       }
     }
 
-    .leftArticle{
+    .leftArticle {
       margin-top: 20px;
     }
   }
   .rightLatest {
     flex: 7;
     background-color: #e4b5cb;
-background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
-    border-radius: 20px 0px 0px 0px;
+    background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
+    border-radius: 30px 0px 0px 0px;
     padding: 30px;
     gap: 10px;
     margin-top: 40px;
 
-    h1{
+    @include sm{
+      display: none;
+    }
+
+    @include md{
+      display: none;
+    }
+
+    h1 {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    p{
+    p {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -63,11 +78,10 @@ background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
       flex-direction: column;
       gap: 20px;
 
-      h1{
-
+      h1 {
       }
 
-      .latestDesc{
+      .latestDesc {
         margin: 5px 0px;
       }
 

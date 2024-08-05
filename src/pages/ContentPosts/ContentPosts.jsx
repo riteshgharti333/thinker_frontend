@@ -48,7 +48,7 @@ const ContentPosts = () => {
         <h2>{type === "trending" ? "Trending Posts" : type === "trending-all" ? "All Trending Posts" : type === "latest-all" ? "All Latest Posts" : type === "popular-all" ? "All Popular Posts" : "All Posts"}</h2>
       </div>
 
-      <div className="queryPosts">
+      <div className="contentPosts">
         {type === "trending" && mostTrendingPost && (
           <div className="mostTrendingPost">
             <BlogCard
@@ -61,7 +61,8 @@ const ContentPosts = () => {
             />
           </div>
         )}
-        <div className="catPosts">
+        <div className="contentPosts">
+        <div className="contentCatPosts">
           {contentPosts.map((post) => (
             <BlogCard
               title={post.title}
@@ -70,12 +71,16 @@ const ContentPosts = () => {
               id={post._id}
               key={post._id}
               date={post.createdAt}
+              context="contentposts"
+
             />
           ))}
         </div>
         <div className="sidebar">
           <Sidebar />
         </div>
+        </div>
+    
       </div>
     </div>
   );

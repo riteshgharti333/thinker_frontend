@@ -1,7 +1,14 @@
+@import "../../style/responsive.scss";
+
+
 .SmFeature {
   position: relative;
   font-family: "Dosis", sans-serif;
   transition: all 0.5s;
+
+  @include sm{
+    width: 200px;
+  }
 
   &:hover {
     transform: scale(1.05);
