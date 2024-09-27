@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import "./Foooter.scss";
+import "./Footer.scss";
 import { IoMdMail } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";

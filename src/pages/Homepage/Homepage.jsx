@@ -1,9 +1,7 @@
-import BlogCards from "../../components/BlogCards/BlogCards.jsx";
 import FeaturePosts from "../../components/FeaturePosts/FeaturePosts.jsx";
 import HomeBanner from "../../components/HomeBanner/HomeBanner.jsx";
 import LatestPosts from "../../components/LatestPosts/LatestPosts.jsx";
 import PopularPost from "../../components/PopularPost/PopularPost.jsx";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import TrendingPosts from "../../components/TrendingPosts/TrendingPosts.jsx";
 import "./Homepage.scss";
 
@@ -11,13 +9,12 @@ const Homepage = () => {
   return (
     <>
       <div className="homepage">
-        {/* <div className="homeBanner"> */}
-        <HomeBanner />
+        <div className="homeSlide">
+          <HomeBanner />
+        </div>
 
-        {/* </div> */}
-        
         <div className="trending">
-        <TrendingPosts />
+          <TrendingPosts />
         </div>
 
         <div className="latest">
@@ -31,16 +28,6 @@ const Homepage = () => {
         <div className="feature">
           <FeaturePosts />
         </div>
-
-
-        {/* <div className="article">
-          <div className="blog-container">
-            <BlogCards />
-          </div>
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-        </div> */}
       </div>
     </>
   );

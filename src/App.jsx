@@ -14,7 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Profile from "./pages/Profile/Profile";
 import { Context } from "./context/Context";
 import Single from "./components/Single/Single";
-import Foooter from "./components/Foooter/Foooter";
+import Footer from "./components/Footer/Footer";
 import QueryPosts from "./pages/QueryPosts/QueryPosts";
 import "./style/global.scss";
 import UpdatePassword from "./pages/UpdatePassword/UpdatePassword";
@@ -38,8 +38,9 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Homepage />} />
-              <Route path="/posts/content/:type" element={<ContentPosts />} /> More general route
-              <Route path="/single/:id" element={<Single />} /> {/* More specific route */}
+              <Route path="/single/:id" element={<Single />} />
+
+              <Route path="/posts/content/:type" element={<ContentPosts />} /> 
               <Route path="/write" element={<Write />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/posts/query" element={<QueryPosts />} />
@@ -49,7 +50,7 @@ function App() {
               <Route path="/changepassword" element={<UpdatePassword />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-            <Foooter />
+            <Footer />
           </>
         )}
 

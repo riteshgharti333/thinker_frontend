@@ -1,18 +1,24 @@
 @import "../../style/responsive.scss";
 
 .blogcard {
-  padding: 10px;
   font-family: "Dosis", sans-serif;
   transition: all 0.4s ease-in-out;
   width: 260px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #F9F9F8;
+  transition: all 0.2s ease-in;
+
+   
+          &:hover {
+            transform: scale(1.0.5);
+            box-shadow: 10px 10px 10px #bebebe, -1px -1px 15px #ffffff;
+            transition: 0.2s ease-in-out;
+          }
+  
 
   @include sm {
-    // padding: 10px;
     width: 200px;
   }
-
-
-
   .cardImg {
     flex: 4;
     img {
@@ -78,12 +84,13 @@
   }
 }
 
-
+/////////////////////
 .blogcard.latest {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  border-radius: 5px;
 
   .cardImg{
     flex: 2;
@@ -93,28 +100,36 @@
     }
     img{
       width: 100px;
-      height: 80px;
+      height: 90px;
     }
   }
 
   .blogInfo{
+    padding: 0 5px;
     h3{
       font-size: 16px;
     }
   }
 
 }
-
+////////////////////////
 .blogcard.trending {
   width: 250px;
+  height: 200px;
+  border-radius: 5px;
+
+  .blogInfo{
+    padding: 0 8px;
+  }
 
   @include sm{
     width: 200px;
   }
 }
-
+///////////////////
 .blogcard.popular {
   width: 100%;
+  border-radius: 5px;
   .cardImg{
     img{
      
@@ -122,12 +137,13 @@
   }
 
   .blogInfo{
+    padding: 5px 8px;
     h3{
       font-size: 16px;
     }
   }
 }
-
+////////////////////
 .blogcard.queryposts{
   width: 300px;
   @include sm{
@@ -135,4 +151,11 @@
 
   }
 }
+////////////////////////
+.blogcard.contentposts{
+  height: 200px;
 
+  .blogInfo{
+    padding: 5px 5px;
+  }
+}

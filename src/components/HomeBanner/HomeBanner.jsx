@@ -6,7 +6,6 @@ import RightSlide from "../RightSlider/RightSlide.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../main.jsx";
-import Loader from "../Loader/Loader.jsx";
 
 const HomeBanner = () => {
   const [featurePosts, setFeaturePosts] = useState([]);

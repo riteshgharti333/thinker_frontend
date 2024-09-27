@@ -3,20 +3,21 @@ import "./TrendingPosts.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../main";
-import moment from "moment";
 import { Link } from "react-router-dom";
 
 const TrendingPosts = () => {
-  const [mostTrendingPost, setMostTrendingPost] = useState({});
-  const [isFetching, setIsFetching] = useState(true);
+  const [topTrendingPost, setTopTrendingPost] = useState({});
+
 
   useEffect(() => {
     const fetchTrendingPosts = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/posts/trending`);
-        const { mostTrendingPost, remainingPosts } = res.data;
-        setMostTrendingPost(mostTrendingPost);
-        setIsFetching(false);
+        const { data } = await axios.get(`${baseUrl}/api/posts/trending`);
+        const trending = data.trendingPosts;
+
+        if (data && trending) {
+          setTopTrendingPost(trending[0]);
+        }
       } catch (error) {
         console.error(error);
         setIsFetching(false);
@@ -30,36 +31,26 @@ const TrendingPosts = () => {
       <div className="left">
         <div className="top">
           <p>Trending Now</p>
-          <Link to={`/posts/content/trending-all`}>
-          <p>View All</p>
+          <Link to={`/posts/content/trending`}>
+            <p>View All</p>
           </Link>
         </div>
         <div className="date">
-          <span>{mostTrendingPost?.categories?.join(", ")}</span>
+          <span>{topTrendingPost?.categories?.join(", ")}</span>
           <span className="line">|</span>
-          <span>{moment(mostTrendingPost.createdAt).format("DD MMM YYYY")}</span>
+          <span>Adventrue</span>
         </div>
 
         <div className="postInfo">
-          {isFetching ? (
-            <p>Loading...</p>
-          ) : mostTrendingPost ? (
-            <>
-      <Link  to={`/single/${mostTrendingPost._id}`}>
-              <h1>{mostTrendingPost.title}</h1>
-              <img src={mostTrendingPost.photo} alt={mostTrendingPost.title} />
-              <div className='trendingDesc' dangerouslySetInnerHTML={{ __html: mostTrendingPost.desc }}></div>
-              </Link>
-            </>
-          ) : (
-            <p>No trending post available</p>
-          )}
+          <Link to={`/single/${topTrendingPost._id}`}>
+            <h1>{topTrendingPost.title}</h1>
+            <img src={topTrendingPost.photo} alt={topTrendingPost.title} />
+          </Link>
         </div>
       </div>
-      
 
       <div className="right">
-        <BlogCards context="trending" contentCat="top-posts" limit={6} />
+        <BlogCards context="trending" contentCat="trending" limit={6} />
       </div>
     </div>
   );

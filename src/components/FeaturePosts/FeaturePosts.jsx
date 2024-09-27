@@ -16,11 +16,11 @@ const FeaturePosts = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
-        setSlidesToShow(1); // Small devices
+        setSlidesToShow(1); 
       } else if (window.innerWidth <= 768) {
-        setSlidesToShow(3); // Medium devices
+        setSlidesToShow(3); 
       } else {
-        setSlidesToShow(4); // Large devices
+        setSlidesToShow(4); 
       }
     };
 

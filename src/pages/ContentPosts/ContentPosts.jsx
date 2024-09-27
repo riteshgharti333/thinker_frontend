@@ -8,28 +8,25 @@ import "./ContentPosts.scss";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 const ContentPosts = () => {
-  const { type } = useParams(); // Get type from URL
+  const { type } = useParams();
   const [contentPosts, setContentPosts] = useState([]);
-  const [mostTrendingPost, setMostTrendingPost] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        if (type === "trending") {
-          const response = await axios.get(`${baseUrl}/api/posts/trending`);
-          setMostTrendingPost(response.data.mostTrendingPost);
-          setContentPosts(response.data.remainingPosts);
-        } else if (type === "trending-all") {
-          const response = await axios.get(`${baseUrl}/api/posts/trending/all`);
-          setContentPosts(response.data);
-        } else if (type === "latest-all") {
-          const response = await axios.get(`${baseUrl}/api/posts/latest/all`);
-          setContentPosts(response.data);
-        } else if (type === "popular-all") {
-          const response = await axios.get(`${baseUrl}/api/posts/popular/all`);
-          setContentPosts(response.data);
-        } else {
-          // Handle other types if needed
+        const res = await axios.get(`${baseUrl}/api/posts/${type}`);
+
+        let contentPosts;
+        if (type === "latest") {
+          contentPosts = res.data.latestPosts;
+        } else if (type === "trending") {
+          contentPosts = res.data.trendingPosts;
+        } else if (type === "popular") {
+          contentPosts = res.data.popularPosts;
+        }
+
+        if (res.data && contentPosts) {
+          setContentPosts(contentPosts);
         }
       } catch (error) {
         console.error(error);
@@ -39,30 +36,18 @@ const ContentPosts = () => {
     fetchPosts();
   }, [type]);
 
+  console.log(contentPosts);
+
   return (
     <div className="contentPostsContainer">
       <div className="postBack">
         <Link to="#" onClick={() => window.history.back()}>
           <IoMdArrowRoundBack className="backArrow" />
         </Link>
-        <h2>{type === "trending" ? "Trending Posts" : type === "trending-all" ? "All Trending Posts" : type === "latest-all" ? "All Latest Posts" : type === "popular-all" ? "All Popular Posts" : "All Posts"}</h2>
+        <h2>{type} Posts</h2>
       </div>
-
-      <div className="contentPosts">
-        {type === "trending" && mostTrendingPost && (
-          <div className="mostTrendingPost">
-            <BlogCard
-              title={mostTrendingPost.title}
-              desc={mostTrendingPost.desc}
-              image={mostTrendingPost.photo}
-              id={mostTrendingPost._id}
-              key={mostTrendingPost._id}
-              date={mostTrendingPost.createdAt}
-            />
-          </div>
-        )}
+      <div className="contentPostsWrapper">
         <div className="contentPosts">
-        <div className="contentCatPosts">
           {contentPosts.map((post) => (
             <BlogCard
               title={post.title}
@@ -72,15 +57,13 @@ const ContentPosts = () => {
               key={post._id}
               date={post.createdAt}
               context="contentposts"
-
             />
           ))}
         </div>
+
         <div className="sidebar">
           <Sidebar />
         </div>
-        </div>
-    
       </div>
     </div>
   );

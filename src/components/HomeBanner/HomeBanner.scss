@@ -2,9 +2,9 @@
 
 
 .homeBanner {
-  height: 70vh;
+  // height: 300px;
   display: flex;
-  // overflow: hidden; 
+  gap: 6px;
 
   @include sm {
     height: 40vh;
@@ -17,8 +17,6 @@
 
   .leftFeature {
     flex: 7;
-    margin-right: 10px;
-    border-radius: 10px;
     animation: slideInLeft 1.5s ease-out; /* Apply slide-in animation */
 
     @include sm {
@@ -31,6 +29,7 @@
     flex: 3;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 
     @include sm {
       flex-direction: row;
@@ -43,12 +42,11 @@
 
     .rightTopFeature,
     .rightBottomFeature {
-      flex: 1; /* Ensure both features take up equal space */
-      margin: 0 5px; /* Adjust margins as needed */
+      flex: 1; 
+      margin: 0 5px; 
     }
 
     .rightTopFeature {
-      margin-bottom: 5px;
       animation: slideInTop 1.5s ease-out; /* Apply slide-in animation */
     }
 

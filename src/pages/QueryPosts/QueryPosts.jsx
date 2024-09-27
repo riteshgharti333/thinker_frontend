@@ -11,10 +11,9 @@ const QueryPosts = () => {
   const location = useLocation();
   const path = location.search;
 
-  console.log(path)
-
   const searchParams = new URLSearchParams(location.search);
   const categoryName = searchParams.get("cat");
+
 
   const [categoryPosts, setCategoryPosts] = useState([]);
 

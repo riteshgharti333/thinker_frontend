@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BlogCard.scss";
-import Loader from "../Loader/Loader";
 
-const BlogCard = ({ title, image, id, date, isLoading , category, context }) => {
+const BlogCard = ({ title, image, id, date , category, context }) => {
   
   const newdate = new Date(date).toLocaleDateString(undefined, {
     day: "numeric",
@@ -20,10 +19,7 @@ const BlogCard = ({ title, image, id, date, isLoading , category, context }) => 
   return (
     <Link to={`/single/${id}`} onClick={handleLinkClick}>
         <div className={`blogcard ${context}`}>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
+     
             <div className="cardImg">
               <img src={image} alt="" />
             </div>
@@ -33,8 +29,6 @@ const BlogCard = ({ title, image, id, date, isLoading , category, context }) => 
               <span>{category}</span> <span className="line">|</span>{newdate}
               </span>
             </div>
-          </>
-        )}
       </div>
     </Link>
   );

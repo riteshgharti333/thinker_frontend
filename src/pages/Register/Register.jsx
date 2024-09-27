@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Register.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiSolidLock, BiSolidUser, BiShow, BiHide } from "react-icons/bi";
 import { IoMdMail } from "react-icons/io";
 import { useFormik } from "formik";
@@ -21,6 +21,8 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const navigate = useNavigate();
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -35,11 +37,17 @@ export default function Register() {
           const res = await axios.post(`${baseUrl}/api/auth/register`, values);
           toast.success(res.data.message);
           setIsSubmitting(false); // Set loading state to false
-          res.data && window.location.replace("/");
+          res.data && navigate("/");
         } catch (error) {
+          
           console.log(error);
-          toast.error(error.response.data);
-          setIsSubmitting(false); // Set loading state to false
+    const errorMessage =
+      error.response && error.response.data && error.response.data.message
+        ? error.response.data.message
+        : "An error occurred";
+    toast.error(errorMessage);
+    setIsSubmitting(false);
+    // Set loading state to false
         }
       },
     });

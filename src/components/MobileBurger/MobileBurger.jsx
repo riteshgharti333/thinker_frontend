@@ -44,27 +44,24 @@ const MobileBurger = () => {
     <div>
       <Menu right>
         <div className="user">
-          <a href="/profile">
-            <Link to={"/profile"}>
-              <FaUser className="userIcon" />
-            </Link>
-          </a>
-
+          <Link to="/profile">
+            <FaUser className="userIcon" />
+          </Link>
           {/* <span>{user.username}</span> */}
         </div>
 
-        <a className="menu-item" href="/">
+        <Link className="menu-item" to="/" onClick={handleLinkClick}>
           Home
-        </a>
-        <a className="menu-item" href="/write">
+        </Link>
+        <Link className="menu-item" to="/write" onClick={handleLinkClick}>
           Write
-        </a>
-        <a className="menu-item" href="/about">
+        </Link>
+        <Link className="menu-item" to="/about" onClick={handleLinkClick}>
           About
-        </a>
-        <a className="menu-item" href="/contact">
+        </Link>
+        <Link className="menu-item" to="/contact" onClick={handleLinkClick}>
           Contact
-        </a>
+        </Link>
         {user ? (
           <Link to="/login" onClick={handLogout}>
             <span>Logout</span>
@@ -86,9 +83,9 @@ const MobileBurger = () => {
           {showTags && (
             <div className="burgerCategories">
               {tags.map((tag) => (
-                <a href={`/posts/query/?cat=${tag}`}>
+                <Link to={`/posts/query/?cat=${tag}`} key={tag}>
                   <span>{tag}</span>
-                </a>
+                </Link>
               ))}
             </div>
           )}

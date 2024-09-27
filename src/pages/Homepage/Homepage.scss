@@ -1,18 +1,22 @@
 @import "../../style/responsive.scss";
 
 .homepage {
-  margin: 20px 50px;
-
+  margin: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   @include sm {
     margin: 20px 5px;
   }
 
-  @include md{
-    margin: 10px ;
+  @include md {
+    margin: 10px;
+  }
+
+  .homeSlide {
   }
 
   .trending {
-    margin-top: 30px;
     animation: slideInBottom 1.5s ease-out;
 
     @include sm {
@@ -21,7 +25,6 @@
   }
 
   .latest {
-    // margin-top: 20px;
     animation: slideInBottom 1.5s ease-out;
   }
 

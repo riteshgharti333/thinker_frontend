@@ -2,7 +2,7 @@ import "./Slide.scss";
 import Slider from "infinite-react-carousel";
 
 const settings = {
-  autoplay: true,
+  // autoplay: true,
   autoplaySpeed: 3000,
   duration: 400,
   arrows: false,

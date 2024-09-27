@@ -8,28 +8,27 @@
     display: block;
   }
 
-  @include md{
+  @include md {
     display: block;
   }
 
   .left {
-    flex: 3;
     background-color: #e4b5cb;
     background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
     border-radius: 0px 30px 0px 0px;
     margin-right: 20px;
-    padding: 30px;
+    padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-    @include sm{
+
+    @include sm {
       margin-right: 0;
       margin-top: 20px;
     }
 
-    @include md{
+    @include md {
       margin-right: 0;
     }
-
-    
 
     .top {
       display: flex;
@@ -63,10 +62,9 @@
         margin-top: 10px;
         border-radius: 20px;
 
-        
-  @include sm{
-    height: 200px;
-}
+        @include sm {
+          height: 200px;
+        }
       }
       .trendingDesc {
         display: -webkit-box;
@@ -83,6 +81,7 @@
     }
   }
   .right {
-    flex: 7;
+    display: flex;
+    align-items: center;
   }
 }
