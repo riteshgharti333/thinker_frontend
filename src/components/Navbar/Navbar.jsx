@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 import { FaUser } from "react-icons/fa";
 import MobileBurger from "../MobileBurger/MobileBurger";
 import { Context } from "../../context/Context";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { CiSearch } from "react-icons/ci";
 import { category } from "../../assets/data";
 
 const Navbar = () => {
@@ -35,71 +34,65 @@ const Navbar = () => {
 
   const navbarClass = scroll ? "nav scrolled" : "nav";
 
+  const location = useLocation();
+  const [showCatLinks, setShowCatLinks] = useState(location.pathname === "/");
+
+  useEffect(() => {
+    setShowCatLinks(location.pathname === "/");
+  }, [location.pathname]);
+
   return (
     <>
-    <div className={navbarClass}>
-
-
-     
-      <div className="hamburger">
-        <MobileBurger />
-      </div>
-
-      <div className="left">
-        <div className="logo">
-          <Link to="/">
-            <h1>
-              Thinker<span>.</span>
-            </h1>
-          </Link>
+      <div className={navbarClass}>
+        <div className="hamburger">
+          <MobileBurger />
         </div>
 
-        <div className="links">
-          <Link to={"/write"}>
-            <span>Write</span>
-          </Link>
-          <Link to={"/about"}>
-            <span>About</span>
-          </Link>
-          <Link to={"/contact"}>
-            <span>Contact</span>
-          </Link>
-        </div>
-      </div>
-
-   
-
-      <div className="right">
-
-        {/* <div className="search">
-          <input type="search" name="" id="" placeholder="search"/>
-          <button><CiSearch /></button>
-        </div> */}
-  
-        <div className="userInfo">
-          {user ? (
-            <>
-              <Link to={"/login"} onClick={handLogout}>
-                <button>Logout</button>
-              </Link>
-
-              <div className="user">
-                <Link to={"/profile"}>
-                  <FaUser className="userIcon" />
-                </Link>
-              </div>
-            </>
-          ) : (
-            <Link to={"/login"}>
-              <button>Login</button>
+        <div className="left">
+          <div className="logo">
+            <Link to="/">
+              <h1>
+                Thinker<span>.</span>
+              </h1>
             </Link>
-          )}
+          </div>
+
+          <div className="links">
+            <Link to={"/write"}>
+              <span>Write</span>
+            </Link>
+            <Link to={"/about"}>
+              <span>About</span>
+            </Link>
+            <Link to={"/contact"}>
+              <span>Contact</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="right">
+          <div className="userInfo">
+            {user ? (
+              <>
+                <Link to={"/login"} onClick={handLogout}>
+                  <button>Logout</button>
+                </Link>
+
+                <div className="user">
+                  <Link to={"/profile"}>
+                    <FaUser className="userIcon" />
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <button>
+                <Link to={"/login"}>Login</Link>
+              </button>
+            )}
+          </div>
         </div>
       </div>
-
-   
-    </div>
-    {location.pathname === "/" && (
+      {showCatLinks && (
         <div className="catLinks">
           {category.map((cat) => (
             <Link key={cat} to={`/posts/query?cat=${cat}`}>
@@ -108,7 +101,6 @@ const Navbar = () => {
           ))}
         </div>
       )}
-
     </>
   );
 };

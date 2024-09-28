@@ -17,7 +17,7 @@ const Homepage = () => {
           <TrendingPosts />
         </div>
 
-        <div className="latest">
+        <div className="latestHome">
           <LatestPosts />
         </div>
 

@@ -5,6 +5,11 @@
   font-family: "Dosis", sans-serif;
   transition: all 0.5s;
 
+  .skInfo{
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+
   &:hover {
     transform: scale(1.05);
   }
@@ -20,7 +25,7 @@
       filter: brightness(0.6);
 
       @include sm {
-        height: 40vh;
+        height: 300px;
       }
     }
     
@@ -51,16 +56,46 @@
     gap: 10px;
     z-index: 3; 
 
+    @include lg{
+      margin: 10px;
+      gap: 5px;
+    }
+
+    @include md{
+      margin: 10px;
+      gap: 5px;
+    }
+
+    @include sm{
+      margin: 5px;
+      gap: 5px;
+    }
+
     .feature {
       background-color: red;
       width: fit-content;
       padding: 5px;
       border-radius: 4px;
       font-weight: 600;
+
+      @include sm{
+        padding: 2px;
+      }
     }
 
     .date {
       font-size: 20px;
+
+  
+
+      @include md{
+        font-size: 18px;
+      }
+  
+
+      @include sm{
+        font-size: 15px;
+      }
 
       .line {
         color: red;
@@ -75,6 +110,12 @@
       overflow: hidden;
       cursor: pointer;
 
+      
+
+      @include sm{
+        font-size: 20px;
+      }
+
       &:hover {
         color: aqua;
       }
@@ -87,21 +128,41 @@
       overflow: hidden;
       font-size: 20px;
       font-weight: 500;
+
+      @include sm{
+        font-size: 16px;
+      }
     }
   }
 }
 
 .mainFeature.feature {
+  display: flex;
+  
   .bgImg {
-    width: 290px;
+    width: 100%;
+    margin: 0px 10px;
+
+    @include xl{
+      width: 100%;
+      margin: 0 5px; 
+    }
+
+    @include lg{
+      width: 100%;
+      margin: 0 5px; 
+    }
+
+    @include md{
+      width: 100%;
+      margin: 0 5px;
+    }
 
     @include sm{
       width: 100%;
     }
 
-    @include md{
-      width: 230px;
-    }
+   
     
     img {
       object-fit: cover;

@@ -1,11 +1,8 @@
 @import "../../style/responsive.scss";
 
 .ContentPostsContainer {
-  height: 100%;
-
-  @include sm {
-    height: 100%;
-  }
+  min-height: 90vh;
+  
 }
 
 .postBack {
@@ -21,6 +18,7 @@
   h2 {
     font-family: "Dosis", sans-serif;
     font-weight: 600;
+    text-transform: capitalize;
   }
 
   .backArrow {
@@ -36,39 +34,44 @@
   }
 }
 
-.contentPostsWrapper{
+.contentPostsWrapper {
   display: flex;
-  margin: 0px 30px ;
+  margin: 10px 30px;
 
-  .sidebar{
-    flex: 2;
-
-    @include sm {
-      display: none;
-    }
-  }
-
-}
-.contentPosts {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 8;
-  gap: 30px;
+  @include md {
+    margin: 0 20px;
   
+    }
 
   @include sm{
-    margin: 0;
+    margin: 0 5px;
   }
 
-  .contentCatPosts{
-    display: flex;
-    flex: 8;
-    flex-wrap: wrap;
-    @include sm {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px; 
+  .sidebar {
+    flex: 2;
+  }
+}
+.contentPosts {
+  flex: 8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-right: 10px;
+
+  @include lg{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     }
-  }
+  
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  margin-right: 0;
+    }
 
+  @include sm {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-right: 0;
+  }
 }

@@ -6,16 +6,17 @@ import { baseUrl } from "../../main";
 
 const BlogCards = ({ context, limit = 6, contentCat }) => {
   const [posts, setPosts] = useState([]);
-  const [isFetching, setIsFetching] = useState(true);
+
+  const [isLoading , setIsLoading] = useState(true);
 
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(`${baseUrl}/api/posts/${contentCat}`);
         const queryPosts = res.data;
 
-        console.log(queryPosts);
        
         if(queryPosts) {
           if( contentCat === "trending"){
@@ -23,15 +24,15 @@ const BlogCards = ({ context, limit = 6, contentCat }) => {
           }else if(contentCat === "popular"){
             setPosts(queryPosts.popularPosts.slice(0, limit));
           }else if(contentCat === "latest"){
-            setPosts(queryPosts.latestPosts.slice(0, limit));
+            setPosts(queryPosts.latestPosts.slice(1, limit));
           
           }
 
         }
-        setIsFetching(false);
       } catch (error) {
         console.log(error);
-        setIsFetching(false);
+      }finally{
+        setIsLoading(true);
       }
     };
     fetchPosts();
@@ -49,8 +50,8 @@ const BlogCards = ({ context, limit = 6, contentCat }) => {
           username={post.username}
           date={post.updatedAt}
           category={post.categories}
-          isLoading={isFetching}
           context={context}
+          isLoading={isLoading}
         />
       ))}
     </div>

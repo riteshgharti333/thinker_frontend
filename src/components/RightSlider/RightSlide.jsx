@@ -5,9 +5,9 @@ const settings = {
   arrows: true
 };
 
-const RightSlide = ({ children, slidesToShow, arrowsScroll }) => {
+const RightSlide = ({ children, slidesToShow, arrowsScroll, isLoading }) => {
   return (
-    <div className="slide">
+    <div className={`slide ${isLoading ? `hideArrow` : " "}` }>
       <div className="container">
         <Slider
           slidesToShow={slidesToShow}

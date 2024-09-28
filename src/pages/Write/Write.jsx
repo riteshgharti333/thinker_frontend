@@ -78,7 +78,7 @@ const Write = () => {
       userId: user._id,
       username: user.username,
       title,
-      desc, // HTML content for storage
+      desc, 
       categories: selectedTags,
     };
 
@@ -93,7 +93,6 @@ const Write = () => {
         return;
       }
     }
-
     try {
       const res = await axios.post(`${baseUrl}/api/posts`, newPost);
       const loadingToast = toast.loading("Creating Post...");
@@ -109,6 +108,14 @@ const Write = () => {
     }
   };
 
+  const editorConfig = useMemo(() => {
+    return {
+      readonly: false, // Enable editing
+      height: 500, // Set the desired height
+    };
+  }, []);
+
+  
   return (
     <div className="write">
       <input
@@ -153,7 +160,7 @@ const Write = () => {
         <div className="writeFormGroup">
           <input
             type="text"
-            placeholder="Title"
+            placeholder="Title....."
             className="writeInput"
             autoFocus={true}
             value={title}
@@ -168,6 +175,7 @@ const Write = () => {
             className="editor"
             value={desc}
             ref={editor}
+            config={editorConfig}
             tabIndex={1}
             onBlur={(newContent) => setDesc(newContent)}
             onChange={(newContent) => setDesc(newContent)}

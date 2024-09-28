@@ -1,13 +1,20 @@
+@import "../../style/responsive.scss";
+
+
 .sidebar {
-  background-color: #663dff;
-  background-image: linear-gradient(
-    to top,
-    #fdcbf1 0%,
-    #fdcbf1 1%,
-    #e6dee9 100%
-  );
+  background-color: #eeeeec;
   border-radius: 4px;
   height: 100%;
+
+  @include md{
+    display: none;
+  }
+
+  @include sm{
+    display: none;
+  }
+
+
   .sidebarHeader {
     font-size: 20px;
     font-family: "Inconsolata", monospace;

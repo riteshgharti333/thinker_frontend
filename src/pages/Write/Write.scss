@@ -3,6 +3,10 @@
 .write {
   margin: 20px;
 
+  @include md{
+    margin: 10px;
+  }
+
   .dropSection {
     background-color: #cdc1ff;
     background-image: linear-gradient(316deg, #cdc1ff 0%, #e5d9f2 74%);
@@ -53,6 +57,8 @@
       margin-left: 20px;
       display: flex;
       padding-bottom: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
 
       @include sm {
         overflow-x: auto;
@@ -97,14 +103,16 @@
         border: none;
         border-bottom: 2px solid aqua;
         margin-right: 20px;
-        font-family: "Inconsolata", monospace;
+        font-family: "Dosis", sans-serif;
         height: 30px;
         font-size: 20px;
         background-color: transparent;
+        letter-spacing: 2px;
+        font-weight: bold;
 
         &::placeholder {
-          font-family: "Inconsolata", monospace;
           font-size: 20px;
+          letter-spacing: 2px;
         }
 
         &:focus {
@@ -127,9 +135,12 @@
 
     .textarea {
       margin: 20px 0px;
+      height: 500px;
+
       .editor {
-        height: 50vh;
-        background-color: red;
+        font-family: "Dosis", sans-serif;
+        font-weight: bold;
+        letter-spacing: 1px;
       }
     }
   }

@@ -3,32 +3,63 @@
 .trendingPosts {
   display: flex;
   font-family: "Dosis", sans-serif;
+  // height: 420px;
+  color: #333333;
+
+  @include lg {
+    flex-direction: column;
+    height: 100%;
+
+  }
+
+  @include lg {
+    flex-direction: column;
+    height: 100%;
+
+  }
+  
+  @include md {
+    display: block;
+    height: 100%;
+
+  }
 
   @include sm {
     display: block;
+    height: 100%;
   }
 
-  @include md {
-    display: block;
-  }
 
   .left {
-    background-color: #e4b5cb;
-    background-image: linear-gradient(315deg, #e4b5cb 0%, #722ae6 74%);
     border-radius: 0px 30px 0px 0px;
     margin-right: 20px;
     padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #eeeeec;
+    
+    transition: all 0.2s ease-in;
+    flex: 1;
 
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 10px 10px 10px #bebebe, -1px -1px 15px #ffffff;
+      transition: 0.2s ease-in-out;
+    }
+
+    @include lg {
+      margin-right: 0;
+    }
+
+    @include md {
+      margin-right: 0;
+    }
 
     @include sm {
       margin-right: 0;
       margin-top: 20px;
     }
 
-    @include md {
-      margin-right: 0;
-    }
+   
 
     .top {
       display: flex;
@@ -42,7 +73,8 @@
     .date {
       display: flex;
       align-items: center;
-      color: white;
+      color: #333333;
+      font-weight: bold;
       .line {
         color: red;
         font-size: 30px;
@@ -51,7 +83,15 @@
     }
 
     .postInfo {
+      overflow: hidden;
+      box-sizing: border-box;
+      .latestImg{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
       h1 {
+        font-size: 25px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -61,6 +101,13 @@
         width: 100%;
         margin-top: 10px;
         border-radius: 20px;
+        object-fit: cover;
+        height: auto;
+        height: 250px;
+
+        @include xl{
+          height: 240px;
+        }
 
         @include sm {
           height: 200px;
@@ -81,7 +128,16 @@
     }
   }
   .right {
-    display: flex;
-    align-items: center;
+    @include  lg{
+      margin-top: 10px;
+    }
+    
+    @include md {
+      margin-top: 10px;
+    }
+
+    @include sm {
+      margin-top: 10px;
+    }
   }
 }

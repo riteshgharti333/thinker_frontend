@@ -6,8 +6,13 @@
   font-family: "Dosis", sans-serif;
   transition: all 0.5s;
 
+  .skInfo{
+    margin-top: 5px;
+    border-radius: 10px;
+  }
+
   @include sm{
-    width: 200px;
+    width: 100%;
   }
 
   &:hover {
@@ -50,7 +55,22 @@
     margin: 0px 20px;
     color: #fff;
     gap: 10px;
-    z-index: 3; /* Ensure the info is above the gradient overlay */
+    z-index: 3;
+    
+
+    @include lg{
+      margin: 0 5px;
+      
+    }
+
+    @include md{
+      margin: 0 5px;
+    }
+
+ 
+    @include sm{
+      margin: 0 5px;
+    }
 
     span {
       &:first-child {
@@ -59,6 +79,10 @@
         padding: 5px;
         border-radius: 4px;
         font-weight: 600;
+
+        @include sm{
+          padding: 2px;
+        }
       }
       &:last-child {
         color: aqua;
@@ -75,6 +99,19 @@
       font-size: 24px;
       font-weight: 600;
       cursor: pointer;
+
+      @include lg{
+        font-size: 20px;
+      }
+
+      @include md{
+        font-size: 20px;
+        
+      }
+
+      @include sm{
+        font-size: 16px;
+      }
 
       &:hover {
         color: aqua;

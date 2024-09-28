@@ -2,23 +2,51 @@
 
 .singlepost {
   font-family: "Dosis", sans-serif;
+  color: #333333;
 
   h1 {
     margin-bottom: 10px;
   }
 
-  
+  hr{
+    margin: 10px 0px;
+    color: #333333;
+  }
   .tags {
     display: flex;
     margin: 10px 0px;
     align-items: center;
-    span {
-      font-weight: 500;
-      font-size: 16px;
+
+    .tag{
       background-color: green;
+      font-weight: bold;
       color: white;
-      padding: 5px;
+      padding: 3px;
       border-radius: 2px;
+    }
+
+    .updateTag {
+      font-weight: 500;
+      font-size: 20px;
+      padding: 3px 5px;
+      border-radius: 2px;
+      font-weight: bold;
+    }
+
+    .views {
+      margin-left: 10px;
+      display: flex;
+      
+      align-items: center;
+      .viewsIcon{
+        font-size: 20px;
+      }
+
+      p{
+        font-weight: bold;
+        margin-left: 4px;
+        cursor: pointer;
+      }
     }
     .tagsCat {
       margin-left: 20px;
@@ -98,6 +126,7 @@
       font-family: "Inconsolata", monospace;
       height: 30px;
       font-size: 20px;
+      background-color: transparent;
 
       &::placeholder {
         font-family: "Inconsolata", monospace;
@@ -139,7 +168,8 @@
   }
 
   .postDesc {
-   
+    font-weight: bold;
+    font-size: 20px;
     p {
       font-size: 20px;
       font-weight: 500;
@@ -158,20 +188,6 @@
   }
 
   .textarea {
-    textarea {
-      width: 100%;
-      height: 100vh;
-      font-family: "Dosis", sans-serif;
-      font-size: 20px;
-      box-shadow:
-        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      border: none;
-      padding-left: 10px;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
+   height: 500px;
+}
 }

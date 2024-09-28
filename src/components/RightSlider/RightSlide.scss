@@ -3,6 +3,13 @@
 .slide {
   display: flex;
   justify-content: center;
+
+  &.hideArrow{
+    .carousel-next {
+      display: none;
+    }
+  }
+
   .container {
     width: 100%;
     position: relative;

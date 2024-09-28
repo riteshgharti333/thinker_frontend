@@ -11,8 +11,12 @@ const ContentPosts = () => {
   const { type } = useParams();
   const [contentPosts, setContentPosts] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchPosts = async () => {
+      setIsLoading(true);
+
       try {
         const res = await axios.get(`${baseUrl}/api/posts/${type}`);
 
@@ -30,13 +34,13 @@ const ContentPosts = () => {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(true);
       }
     };
 
     fetchPosts();
   }, [type]);
-
-  console.log(contentPosts);
 
   return (
     <div className="contentPostsContainer">
@@ -55,8 +59,10 @@ const ContentPosts = () => {
               image={post.photo}
               id={post._id}
               key={post._id}
+              category={post.categories}
               date={post.createdAt}
               context="contentposts"
+              isLoading={isLoading}
             />
           ))}
         </div>

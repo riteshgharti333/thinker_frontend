@@ -1,7 +1,7 @@
 @import "../../style/responsive.scss";
 
 .back {
-  margin-left: 50px;
+  margin-left: 40px;
   font-size: 34px;
 
   @include sm {
@@ -15,7 +15,7 @@
 }
 .single {
   display: flex;
-  margin: 30px 50px;
+  margin: 5px 40px 20px 40px;
 
   @include sm {
     margin: 20px;
@@ -24,15 +24,11 @@
     flex: 8;
     margin-right: 20px;
 
-    @include sm {
+    @include md {
       margin-right: 0;
     }
   }
   .sidebar {
     flex: 2;
-
-    @include sm {
-      display: none;
-    }
   }
 }

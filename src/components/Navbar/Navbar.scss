@@ -11,26 +11,27 @@ input[type="search"]::-ms-clear {
   height: 0;
 }
 
-
 .nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px  20px;
+  padding: 10px 20px 0px 20px;
   top: 0;
   position: sticky;
   z-index: 99;
   align-items: center;
-  transition: background-color 0.8s ease-in-out;
+  transition: background-color 0.4s ease-in-out;
 
   &.scrolled {
-    background-color: #fff; 
+  background-color: 	#cbe2e2;
+  padding: 10px 20px 10px 20px;
+
+
   }
 
-  @include sm{
+  @include sm {
     display: block;
   }
-
 
   .hamburger {
     @media (min-width: 481px) {
@@ -38,12 +39,10 @@ input[type="search"]::-ms-clear {
     }
   }
 
-
-
   .left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include sm {
       display: block;
     }
@@ -76,18 +75,17 @@ input[type="search"]::-ms-clear {
       span {
         margin-right: 20px;
         font-family: "Dosis", sans-serif;
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 20px;
+        font-weight: bold;
         cursor: pointer;
         &:hover {
-          border-bottom: 2px solid aqua;
+          color: aqua;
         }
       }
 
-      @include sm{
+      @include sm {
         display: none;
       }
-
     }
   }
 
@@ -97,33 +95,6 @@ input[type="search"]::-ms-clear {
     justify-content: flex-end;
     align-items: center;
 
-    .search{
-    border: 1px solid black;
-    margin-right: 20px;
-    border-radius: 30px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-
-      input{
-        background: transparent;
-        border: none;
-
-        &:focus{
-          outline: none;
-        }
-      }
-
-      button{
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-      }
-    }
-
     @include sm {
       display: none;
       flex: 0;
@@ -131,20 +102,20 @@ input[type="search"]::-ms-clear {
 
     .userInfo {
       display: flex;
+      align-items: center;
 
       button {
         margin-right: 20px;
         color: #090909;
         font-size: 20px;
-        padding: 8px 10px;
-        background: #e8e8e8;
-        box-shadow:
-          rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        padding: 5px 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
           rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         cursor: pointer;
         border-radius: 4px;
         font-weight: 600;
         background-color: aqua;
+        color: white;
         border: none;
         font-family: "Dosis", sans-serif;
 
@@ -157,32 +128,35 @@ input[type="search"]::-ms-clear {
         display: flex;
         align-items: center;
         cursor: pointer;
+        justify-content: center;
         .userIcon {
           border-radius: 50%;
           background: aqua;
           padding: 2px;
           font-size: 30px;
           color: white;
+          display: flex;
+          align-items: center;
         }
       }
     }
   }
 }
 
-.catLinks{
+.catLinks {
   font-family: "Dosis", sans-serif;
   display: flex;
   align-items: center;
-  justify-content: center;  
-  span{
+  justify-content: center;
+  span {
     margin-right: 10px;
-    font-weight: 600;
+    font-weight: bold;
 
-    &:hover{
+    &:hover {
       color: aqua;
     }
 
-    @include sm{
+    @include sm {
       display: none;
     }
   }

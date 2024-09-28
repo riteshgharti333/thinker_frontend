@@ -1,11 +1,9 @@
 @import "../../style/responsive.scss";
 
 .queryPostsContainer {
-  height: 100%;
+  min-height: 90vh;
 
-  @include sm {
-    height: 100%;
-  }
+ 
 }
 
 .postBack {
@@ -37,32 +35,48 @@
 }
 
 .queryPosts {
-  margin: 30px 50px;
+  margin: 10px 30px;
   display: flex;
 
+  @include md {
+    margin: 0 20px;
+  
+    }
   @include sm {
-    margin: 0;
-    flex-direction: column;
+    margin: 0 5px;
+  
   }
 
   .catPosts {
-    display: flex;
-    flex-wrap: wrap;
     flex: 8;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-right: 10px;
 
-    @include sm {
-      display: grid;
+    @include lg{
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      }
+    
+    @include md {
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px; 
+      gap: 10px;
+    margin-right: 0;
+      }
+  
+    @include sm {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-right: 0;
     }
+
+   
   }
 
 
   .sidebar {
     flex: 2;
 
-    @include sm {
-      display: none;
-    }
   }
 }

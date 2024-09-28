@@ -2,26 +2,41 @@
 
 
 .homeBanner {
-  // height: 300px;
   display: flex;
-  gap: 6px;
+  gap: 8px;
+
+
+  @include lg{
+    gap: 4px;
+   }
+  
+  @include md{
+    display: block;
+ }
 
   @include sm {
-    height: 40vh;
     display: block;
   }
 
-  @include md{
-  }
+ 
 
 
   .leftFeature {
     flex: 7;
-    animation: slideInLeft 1.5s ease-out; /* Apply slide-in animation */
+    animation: slideInLeft 1.5s ease-out;
+
+   
+
+    @include md{
+      margin-bottom: 5px;
+      margin-right: 0;
+      flex: 0;
+    }
 
     @include sm {
       flex: 0;
       margin-right: 0;
+      margin-bottom: 5px;
     }
   }
 
@@ -31,19 +46,37 @@
     flex-direction: column;
     gap: 10px;
 
-    @include sm {
-      flex-direction: row;
-      display: none;
-    }
+    @include lg{
+      gap: 4px;
+      
+     }
 
     @include md{
-      display: none;
+      flex-direction: row;
+      gap: 5px;
     }
+
+    @include sm {
+      flex-direction: row;
+      gap: 5px;
+    }
+
+   
 
     .rightTopFeature,
     .rightBottomFeature {
       flex: 1; 
       margin: 0 5px; 
+
+      @include md{
+        margin: 0;
+      }
+     
+      @include sm{
+        margin: 0;
+      }
+
+     
     }
 
     .rightTopFeature {

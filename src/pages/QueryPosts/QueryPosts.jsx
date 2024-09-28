@@ -14,21 +14,26 @@ const QueryPosts = () => {
   const searchParams = new URLSearchParams(location.search);
   const categoryName = searchParams.get("cat");
 
+  const [isLoading, setIsLoading] = useState(true);
 
   const [categoryPosts, setCategoryPosts] = useState([]);
 
   useEffect(() => {
     const fetchCategoryPosts = async () => {
+      setIsLoading(true);
+
       try {
         const response = await axios.get(`${baseUrl}/api/posts${path}`);
         setCategoryPosts(response.data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(true);
       }
     };
 
     fetchCategoryPosts();
-  }, []);
+  }, [path]);
 
   const navigate = useNavigate();
 
@@ -57,6 +62,7 @@ const QueryPosts = () => {
               key={post._id}
               date={post.createdAt}
               context="queryposts"
+              isLoading={isLoading}
             />
           ))}
         </div>
