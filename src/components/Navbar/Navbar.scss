@@ -118,6 +118,7 @@ input[type="search"]::-ms-clear {
         color: white;
         border: none;
         font-family: "Dosis", sans-serif;
+        text-transform: uppercase;
 
         &:hover {
           background-color: aquamarine;

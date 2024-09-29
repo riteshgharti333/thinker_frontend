@@ -31,9 +31,9 @@ const FeaturePosts = () => {
         const res = await axios.get(`${baseUrl}/api/posts?cat=${cat}`);
         setPosts(res.data.slice(0, 6));
       } catch (error) {
-        console.error(error); // Log any errors
+        console.error(error); 
       } finally {
-        setIsLoading(true); // Always set loading to false after fetching
+        setIsLoading(true); 
       }
     };
 
@@ -44,7 +44,7 @@ const FeaturePosts = () => {
     <div className="feature">
       <div className="featureInfo">
         <p>Tech Posts</p>
-        <Link to={`/posts/query?cat=${cat}`}>
+        <Link to={`/posts/query?cat=${cat}`}  className={`${isLoading ? "isLoading" : " "}`}>
           <p>View All</p>
         </Link>
       </div>

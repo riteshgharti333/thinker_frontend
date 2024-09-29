@@ -104,6 +104,10 @@ export default function Login() {
         <button className="loginButton" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Logging in..." : "Login"}
         </button>
+        <span className="forgot">
+          <Link to="/forgot-password"> Forgot Password</Link>
+        </span>
+
         <span>
           New to Thinker.
           <span className="signupLink">

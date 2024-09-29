@@ -20,7 +20,7 @@ const Foooter = () => {
   };
 
   return (
-    <div className="footer">
+    <div className="footer card-bg">
       <div className="footerLeft">
         <div className="logo">
           <h1>

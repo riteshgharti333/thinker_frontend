@@ -18,18 +18,14 @@ const UserPosts = () => {
   useEffect(() => {
     const fetchUserPosts = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/user/${path}/posts`);
-        
-        if (response.data.message) {
-          setErrorMessage(response.data.message);
-        } else {
-          setUserPosts(response.data.posts);
-          setUser(response.data.posts[0].username.username);
-          setErrorMessage(""); // Clear error message if posts are found
+        const { data } = await axios.get(`${baseUrl}/api/user/${path}/posts`);
+        setUserPosts(data.posts);
+
+        if (data.postCount === 0) {
+          setErrorMessage("User post not found");
         }
       } catch (error) {
         console.error(error);
-        setErrorMessage("User post not found");
       }
     };
 
@@ -55,7 +51,7 @@ const UserPosts = () => {
       <div className="userPosts">
         <div className="userCatPosts">
           {errorMessage ? (
-            <p className="errorMessage">{errorMessage}</p>
+            <p className="errorMessage" style={{color: "red"}}>{errorMessage}</p>
           ) : (
             userPosts.map((post) => (
               <BlogCard
@@ -65,8 +61,8 @@ const UserPosts = () => {
                 id={post._id}
                 key={post._id}
                 date={post.createdAt}
-              context="userposts"
-
+                category={post.categories}
+                context="userposts"
               />
             ))
           )}

@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
-  Routes, Route, Navigate,
+  Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
 import Navbar from "./components/Navbar/Navbar";
@@ -20,6 +22,8 @@ import "./style/global.scss";
 import UpdatePassword from "./pages/UpdatePassword/UpdatePassword";
 import UserPosts from "./pages/UserPosts/UserPosts";
 import ContentPosts from "./pages/ContentPosts/ContentPosts";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 function App() {
   const { user } = useContext(Context);
@@ -31,7 +35,12 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/reset-password/:id/:token"
+              element={<ResetPassword />}
+            />
+            {/* <Route path="*" element={<Navigate to="/login" />} /> */}
           </Routes>
         ) : (
           <>
@@ -40,15 +49,20 @@ function App() {
               <Route path="/" element={<Homepage />} />
               <Route path="/single/:id" element={<Single />} />
 
-              <Route path="/posts/content/:type" element={<ContentPosts />} /> 
+              <Route path="/posts/content/:type" element={<ContentPosts />} />
               <Route path="/write" element={<Write />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/posts/query" element={<QueryPosts />} />
               <Route path="/user/:id/posts" element={<UserPosts />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/changepassword" element={<UpdatePassword />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/change-password" element={<UpdatePassword />} />
+              {/* <Route path="*" element={<Navigate to="/" />} /> */}
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route
+                path="/reset-password/:id/:token"
+                element={<ResetPassword />}
+              />
             </Routes>
             <Footer />
           </>
@@ -59,7 +73,7 @@ function App() {
             className: "",
             style: {
               fontFamily: "Dosis, sans-serif",
-              fontSize: "24px",
+              fontSize: "18px",
               fontWeight: "600",
             },
           }}

@@ -6,21 +6,15 @@ import { Context } from "../../context/Context";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { category } from "../../assets/data";
 
 const MobileBurger = () => {
-  const tags = [
-    "Personal",
-    "Foods",
-    "Travel",
-    "Health",
-    "Lifestyle",
-    "Sports",
-    "Tech",
-    "Science",
-    "Movies",
-  ];
-
+  const [isOpen, setIsOpen] = useState(false);
   const { user, dispatch } = useContext(Context);
+
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
 
   const handLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -42,24 +36,44 @@ const MobileBurger = () => {
 
   return (
     <div>
-      <Menu right>
+      <Menu
+        right
+        isOpen={isOpen}
+        onStateChange={({ isOpen }) => setIsOpen(isOpen)}
+      >
         <div className="user">
-          <Link to="/profile">
+          <Link to="/profile" onClick={handleCloseMenu}>
             <FaUser className="userIcon" />
           </Link>
           {/* <span>{user.username}</span> */}
         </div>
 
-        <Link className="menu-item" to="/" onClick={handleLinkClick}>
+        <Link
+          className="menu-item"
+          to="/"
+          onClick={() => {
+            handleLinkClick();
+            handleCloseMenu();
+          }}
+        >
           Home
         </Link>
-        <Link className="menu-item" to="/write" onClick={handleLinkClick}>
+        <Link className="menu-item" to="/write"  onClick={() => {
+            handleLinkClick();
+            handleCloseMenu();
+          }}>
           Write
         </Link>
-        <Link className="menu-item" to="/about" onClick={handleLinkClick}>
+        <Link className="menu-item" to="/about"  onClick={() => {
+            handleLinkClick();
+            handleCloseMenu();
+          }}>
           About
         </Link>
-        <Link className="menu-item" to="/contact" onClick={handleLinkClick}>
+        <Link className="menu-item" to="/contact"  onClick={() => {
+            handleLinkClick();
+            handleCloseMenu();
+          }}>
           Contact
         </Link>
         {user ? (
@@ -82,8 +96,8 @@ const MobileBurger = () => {
           </span>
           {showTags && (
             <div className="burgerCategories">
-              {tags.map((tag) => (
-                <Link to={`/posts/query/?cat=${tag}`} key={tag}>
+              {category.map((tag) => (
+                <Link to={`/posts/query/?cat=${tag}`} key={tag}  onClick={handleCloseMenu}>
                   <span>{tag}</span>
                 </Link>
               ))}

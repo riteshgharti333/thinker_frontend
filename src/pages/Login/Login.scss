@@ -44,7 +44,7 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    padding: 60px;
+    padding: 30px 60px;
     gap: 20px;
     border-radius: 6px;
     box-shadow:
@@ -60,6 +60,7 @@
       font-family: "Gabarito", sans-serif;
       text-align: center;
       font-size: 40px;
+      margin-bottom: 30px;
     }
 
     .inputValid {
@@ -102,6 +103,15 @@
         color: red;
       }
     }
+
+    .forgot{
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: "Gabarito", sans-serif;
+
+    }
+
 
     span {
       font-family: "Gabarito", sans-serif;

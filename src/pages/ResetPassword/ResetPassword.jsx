@@ -1,21 +1,22 @@
 import { useContext, useState } from "react";
-import "./UpdatePassword.scss";
+import "./ResetPassword.scss";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"; 
+import { Link, useNavigate, useParams } from "react-router-dom"; // Import useParams
+import axios from "axios";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../main";
 import { Context } from "../../context/Context";
 
-const UpdatePassword = () => {
-  const { user } = useContext(Context);
+const ResetPassword = () => {
+  const { id, token } = useParams(); // Get id and token from the URL
   const navigate = useNavigate();
 
-  const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { user } = useContext(Context);
 
   const goBack = () => {
     navigate(-1);
@@ -27,7 +28,8 @@ const UpdatePassword = () => {
     // Validate inputs
     let validationErrors = {};
     if (newPassword.length < 6) {
-      validationErrors.newPassword = "Password must be at least 6 characters long";
+      validationErrors.newPassword =
+        "Password must be at least 6 characters long";
     }
     if (newPassword !== confirmPassword) {
       validationErrors.confirmPassword = "Passwords do not match";
@@ -39,44 +41,47 @@ const UpdatePassword = () => {
       return;
     }
 
-    setIsSubmitting(true); // Set submitting state to true
+    setIsSubmitting(true);
 
     try {
-      const response = await axios.put(`${baseUrl}/api/password/${user._id}`, {
-        currentPassword,
-        newPassword,
-      });
+      const response = await axios.post(
+        `${baseUrl}/api/password/reset-password/${id}/${token}`,
+        {
+          password: newPassword,
+        }
+      );
       console.log(response.data);
       toast.success("Password changed successfully");
-      navigate("/profile");
+      if(user){
+        navigate("/profile");
+      }else{
+        navigate("/login");
+      }
     } catch (error) {
       console.error("Error changing password:", error);
       toast.error(error.response?.data?.message || "Error changing password");
     } finally {
-      setIsSubmitting(false); // Reset submitting state
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="updatePassword">
+    <div className="resetPassword">
+      {!user && (
+        <div className="logo">
+          <h1>
+            Thinker<span>.</span>
+          </h1>
+        </div>
+      )}
       <div className="updatePasswordBack">
         <Link to="#" onClick={goBack}>
           <IoMdArrowRoundBack className="backArrow" />
         </Link>
       </div>
       <div className="updatePasswordContainer card-bg">
-        <h1>Change Password</h1>
+        <h1>Reset Password</h1>
         <form onSubmit={handleSubmit}>
-          <div className="formData">
-            <label htmlFor="currentPassword">Add Current Password</label>
-            <input
-              type="password"
-              name="currentPassword"
-              placeholder="Add Current Password"
-              value={currentPassword}
-              onChange={(e) => setCurrentPassword(e.target.value)}
-            />
-          </div>
           <div className="formData">
             <label htmlFor="newPassword">Add New Password</label>
             <input
@@ -86,7 +91,9 @@ const UpdatePassword = () => {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
-            {errors.newPassword && <p className="formError">{errors.newPassword}</p>}
+            {errors.newPassword && (
+              <p className="formError">{errors.newPassword}</p>
+            )}
           </div>
           <div className="formData">
             <label htmlFor="confirmPassword">Confirm New Password</label>
@@ -97,21 +104,18 @@ const UpdatePassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {errors.confirmPassword && <p className="formError">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && (
+              <p className="formError">{errors.confirmPassword}</p>
+            )}
           </div>
 
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Changing Password..." : "Change Password"}
           </button>
-          <p className="forgot">
-           <Link to={"/forgot-password"}>
-           Forgot Password
-           </Link> 
-            </p>
         </form>
       </div>
     </div>
   );
 };
 
-export default UpdatePassword;
+export default ResetPassword;

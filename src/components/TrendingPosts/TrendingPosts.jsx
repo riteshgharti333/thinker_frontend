@@ -23,7 +23,7 @@ const TrendingPosts = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading(false); // Set loading to false when data fetching is done
+        setIsLoading(true);
       }
     };
     fetchTrendingPosts();
@@ -34,7 +34,7 @@ const TrendingPosts = () => {
       <div className="left">
         <div className="top">
           <p>Trending Now</p>
-          <Link to={`/posts/content/trending`}>
+          <Link to={`/posts/content/trending`}  className={`${isLoading ? "isLoading" : " "}`}>
             <p>View All</p>
           </Link>
         </div>

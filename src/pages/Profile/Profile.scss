@@ -7,27 +7,20 @@
   align-items: center;
   position: relative;
 
-  @include sm{
-   height: 70vh; 
-  }
+ 
 
   .profileBack {
     position: absolute;
     font-size: 34px;
     cursor: pointer;
     top: 10px;
-    left: 10px;
+    left: 20px;
   }
   .settingsWrapper {
-    background: radial-gradient(
-      circle at 10% 20%,
-      rgb(254, 158, 94) 0%,
-      rgb(254, 94, 114) 94.3%
-    );
     padding: 40px;
     position: relative;
     border-radius: 5px;
-    min-width: 300px;
+    min-width: 330px;
 
     .settingsIcon {
       position: absolute;
@@ -44,8 +37,40 @@
       flex-direction: column;
       .profileUpdatedImg {
         position: relative;
+        display: flex;
+        justify-content: center;
 
-        img {
+        .noImg {
+          height: 150px;
+          width: 150px;
+          background-color: white;
+          border-radius: 50%;
+          cursor: pointer;
+       
+
+          .noImgSmInfo {
+            position: absolute;
+            top: 33px;
+            left: 70px;
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+              transform: scale(1.1);
+            }
+          }
+          .noImgInfo {
+            height: 50px;
+            width: 50px;
+          }
+
+          p {
+            font-weight: bold;
+            font-family: "Dosis", sans-serif;
+          }
+        }
+
+        .proImg {
           height: 150px;
           object-fit: cover;
           width: 150px;
@@ -65,9 +90,9 @@
           font-size: 20px;
           font-weight: 500;
         }
-        &:hover img {
+        &:hover .proImg {
           filter: brightness(0.3);
-          transform: scale(1.1);
+          transform: scale(1.01);
         }
         &:hover span {
           display: block;
@@ -93,10 +118,13 @@
       }
 
       .profileInputForm {
+        margin-top: 8px;
 
-        .formError{
+        .formError {
           color: red;
-          font-weight: 600;
+          font-family: "Dosis", sans-serif;
+
+          font-weight: bold;
           margin-top: 5px;
         }
 
@@ -109,7 +137,8 @@
           color: white;
           text-align: center;
           background-color: transparent;
-          font-size: 20px;
+          font-size: 24px;
+          font-weight: bold;
           &:focus {
             outline: none;
           }
@@ -158,11 +187,6 @@
       :last-child {
         font-size: 18px;
       }
-
-      &:hover {
-        color: aqua;
-        cursor: pointer;
-      }
     }
 
     .changePwd {
@@ -186,7 +210,7 @@
         margin-right: 15px;
         background-color: red;
 
-        &:hover{
+        &:hover {
           background-color: rgb(212, 24, 24);
         }
       }
@@ -203,15 +227,13 @@
         width: 100%;
         margin: 10px 0px;
 
-        &:hover{
-          background-color: rgb(25, 175, 175);
+        &:hover {
+          background-color: teal;
         }
       }
     }
 
     .profileEditBtn {
-
-    
       button {
         border: none;
         font-size: 20px;
@@ -224,10 +246,9 @@
         cursor: pointer;
         width: 100%;
         margin: 10px 0px;
-        
 
-        &:hover{
-          background-color: rgb(25, 175, 175);
+        &:hover {
+          background-color: teal;
         }
       }
     }

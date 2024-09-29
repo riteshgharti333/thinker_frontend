@@ -41,7 +41,7 @@ const HomeBanner = () => {
 
       setMoviePosts(movieData);
       setFoodPosts(foodData);
-      setIsLoading(false);
+      setIsLoading(true);
     };
 
     fetchData();

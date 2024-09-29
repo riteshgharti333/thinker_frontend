@@ -34,7 +34,7 @@ const LatestPosts = () => {
       <div className="leftLatest">
         <div className="leftLatestTop">
           <p>Latest Posts</p>
-          <Link to={`/posts/content/latest`}>
+          <Link to={`/posts/content/latest`} className={`${isLoading ? "isLoading" : " "}`}>
             <p>View All</p>
           </Link>
         </div>

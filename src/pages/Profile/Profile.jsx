@@ -4,8 +4,7 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { FaRegTrashAlt } from "react-icons/fa";
-import profileImg from "../../assets/images/1.png";
+import addImg from "../../assets/images/addImg.svg";
 import { baseUrl } from "../../main";
 import toast from "react-hot-toast";
 import uploadToCloudinary from "../../upload";
@@ -22,8 +21,10 @@ export default function Profile() {
   useEffect(() => {
     const fetchPostCount = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/user/${user._id}/posts`);
-        setPostCount(res.data.postCount);
+        const { data } = await axios.get(
+          `${baseUrl}/api/user/${user._id}/posts`
+        );
+        setPostCount(data.postCount);
       } catch (error) {
         console.log("Error fetching post count:", error);
       }
@@ -48,9 +49,11 @@ export default function Profile() {
 
         const updatedUser = {
           userId: user._id,
-          username: values.username,
-          email: values.email,
-          profilepic: user.profilepic,
+          ...(values.username !== user.username && {
+            username: values.username,
+          }),
+          ...(values.email !== user.email && { email: values.email }),
+          profilepic: user.profilepic, // Always include this as you're changing it
         };
 
         if (file) {
@@ -81,7 +84,7 @@ export default function Profile() {
           dispatch({ type: "REFRESH_USER", payload: updatedUserData.data });
         } catch (error) {
           console.log("Error updating profile:", error);
-          toast.error("Failed to update profile");
+          toast.error(error.response.data.message);
           dispatch({ type: "UPDATE_FAILURE" });
         }
       },
@@ -102,12 +105,7 @@ export default function Profile() {
           <IoMdArrowRoundBack className="backArrow" />
         </Link>
       </div>
-      <div className="settingsWrapper">
-        <div className="settingsIcon">
-          <span title="Delete Account">
-            <FaRegTrashAlt />
-          </span>
-        </div>
+      <div className="settingsWrapper card-bg">
         <div className="profileData">
           {updateMode ? (
             <form onSubmit={handleSubmit}>
@@ -121,11 +119,22 @@ export default function Profile() {
                 />
                 <label htmlFor="inputFile">
                   {file ? (
-                    <img src={URL.createObjectURL(file)} alt="Profile" />
+                    <img className="proImg"  src={URL.createObjectURL(file)} alt="Profile" />
                   ) : (
-                    <img src={user.profilepic || profileImg} alt="Profile" />
+                    <>
+                    {user.profilepic ? (
+                      <img className="proImg" src={user.profilepic} alt="Profile" />
+                    ) : (
+                      <div className="noImg">
+                        <div className="noImgSmInfo">
+                        <img className="noImgInfo" src={addImg} alt="" />
+                          <p>Add Profile Image</p>
+                      </div>
+                        </div>
+                      
+                    )}
+                    </>
                   )}
-                  <span>Update Profile</span>
                 </label>
               </div>
 
@@ -175,7 +184,17 @@ export default function Profile() {
           ) : (
             <>
               <div className="profileUpdatedImg">
-                <img src={user.profilepic || profileImg} alt="Profile" />
+                {user.profilepic ? (
+                  <img className="proImg" src={user.profilepic} alt="Profile" />
+                ) : (
+                  <div className="noImg">
+                    <div className="noImgSmInfo">
+                    <img className="noImgInfo" src={addImg} alt="" />
+                      <p>Add Profile Image</p>
+                  </div>
+                    </div>
+                  
+                )}
               </div>
               <div className="profileName">
                 <h3>{user.username}</h3>
@@ -194,7 +213,7 @@ export default function Profile() {
               <div className="profileEditBtn">
                 <button onClick={handleEditClick}>Edit</button>
                 <div className="changePwd">
-                  <Link to={"/changepassword"}>
+                  <Link to={"/change-password"}>
                     <span className="changePwd">Change Password</span>
                   </Link>
                 </div>

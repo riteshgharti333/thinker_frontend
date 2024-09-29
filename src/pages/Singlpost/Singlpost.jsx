@@ -51,7 +51,7 @@ const Singlpost = () => {
       } catch (error) {
         console.log("Error fetching post:", error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     };
     getPost();
