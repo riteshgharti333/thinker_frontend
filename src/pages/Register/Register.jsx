@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import "./Register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSolidLock, BiSolidUser, BiShow, BiHide } from "react-icons/bi";
@@ -8,7 +8,6 @@ import { signUpSchema } from "../../schemas/index";
 import { baseUrl } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Context } from "../../context/Context";
 
 const initialvalues = {
   username: "",
@@ -39,15 +38,14 @@ export default function Register() {
           setIsSubmitting(false); // Set loading state to false
           res.data && navigate("/");
         } catch (error) {
-          
           console.log(error);
-    const errorMessage =
-      error.response && error.response.data && error.response.data.message
-        ? error.response.data.message
-        : "An error occurred";
-    toast.error(errorMessage);
-    setIsSubmitting(false);
-    // Set loading state to false
+          const errorMessage =
+            error.response && error.response.data && error.response.data.message
+              ? error.response.data.message
+              : "An error occurred";
+          toast.error(errorMessage);
+          setIsSubmitting(false);
+          // Set loading state to false
         }
       },
     });
@@ -142,7 +140,11 @@ export default function Register() {
           ) : null}
         </div> */}
 
-        <button className="registerButton" type="submit" disabled={isSubmitting}>
+        <button
+          className="registerButton"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Signing Up..." : "Sign Up"}
         </button>
         <span>

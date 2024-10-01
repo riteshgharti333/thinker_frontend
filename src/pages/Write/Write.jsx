@@ -31,7 +31,7 @@ const Write = () => {
     setSelectedTags((prevSelectedTags) => {
       if (prevSelectedTags.includes(category)) {
         return prevSelectedTags.filter(
-          (selectedTag) => selectedTag !== category
+          (selectedTag) => selectedTag !== category,
         );
       } else {
         return [category];
@@ -78,7 +78,7 @@ const Write = () => {
       userId: user._id,
       username: user.username,
       title,
-      desc, 
+      desc,
       categories: selectedTags,
     };
 
@@ -115,7 +115,6 @@ const Write = () => {
     };
   }, []);
 
-  
   return (
     <div className="write">
       <input

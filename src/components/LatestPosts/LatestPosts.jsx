@@ -23,7 +23,7 @@ const LatestPosts = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     };
     fetchLatestPosts();
@@ -34,7 +34,10 @@ const LatestPosts = () => {
       <div className="leftLatest">
         <div className="leftLatestTop">
           <p>Latest Posts</p>
-          <Link to={`/posts/content/latest`} className={`${isLoading ? "isLoading" : " "}`}>
+          <Link
+            to={`/posts/content/latest`}
+            className={`${isLoading ? "isLoading" : " "}`}
+          >
             <p>View All</p>
           </Link>
         </div>
@@ -47,7 +50,7 @@ const LatestPosts = () => {
         <div className="rightInfo">
           {isLoading ? (
             <>
-            <Skeleton variant="text" width="60%" height={30} />
+              <Skeleton variant="text" width="60%" height={30} />
             </>
           ) : (
             <>
@@ -64,7 +67,7 @@ const LatestPosts = () => {
               <Skeleton variant="rectangular" height={300} />
               <Skeleton variant="text" height={40} />
               <Skeleton variant="text" height={60} />
-              <Skeleton variant="text" height={60} />            
+              <Skeleton variant="text" height={60} />
             </>
           ) : (
             <Link to={`/single/${topLatestPost._id}`}>

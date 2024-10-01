@@ -3,7 +3,6 @@ import { IoMdMail } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { GrNotes } from "react-icons/gr";
 
 const Contact = () => {
   return (
@@ -53,12 +52,18 @@ const Contact = () => {
 
             <hr className="lineborder" />
             <div className="socialIcons">
-              <a className="socialIcon" href="https://github.com/riteshgharti333">
-              <FaGithub className="sIcon" />
-              <span> Github </span>
+              <a
+                className="socialIcon"
+                href="https://github.com/riteshgharti333"
+              >
+                <FaGithub className="sIcon" />
+                <span> Github </span>
               </a>
 
-              <a className="socialIcon" href="https://www.linkedin.com/in/riteshgharti333">
+              <a
+                className="socialIcon"
+                href="https://www.linkedin.com/in/riteshgharti333"
+              >
                 <FaLinkedin className="sIcon Linkedin" />
                 <span className="linkdin"> Linkedin </span>
               </a>

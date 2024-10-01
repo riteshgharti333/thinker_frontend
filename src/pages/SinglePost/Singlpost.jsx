@@ -1,4 +1,4 @@
-import "./Singlpost.scss";
+import "./SinglePost.scss";
 import { MdDelete } from "react-icons/md";
 import { FaCheck, FaEdit } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
@@ -13,13 +13,7 @@ import { format } from "date-fns";
 import JoditEditor from "jodit-react";
 import { Skeleton } from "@mui/material";
 
-const removeHtmlTags = (html) => {
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  return div.textContent || div.innerText || "";
-};
-
-const Singlpost = () => {
+const SinglePost = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -41,13 +35,11 @@ const Singlpost = () => {
       try {
         setIsLoading(true);
         const res = await axios.get(`${baseUrl}/api/posts/single/${path}`);
-        console.log(res.data);
         setSinglepost(res.data);
         setTitle(res.data.title);
         setDesc(res.data.desc);
         setSelectedTag(res.data.categories[0] || "");
         setIsLoading(true);
-
       } catch (error) {
         console.log("Error fetching post:", error);
       } finally {
@@ -75,8 +67,8 @@ const Singlpost = () => {
       await axios.put(`${baseUrl}/api/posts/single/${path}`, {
         username: user.username,
         title,
-        desc, // HTML content for storage
-        categories: [selectedTag], // Single category
+        desc,
+        categories: [selectedTag],
       });
       window.location.reload();
       toast.success(`Post Updated`, { duration: 5000 });
@@ -99,29 +91,28 @@ const Singlpost = () => {
 
   const editorConfig = useMemo(() => {
     return {
-      readonly: false, // Enable editing
-      height: 500, // Set the desired height
+      readonly: false,
+      height: 500,
     };
   }, []);
 
-  if(isLoading){
-    return(
+  if (isLoading) {
+    return (
       <>
-      <Skeleton variant="text" width="100%" height={40}/>
-      <Skeleton variant="text" width="50%" height={40}/>
-      <Skeleton variant="text" width="30%" height={40}/>
-      <Skeleton variant="ractangle" width="100%" height={300}/>
+        <Skeleton variant="text" width="100%" height={40} />
+        <Skeleton variant="text" width="50%" height={40} />
+        <Skeleton variant="text" width="30%" height={40} />
+        <Skeleton variant="ractangle" width="100%" height={300} />
 
-      <Skeleton variant="text" width="100%" height={40}/>
-      <Skeleton variant="text" width="50%" height={40}/>
-      <Skeleton variant="text" width="30%" height={40}/>
+        <Skeleton variant="text" width="100%" height={40} />
+        <Skeleton variant="text" width="50%" height={40} />
+        <Skeleton variant="text" width="30%" height={40} />
 
-      <Skeleton variant="text" width="100%" height={40}/>
-      <Skeleton variant="text" width="50%" height={40}/>
-      <Skeleton variant="text" width="30%" height={40}/>
+        <Skeleton variant="text" width="100%" height={40} />
+        <Skeleton variant="text" width="50%" height={40} />
+        <Skeleton variant="text" width="30%" height={40} />
       </>
-    )
-   
+    );
   }
 
   return (
@@ -222,4 +213,4 @@ const Singlpost = () => {
   );
 };
 
-export default Singlpost;
+export default SinglePost;

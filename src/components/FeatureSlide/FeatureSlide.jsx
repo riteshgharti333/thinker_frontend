@@ -2,8 +2,8 @@ import "./FeatureSlide.scss";
 import Slider from "infinite-react-carousel";
 
 const settings = {
-    dots:true,
-    arrows: false
+  dots: true,
+  arrows: false,
 };
 
 const FeatureSlide = ({ children, slidesToShow, arrowsScroll }) => {

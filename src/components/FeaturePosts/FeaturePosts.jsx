@@ -19,7 +19,6 @@ const FeaturePosts = () => {
   const isSm = useMediaQuery("(max-width: 480px)");
 
   let slidesToShow = 4;
-
   if (isSm) slidesToShow = 1;
   else if (isSMd) slidesToShow = 2;
   else if (isMd) slidesToShow = 2;
@@ -31,9 +30,9 @@ const FeaturePosts = () => {
         const res = await axios.get(`${baseUrl}/api/posts?cat=${cat}`);
         setPosts(res.data.slice(0, 6));
       } catch (error) {
-        console.error(error); 
+        console.error(error);
       } finally {
-        setIsLoading(true); 
+        setIsLoading(false);
       }
     };
 
@@ -44,12 +43,15 @@ const FeaturePosts = () => {
     <div className="feature">
       <div className="featureInfo">
         <p>Tech Posts</p>
-        <Link to={`/posts/query?cat=${cat}`}  className={`${isLoading ? "isLoading" : " "}`}>
+        <Link
+          to={`/posts/query?cat=${cat}`}
+          className={`${isLoading ? "isLoading" : " "}`}
+        >
           <p>View All</p>
         </Link>
       </div>
 
-      {isLoading && posts.length > 0 && ( // Only render FeatureSlide if posts exist
+      {Array.isArray(posts) && posts.length > 0 && (
         <FeatureSlide slidesToShow={slidesToShow} arrowsScroll={1}>
           {posts.map((post) => (
             <MainFeature
@@ -57,7 +59,7 @@ const FeaturePosts = () => {
               {...post}
               context="feature"
               tagname="Tech"
-              isLoading={isLoading}
+              // isLoading={isLoading}
             />
           ))}
         </FeatureSlide>

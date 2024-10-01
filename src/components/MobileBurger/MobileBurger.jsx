@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./MobileBurger.scss";
 import { Link } from "react-router-dom";
@@ -58,22 +58,34 @@ const MobileBurger = () => {
         >
           Home
         </Link>
-        <Link className="menu-item" to="/write"  onClick={() => {
+        <Link
+          className="menu-item"
+          to="/write"
+          onClick={() => {
             handleLinkClick();
             handleCloseMenu();
-          }}>
+          }}
+        >
           Write
         </Link>
-        <Link className="menu-item" to="/about"  onClick={() => {
+        <Link
+          className="menu-item"
+          to="/about"
+          onClick={() => {
             handleLinkClick();
             handleCloseMenu();
-          }}>
+          }}
+        >
           About
         </Link>
-        <Link className="menu-item" to="/contact"  onClick={() => {
+        <Link
+          className="menu-item"
+          to="/contact"
+          onClick={() => {
             handleLinkClick();
             handleCloseMenu();
-          }}>
+          }}
+        >
           Contact
         </Link>
         {user ? (
@@ -97,7 +109,11 @@ const MobileBurger = () => {
           {showTags && (
             <div className="burgerCategories">
               {category.map((tag) => (
-                <Link to={`/posts/query/?cat=${tag}`} key={tag}  onClick={handleCloseMenu}>
+                <Link
+                  to={`/posts/query/?cat=${tag}`}
+                  key={tag}
+                  onClick={handleCloseMenu}
+                >
                   <span>{tag}</span>
                 </Link>
               ))}

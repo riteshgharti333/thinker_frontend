@@ -31,7 +31,12 @@ const MainFeature = ({
     return (
       <div className={`mainFeatures ${context}`}>
         <div className="bgImg">
-          <Skeleton variant="rectangular" width="100%" height={300} style={{borderRadius: "10px" , backgroundImage: "none"}} />
+          <Skeleton
+            variant="rectangular"
+            width="100%"
+            height={300}
+            style={{ borderRadius: "10px", backgroundImage: "none" }}
+          />
           <Skeleton variant="text" width="60%" height={30} />
           <Skeleton variant="text" width="40%" height={30} />
           <Skeleton variant="text" width="40%" height={30} />

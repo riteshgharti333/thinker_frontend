@@ -12,7 +12,7 @@ const HomeBanner = () => {
   const [moviePosts, setMoviePosts] = useState([]);
   const [foodPosts, setFoodPosts] = useState([]);
 
-  const [isLoading , setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getFeaturePosts = async () => {
@@ -41,7 +41,7 @@ const HomeBanner = () => {
 
       setMoviePosts(movieData);
       setFoodPosts(foodData);
-      setIsLoading(true);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -50,33 +50,47 @@ const HomeBanner = () => {
   return (
     <div className="homeBanner">
       <div className="leftFeature">
-        {Array.isArray(featurePosts) && featurePosts.length > 0 &&
+        {Array.isArray(featurePosts) && featurePosts.length > 0 && (
           <Slide slidesToShow={1} arrowsScroll={1}>
             {featurePosts.map((post) => (
-              <MainFeature key={post._id} {...post} tagname="Feature" isLoading={isLoading}  />
+              <MainFeature
+                key={post._id}
+                {...post}
+                tagname="Feature"
+                isLoading={isLoading}
+              />
             ))}
           </Slide>
-        
-        }
+        )}
       </div>
-     <div className="rightFeature">
+      <div className="rightFeature">
         <div className="rightTopFeature">
-          {Array.isArray(foodPosts) && foodPosts.length > 0 &&
-            <RightSlide slidesToShow={1} arrowsScroll={1} isLoading={isLoading} >
+          {Array.isArray(foodPosts) && foodPosts.length > 0 && (
+            <RightSlide slidesToShow={1} arrowsScroll={1} isLoading={isLoading}>
               {foodPosts.map((post) => (
-                <SmFeature key={post._id} tag="Foods" {...post}  isLoading={isLoading}  />
+                <SmFeature
+                  key={post._id}
+                  tag="Foods"
+                  {...post}
+                  isLoading={isLoading}
+                />
               ))}
             </RightSlide>
-  }
-        </div> 
+          )}
+        </div>
         <div className="rightBottomFeature">
-          {Array.isArray(moviePosts) && moviePosts.length > 0 &&
-            <RightSlide slidesToShow={1} arrowsScroll={1} isLoading={isLoading} >
+          {Array.isArray(moviePosts) && moviePosts.length > 0 && (
+            <RightSlide slidesToShow={1} arrowsScroll={1} isLoading={isLoading}>
               {moviePosts.map((post) => (
-                <SmFeature key={post._id} tag="Movies" {...post} isLoading={isLoading}   />
+                <SmFeature
+                  key={post._id}
+                  tag="Movies"
+                  {...post}
+                  isLoading={isLoading}
+                />
               ))}
             </RightSlide>
-        }
+          )}
         </div>
       </div>
     </div>

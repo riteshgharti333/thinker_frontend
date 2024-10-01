@@ -2,12 +2,12 @@ import "./RightSlide.scss";
 import Slider from "infinite-react-carousel";
 
 const settings = {
-  arrows: true
+  arrows: true,
 };
 
 const RightSlide = ({ children, slidesToShow, arrowsScroll, isLoading }) => {
   return (
-    <div className={`slide ${isLoading ? `hideArrow` : " "}` }>
+    <div className={`slide ${isLoading ? `hideArrow` : " "}`}>
       <div className="container">
         <Slider
           slidesToShow={slidesToShow}

@@ -7,7 +7,6 @@
   align-items: center;
   position: relative;
 
- 
 
   .profileBack {
     position: absolute;
@@ -15,12 +14,20 @@
     cursor: pointer;
     top: 10px;
     left: 20px;
+
+    @include sm{
+      left: 5px;
+    }
   }
   .settingsWrapper {
     padding: 40px;
     position: relative;
     border-radius: 5px;
-    min-width: 330px;
+    width: 330px;
+
+    @include sm{
+      width: 310px;
+    }
 
     .settingsIcon {
       position: absolute;
@@ -52,6 +59,10 @@
             position: absolute;
             top: 33px;
             left: 70px;
+
+            @include sm{
+              left: 60px;
+            }
 
             transition: all 0.3s ease-in-out;
 
@@ -145,6 +156,7 @@
 
           &::placeholder {
             font-size: 20px;
+            color: white;
           }
         }
 

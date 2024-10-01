@@ -39,7 +39,6 @@ export const blogs = [
   },
 ];
 
-
 export const category = [
   "Personal",
   "Foods",
@@ -50,4 +49,4 @@ export const category = [
   "Tech",
   "Science",
   "Movies",
-]
+];

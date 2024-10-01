@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Singlpost from "../../pages/Singlpost/Singlpost";
+import SinglePost from "../../pages/SinglePost/Singlpost";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Single.scss";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -19,7 +19,7 @@ const Single = () => {
 
       <div className="single">
         <div className="singlepost">
-          <Singlpost />
+          <SinglePost />
         </div>
         <div className="sidebar">
           <Sidebar />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -35,7 +35,7 @@ const ContentPosts = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     };
 

@@ -28,7 +28,7 @@ const QueryPosts = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     };
 

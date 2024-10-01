@@ -19,10 +19,13 @@ const ForgotPassword = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await axios.post(`${baseUrl}/api/password/forgot-password`, {
-        email,
-      });
-      toast.success(response.data.message); 
+      const response = await axios.post(
+        `${baseUrl}/api/password/forgot-password`,
+        {
+          email,
+        },
+      );
+      toast.success(response.data.message);
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data?.message || "Something went wrong"); // Show error message
@@ -37,7 +40,6 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgotPassword">
-      
       {!user && (
         <div className="logo">
           <h1>
@@ -54,7 +56,7 @@ const ForgotPassword = () => {
       <div className="forgotPasswordInfo card-bg">
         <h2>Forgot Password?</h2>
         <p>
-          Enter your email below, and we'll send you a link to reset your
+          Enter your email below, and we will send you a link to reset your
           password.
         </p>
         <form onSubmit={handleSubmit}>

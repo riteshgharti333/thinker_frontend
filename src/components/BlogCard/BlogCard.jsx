@@ -28,7 +28,6 @@ const BlogCard = ({ title, image, id, date, category, context, isLoading }) => {
           <Skeleton variant="text" width="60%" height={30} />
           <Skeleton variant="text" width="40%" height={20} />
           <Skeleton variant="text" width="40%" height={20} />
-
         </div>
       </div>
     );

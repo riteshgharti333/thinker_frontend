@@ -7,8 +7,7 @@ import { baseUrl } from "../../main";
 const BlogCards = ({ context, limit = 6, contentCat }) => {
   const [posts, setPosts] = useState([]);
 
-  const [isLoading , setIsLoading] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -17,26 +16,23 @@ const BlogCards = ({ context, limit = 6, contentCat }) => {
         const res = await axios.get(`${baseUrl}/api/posts/${contentCat}`);
         const queryPosts = res.data;
 
-       
-        if(queryPosts) {
-          if( contentCat === "trending"){
+        if (queryPosts) {
+          if (contentCat === "trending") {
             setPosts(queryPosts.trendingPosts.slice(1, limit));
-          }else if(contentCat === "popular"){
+          } else if (contentCat === "popular") {
             setPosts(queryPosts.popularPosts.slice(0, limit));
-          }else if(contentCat === "latest"){
+          } else if (contentCat === "latest") {
             setPosts(queryPosts.latestPosts.slice(1, limit));
-          
           }
-
         }
       } catch (error) {
         console.log(error);
-      }finally{
-        setIsLoading(true);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchPosts();
-  }, [limit]);
+  }, [limit, contentCat]);
 
   return (
     <div className={`blogcards ${context}`}>

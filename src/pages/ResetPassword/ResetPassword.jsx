@@ -6,10 +6,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../main";
 import { Context } from "../../context/Context";
+import { BiShow, BiHide } from "react-icons/bi";
 
 const ResetPassword = () => {
-  const { id, token } = useParams(); // Get id and token from the URL
+  const { id, token } = useParams(); 
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -48,13 +50,13 @@ const ResetPassword = () => {
         `${baseUrl}/api/password/reset-password/${id}/${token}`,
         {
           password: newPassword,
-        }
+        },
       );
       console.log(response.data);
       toast.success("Password changed successfully");
-      if(user){
+      if (user) {
         navigate("/profile");
-      }else{
+      } else {
         navigate("/login");
       }
     } catch (error) {
@@ -63,6 +65,10 @@ const ResetPassword = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -84,13 +90,27 @@ const ResetPassword = () => {
         <form onSubmit={handleSubmit}>
           <div className="formData">
             <label htmlFor="newPassword">Add New Password</label>
-            <input
-              type="password"
-              name="newPassword"
-              placeholder="Add New Password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
+            <div className="inputData">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="newPassword"
+                placeholder="Add New Password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+
+              {showPassword ? (
+                <BiHide
+                  className="inputIcon"
+                  onClick={togglePasswordVisibility}
+                />
+              ) : (
+                <BiShow
+                  className="inputIcon"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+            </div>
             {errors.newPassword && (
               <p className="formError">{errors.newPassword}</p>
             )}

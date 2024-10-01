@@ -2,16 +2,10 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./Footer.scss";
 import { IoMdMail } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { category } from "../../assets/data";
 
 const Foooter = () => {
-  const navigate = useNavigate();
-
-  const handleLinkClick = () => {
-    navigate(`/posts/?cat=${cat}`);
-  };
-
   const handleSpanClick = () => {
     window.scrollTo({
       top: 0,
@@ -37,10 +31,10 @@ const Foooter = () => {
         </div>
       </div>
       <div className="footerCenter">
-        <p>Tags :</p>
+        <p>Category</p>
         <div className="tags">
           {category.map((cat) => (
-            <Link key={cat} to={`/posts/query?cat=${cat}`} onClick={handleLinkClick}>
+            <Link key={cat} to={`/posts/query?cat=${cat}`}>
               <span>{cat}</span>
             </Link>
           ))}

@@ -12,7 +12,6 @@ const UserPosts = () => {
   const path = location.pathname.split("/")[2];
 
   const [userPosts, setUserPosts] = useState([]);
-  const [user, setUser] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -51,7 +50,9 @@ const UserPosts = () => {
       <div className="userPosts">
         <div className="userCatPosts">
           {errorMessage ? (
-            <p className="errorMessage" style={{color: "red"}}>{errorMessage}</p>
+            <p className="errorMessage" style={{ color: "red" }}>
+              {errorMessage}
+            </p>
           ) : (
             userPosts.map((post) => (
               <BlogCard

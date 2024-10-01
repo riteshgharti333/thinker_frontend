@@ -79,7 +79,7 @@ input[type="search"]::-ms-clear {
         font-weight: bold;
         cursor: pointer;
         &:hover {
-          color: aqua;
+          color: teal;
         }
       }
 
@@ -154,7 +154,7 @@ input[type="search"]::-ms-clear {
     font-weight: bold;
 
     &:hover {
-      color: aqua;
+      color: teal;
     }
 
     @include sm {

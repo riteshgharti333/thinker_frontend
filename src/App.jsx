@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,7 +12,6 @@ import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import toast, { Toaster } from "react-hot-toast";
 import Profile from "./pages/Profile/Profile";
 import { Context } from "./context/Context";
 import Single from "./components/Single/Single";
@@ -24,6 +23,7 @@ import UserPosts from "./pages/UserPosts/UserPosts";
 import ContentPosts from "./pages/ContentPosts/ContentPosts";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { user } = useContext(Context);
@@ -40,7 +40,7 @@ function App() {
               path="/reset-password/:id/:token"
               element={<ResetPassword />}
             />
-            {/* <Route path="*" element={<Navigate to="/login" />} /> */}
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         ) : (
           <>
@@ -57,7 +57,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/change-password" element={<UpdatePassword />} />
-              {/* <Route path="*" element={<Navigate to="/" />} /> */}
+              <Route path="*" element={<Navigate to="/" />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route
                 path="/reset-password/:id/:token"
