@@ -1,9 +1,12 @@
 {
-  "redirects": [
+  "rewrites": [
+    {
+      "source": "/reset-password/:id/:token",
+      "destination": "/index.html"
+    },
     {
       "source": "/(.*)",
-      "destination": "/",
-      "statusCode": 200
+      "destination": "/index.html"
     }
   ]
 }
