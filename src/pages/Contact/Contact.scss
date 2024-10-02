@@ -1,10 +1,10 @@
 @import "../../style/responsive.scss";
 
 .contact {
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 40px 0px;
 
   .contactContainer {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -12,9 +12,14 @@
     padding: 30px;
     border-radius: 5px;
 
+    @include lg{
+      width: 500px;
+      margin: 0px 10px;
+    }
+
     @include sm {
       display: block;
-      min-width: 400px;
+      width: 310px;
       padding: 10px;
     }
 
@@ -30,21 +35,30 @@
     .contactPart{
       display: flex;
     
-    @include sm {
-      display: block;
-      min-width: 300px;
-      padding: 10px;
-    }
+ 
+      @include lg {
+        display: block;
+        padding: 10px;
+        margin: 0 auto;
+      }
 
     @include md {
       display: block;
       width: 90%;
       padding: 10px;
+      margin: 0 auto;
+
+
     }
 
-    @include lg {
+   
+
+    @include sm {
       display: block;
+      width: 100%;
       padding: 10px;
+      margin: 0 auto;
+
     }
 
     .contactLeft {
@@ -85,6 +99,7 @@
 
       button {
         background-color: aqua;
+        color: white;
         border: none;
         padding: 6px 0px;
         font-size: 25px;
@@ -99,17 +114,25 @@
       flex: 5;
       margin-left: 30px;
 
+      @include lg {
+        margin-top: 20px;
+      }
       @include sm {
         margin-top: 20px;
       }
       .contactIcons {
+        font-size: 30px;
+
         .icons {
           display: flex;
           align-items: center;
 
+
           .contactIcon {
             color: orange;
             font-size: 30px;
+
+          
           }
 
           &:last-child {
@@ -121,6 +144,8 @@
             font-size: 25px;
             font-weight: 600;
             margin-left: 30px;
+
+          
 
             @include sm {
               font-size: 20px;
