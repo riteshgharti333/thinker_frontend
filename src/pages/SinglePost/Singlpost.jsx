@@ -117,26 +117,9 @@ const SinglePost = () => {
 
   return (
     <div className="singlepost">
-      <div className="postImg">
-        <h1>{singlepost.title}</h1>
-        <div className="tags">
-          {singlepost.categories &&
-            singlepost.categories.map((cat) => (
-              <span key={cat} className="tag">
-                {cat}
-              </span>
-            ))}
-          <div className="views">
-            <IoEyeSharp className="viewsIcon" />
-            <p>{singlepost.views}</p>
-          </div>
-        </div>
-        <img src={singlepost.photo} alt="" />
-      </div>
-
+    
       {updateMode ? (
         <>
-          <div className="tags">
             <span className="updateTag">Tags:</span>
             <div className="tagsCat">
               {category.map((tag) => (
@@ -150,7 +133,6 @@ const SinglePost = () => {
                 </div>
               ))}
             </div>
-          </div>
           <div className="writeFormGroup">
             <input
               type="text"
@@ -166,9 +148,35 @@ const SinglePost = () => {
               {isSubmitting ? "Updating..." : "Update"}
             </button>
           </div>
+
+          <div className="textarea">
+          <JoditEditor
+            ref={editor}
+            value={desc} 
+            config={editorConfig}
+            onBlur={(newContent) => setDesc(newContent)} 
+            onChange={(newContent) => setDesc(newContent)} 
+          />
+        </div>
         </>
       ) : (
         <>
+          <div className="postImg">
+        <h1>{singlepost.title}</h1>
+        <div className="postTags">
+          {singlepost.categories &&
+            singlepost.categories.map((cat) => (
+              <span key={cat} className="postTag">
+                {cat}
+              </span>
+            ))}
+          <div className="views">
+            <IoEyeSharp className="viewsIcon" />
+            <p>{singlepost.views}</p>
+          </div>
+        </div>
+        <img src={singlepost.photo} alt="" />
+      </div>
           <div className="singlePostInfo">
             <div className="userInfo">
               <span className="singlePostAuthor">
@@ -198,17 +206,6 @@ const SinglePost = () => {
         </>
       )}
 
-      {updateMode && (
-        <div className="textarea">
-          <JoditEditor
-            ref={editor}
-            value={desc} // Use the `desc` state to control the content
-            config={editorConfig}
-            onBlur={(newContent) => setDesc(newContent)} // Update state on blur
-            onChange={(newContent) => setDesc(newContent)} // Update state on change (optional)
-          />
-        </div>
-      )}
     </div>
   );
 };

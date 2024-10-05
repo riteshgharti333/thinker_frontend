@@ -13,12 +13,13 @@
     margin: 10px 0px;
     color: #333333;
   }
-  .tags {
+  .postTags {
     display: flex;
     margin: 10px 0px;
     align-items: center;
+    overflow-x: scroll;
 
-    .tag{
+    .postTag{
       background-color: green;
       font-weight: bold;
       color: white;
@@ -32,6 +33,27 @@
       padding: 3px 5px;
       border-radius: 2px;
       font-weight: bold;
+      background-color: red;
+
+      .tagsCat {
+        margin-left: 20px;
+        background-color: red;
+        display: flex;
+        .tag {
+          display: flex;
+          align-items: center;
+          color: white;
+          background-color: grey;
+          margin-right: 10px;
+          padding: 7px;
+          border-radius: 25px;
+          cursor: pointer;
+  
+          .rightIcon {
+            margin-left: 10px;
+          }
+        }
+      }
     }
 
     .views {
@@ -49,24 +71,8 @@
         cursor: pointer;
       }
     }
-    .tagsCat {
-      margin-left: 20px;
-      display: flex;
-      .tag {
-        display: flex;
-        align-items: center;
-        color: white;
-        background-color: grey;
-        margin-right: 10px;
-        padding: 7px;
-        border-radius: 25px;
-        cursor: pointer;
-
-        .rightIcon {
-          margin-left: 10px;
-        }
-      }
-    }
+  
+   
   }
 
   .postImg {
@@ -83,6 +89,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    align-items: center;
     .userInfo {
       font-size: 16px;
       font-weight: 600;

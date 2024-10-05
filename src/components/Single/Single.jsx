@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import SinglePost from "../../pages/SinglePost/Singlpost";
+import SinglePost from "../../pages/SinglePost/SinglPost";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Single.scss";
 import { IoMdArrowRoundBack } from "react-icons/io";
