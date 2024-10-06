@@ -116,11 +116,13 @@ const SinglePost = () => {
   }
 
   return (
-    <div className="singlepost">
+    <div className="singlepostContainer">
+        <img src={singlepost.photo} alt="" />
     
       {updateMode ? (
         <>
-            <span className="updateTag">Tags:</span>
+        <div className="updateSingle">
+        <p className="updateTag">Tags:</p>
             <div className="tagsCat">
               {category.map((tag) => (
                 <div
@@ -133,6 +135,8 @@ const SinglePost = () => {
                 </div>
               ))}
             </div>
+        </div>
+          
           <div className="writeFormGroup">
             <input
               type="text"
@@ -161,7 +165,6 @@ const SinglePost = () => {
         </>
       ) : (
         <>
-          <div className="postImg">
         <h1>{singlepost.title}</h1>
         <div className="postTags">
           {singlepost.categories &&
@@ -175,8 +178,6 @@ const SinglePost = () => {
             <p>{singlepost.views}</p>
           </div>
         </div>
-        <img src={singlepost.photo} alt="" />
-      </div>
           <div className="singlePostInfo">
             <div className="userInfo">
               <span className="singlePostAuthor">

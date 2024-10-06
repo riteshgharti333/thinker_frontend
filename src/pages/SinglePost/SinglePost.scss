@@ -1,14 +1,142 @@
 @import "../../style/responsive.scss";
 
-.singlepost {
+.singlepostContainer {
   font-family: "Dosis", sans-serif;
   color: #333333;
   min-height: 80vh;
 
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .updateSingle {
+    display: flex;
+    margin-top: 10px;
+    overflow-x: scroll;
+    padding: 10px 0px;
+
+
+  ::-webkit-scrollbar {
+    height: 8px; 
+    width: 5%;
+
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; // Track background
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; // Scrollbar color
+    border-radius: 10px; // Round edges of the scrollbar
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; // Darken scrollbar color on hover
+  }
+
+
+
+    .updateTag{
+      font-size: 20px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  
+    .tagsCat {
+      display: flex;
+    }
+    
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      color: white;
+      background-color: grey;
+      margin-right: 10px;
+      padding: 7px;
+      border-radius: 25px;
+      cursor: pointer;
+   }
+    
+  }
+  
+
+}
+
+.writeFormGroup {
+  display: flex;
+  align-items: center;
+  label {
+    font-size: 40px;
+    .plusIcon {
+      color: aqua;
+    }
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid aqua;
+    margin-right: 20px;
+    font-family: "Inconsolata", monospace;
+    height: 30px;
+    font-size: 20px;
+    background-color: transparent;
+
+    &::placeholder {
+      font-family: "Inconsolata", monospace;
+      font-size: 20px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+
+  .textarea {
+    height: 500px;
+ }
+
+  .cancel {
+    margin-right: 10px;
+    background-color: red;
+    
+    &:hover{
+      background-color: rgb(212, 24, 24);
+    }
+  }
+
+  button {
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: aqua;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: white;
+    font-family: "Dosis", sans-serif;
+    cursor: pointer;
+    // width: 100%;
+    margin: 10px 0px;
+    
+
+    &:hover{
+      background-color:teal;
+    }
+  }
+}
+
+
+/////////////////////////////////////
   h1 {
     margin-bottom: 10px;
   }
 
+  
   hr{
     margin: 10px 0px;
     color: #333333;
@@ -17,7 +145,6 @@
     display: flex;
     margin: 10px 0px;
     align-items: center;
-    overflow-x: scroll;
 
     .postTag{
       background-color: green;
@@ -25,35 +152,6 @@
       color: white;
       padding: 3px;
       border-radius: 2px;
-    }
-
-    .updateTag {
-      font-weight: 500;
-      font-size: 20px;
-      padding: 3px 5px;
-      border-radius: 2px;
-      font-weight: bold;
-      background-color: red;
-
-      .tagsCat {
-        margin-left: 20px;
-        background-color: red;
-        display: flex;
-        .tag {
-          display: flex;
-          align-items: center;
-          color: white;
-          background-color: grey;
-          margin-right: 10px;
-          padding: 7px;
-          border-radius: 25px;
-          cursor: pointer;
-  
-          .rightIcon {
-            margin-left: 10px;
-          }
-        }
-      }
     }
 
     .views {
@@ -75,14 +173,7 @@
    
   }
 
-  .postImg {
-    img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-  }
+  
 
 
   .singlePostInfo {
@@ -116,65 +207,7 @@
     }
   }
 
-  .writeFormGroup {
-    display: flex;
-    align-items: center;
-    label {
-      font-size: 40px;
-      .plusIcon {
-        color: aqua;
-      }
-    }
-
-    input {
-      width: 100%;
-      border: none;
-      border-bottom: 2px solid aqua;
-      margin-right: 20px;
-      font-family: "Inconsolata", monospace;
-      height: 30px;
-      font-size: 20px;
-      background-color: transparent;
-
-      &::placeholder {
-        font-family: "Inconsolata", monospace;
-        font-size: 20px;
-      }
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .cancel {
-      margin-right: 10px;
-      background-color: red;
-      
-      &:hover{
-        background-color: rgb(212, 24, 24);
-      }
-    }
-
-    button {
-      border: none;
-      font-size: 20px;
-      font-weight: 600;
-      background-color: aqua;
-      border-radius: 3px;
-      padding: 5px 10px;
-      color: white;
-      font-family: "Dosis", sans-serif;
-      cursor: pointer;
-      // width: 100%;
-      margin: 10px 0px;
-      
-
-      &:hover{
-        background-color: rgb(25, 175, 175);
-      }
-    }
-  }
-
+ 
   .postDesc {
     font-weight: bold;
     font-size: 20px;
@@ -195,7 +228,4 @@
     }
   }
 
-  .textarea {
-   height: 500px;
-}
-}
+

@@ -20,7 +20,7 @@ input[type="search"]::-ms-clear {
   position: sticky;
   z-index: 99;
   align-items: center;
-  transition: background-color 0.4s ease-in-out;
+  background-color: transparent;
 
   &.scrolled {
   background-color: 	#cbe2e2;
@@ -120,8 +120,8 @@ input[type="search"]::-ms-clear {
         font-family: "Dosis", sans-serif;
         text-transform: uppercase;
 
-        &:hover {
-          background-color: aquamarine;
+        &:hover{
+          background-color: teal;
         }
       }
 
@@ -138,6 +138,10 @@ input[type="search"]::-ms-clear {
           color: white;
           display: flex;
           align-items: center;
+
+          &:hover{
+            background-color: teal;
+          }
         }
       }
     }

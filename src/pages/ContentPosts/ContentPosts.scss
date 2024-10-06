@@ -1,9 +1,10 @@
 @import "../../style/responsive.scss";
 
-.ContentPostsContainer {
+.contentPostsContainer {
   min-height: 90vh;
+  margin-bottom: 20px;
   
-}
+
 
 .postBack {
   margin-top: 10px;
@@ -11,7 +12,7 @@
   display: flex;
 
   @include sm {
-    margin-left: 20px;
+    margin-left: 0px;
     margin-top: 20px;
   }
 
@@ -74,4 +75,5 @@
   gap: 10px;
   margin-right: 0;
   }
+}
 }

@@ -24,6 +24,7 @@ import ContentPosts from "./pages/ContentPosts/ContentPosts";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { Toaster } from "react-hot-toast";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const { user } = useContext(Context);
@@ -40,7 +41,7 @@ function App() {
               path="/reset-password/:id/:token"
               element={<ResetPassword />}
             />
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         ) : (
           <>
@@ -57,13 +58,15 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/change-password" element={<UpdatePassword />} />
-              <Route path="*" element={<Navigate to="/" />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route
                 path="/reset-password/:id/:token"
                 element={<ResetPassword />}
               />
+            <Route path="*" element={<NotFoundPage />} />
+
             </Routes>
+
             <Footer />
           </>
         )}

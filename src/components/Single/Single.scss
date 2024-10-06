@@ -5,7 +5,7 @@
   font-size: 34px;
 
   @include sm {
-    margin-left: 20px;
+    margin-left: 0px;
     margin-top: 20px;
   }
 
@@ -17,8 +17,12 @@
   display: flex;
   margin: 5px 40px 20px 40px;
 
-  @include sm {
+  @include md {
     margin: 20px;
+  }
+
+  @include sm {
+    margin: 10px;
   }
   .singlepost {
     flex: 8;
@@ -26,6 +30,7 @@
 
     @include md {
       margin-right: 0;
+      overflow: hidden;
     }
   }
   .sidebar {

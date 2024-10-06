@@ -1,0 +1,109 @@
+@import "../../style/responsive.scss";
+
+
+.notfound {
+  min-height: 80vh;
+
+  .notfoundImg {
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 90vh;
+    }
+
+    .notfoundTitle {
+      font-family: "Comic Neue", cursive;
+      font-size: 140px;
+      font-weight: bold;
+      position: absolute;
+      top: 10%;
+      left: 20%;
+
+      @include md {
+        font-size: clamp(100px, 6vw, 120px); /* Smaller sizes for medium screens */
+        top: 8%;
+        left: 5%;
+      }
+
+
+      @include sm {
+        top: 10%; 
+  left: 50%;
+  transform: translateX(-50%);
+      }
+    }
+
+    .notfoundInfo {
+      position: absolute;
+      top: 36%;
+      left: 55%;
+      padding-right: 50px;
+
+      @include xl{
+        top: 30%;
+     
+      }
+
+      @include md{
+        top: 11%;
+        left: 40%;
+        padding: 0;
+      }
+
+      @include sm { 
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 0px 20px;
+      }
+      
+      .notfoundesc {
+        font-size: 40px;
+        font-weight: bold;
+        font-family: "Comic Neue", cursive;
+
+        @include sm{
+            font-size: 25px;
+        }
+
+        span {
+          font-weight: normal;
+          font-size: 36px;
+
+          @include sm{
+            font-size: 25px;
+        }
+
+        }
+      }
+
+      button {
+        background-color: aqua;
+        border: none;
+        padding: 10px;
+        font-size: 20px;
+        margin-top: 20px;
+        font-weight: 700;
+        font-family: "Comic Neue", cursive;
+        width: auto;
+        align-self: flex-start;
+        border-radius: 4px;
+        cursor: pointer;
+
+        @include sm{
+            position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px;
+
+        }
+
+        &:hover {
+          background-color: teal;
+        }
+      }
+    }
+  }
+}
