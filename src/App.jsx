@@ -36,10 +36,19 @@ function App() {
 
         <Routes>
           {/* Public Routes */}
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-          <Route path="/forgot-password" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
-          <Route path="/reset-password/:id/:token" element={user ? <Navigate to="/" /> : <ResetPassword />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={user ? <Navigate to="/" /> : <Register />}
+          />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route 
+            path="/reset-password/:id/:token"
+            element={<ResetPassword />}
+          />
 
           {/* Protected Routes */}
           {user ? (
@@ -55,6 +64,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/change-password" element={<UpdatePassword />} />
               <Route path="/*" element={<NotFoundPage />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
             </>
           ) : (
             <Route path="/*" element={<Navigate to="/login" />} />
