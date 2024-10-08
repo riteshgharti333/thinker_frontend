@@ -2,7 +2,7 @@ import "./Login.scss";
 import { useContext, useState } from "react";
 import { IoMdMail } from "react-icons/io";
 import { BiSolidLock, BiShow, BiHide } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { Context } from "../../context/Context";
 import { baseUrl } from "../../main";
@@ -18,24 +18,26 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const navigate = useNavigate();
+
   const { dispatch } = useContext(Context);
 
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialvalues,
       onSubmit: async (values) => {
-        setIsSubmitting(true); // Set loading state to true
+        setIsSubmitting(true);
         dispatch({ type: "LOGIN_START" });
         try {
           const res = await axios.post(`${baseUrl}/api/auth/login`, values);
           dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-          window.location.replace("/");
+          navigate("/");
           toast.success(`Welcome to Thinker.`);
         } catch (error) {
           dispatch({ type: "LOGIN_FAILURE" });
           toast.error(error.response.data);
         } finally {
-          setIsSubmitting(false); // Set loading state to false
+          setIsSubmitting(false); 
         }
       },
     });

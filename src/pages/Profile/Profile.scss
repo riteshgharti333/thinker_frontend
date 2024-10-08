@@ -192,6 +192,10 @@
       font-family: "Dosis", sans-serif;
       font-weight: 600;
 
+      &:hover{
+        color: aqua;
+      }
+
       :first-child {
         font-size: 50px;
       }

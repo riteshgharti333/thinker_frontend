@@ -59,7 +59,7 @@ const MainFeature = ({
             <span className="line">|</span>
             <span>{date}</span>
           </div>
-          <h3>{title}</h3>
+          <h1>{title}</h1>
         </div>
       </div>
     </Link>

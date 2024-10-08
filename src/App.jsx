@@ -29,6 +29,8 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   const { user } = useContext(Context);
 
+  
+
   return (
     <div className="app">
       <Router>
@@ -41,7 +43,7 @@ function App() {
               path="/reset-password/:id/:token"
               element={<ResetPassword />}
             />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         ) : (
           <>
@@ -63,8 +65,7 @@ function App() {
                 path="/reset-password/:id/:token"
                 element={<ResetPassword />}
               />
-            <Route path="*" element={<NotFoundPage />} />
-
+              <Route path="/*" element={<NotFoundPage />} />
             </Routes>
 
             <Footer />
