@@ -9,6 +9,7 @@ import { FaCheck } from "react-icons/fa";
 import dropImg from "../../assets/images/drop.png";
 import { baseUrl } from "../../main";
 import JoditEditor from "jodit-react";
+import { useNavigate } from "react-router-dom";
 
 // Function to remove HTML tags and return plain text
 const removeHtmlTags = (html) => {
@@ -26,6 +27,8 @@ const Write = () => {
   const [file, setFile] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleTagClick = (category) => {
     setSelectedTags((prevSelectedTags) => {
@@ -98,7 +101,7 @@ const Write = () => {
       const loadingToast = toast.loading("Creating Post...");
       toast.dismiss(loadingToast.id);
       const postId = res.data.savedPost._id;
-      window.location.replace(`/single/` + postId);
+      navigate(`/single/` + postId)
       toast.success("Post Created", { duration: 5000 });
     } catch (error) {
       console.error("Error creating post:", error);

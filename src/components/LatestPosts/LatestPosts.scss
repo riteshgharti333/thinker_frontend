@@ -81,7 +81,6 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      color: white;
     }
 
     .rightInfo {
@@ -119,10 +118,10 @@
         object-fit: cover;
         border-radius: 10px;
         height: clamp(
-          300px,
+          230px,
           15vw + 10px,
           370px
-        ); // Adjusting height dynamically
+        ); 
       }
     }
   }

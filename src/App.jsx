@@ -29,29 +29,23 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   const { user } = useContext(Context);
 
-  
-
   return (
     <div className="app">
       <Router>
-        {!user ? (
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route
-              path="/reset-password/:id/:token"
-              element={<ResetPassword />}
-            />
-            <Route path="/*" element={<NotFoundPage />} />
-          </Routes>
-        ) : (
-          <>
-            <Navbar />
-            <Routes>
+        {user && <Navbar />}
+
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+          <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+          <Route path="/forgot-password" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
+          <Route path="/reset-password/:id/:token" element={user ? <Navigate to="/" /> : <ResetPassword />} />
+
+          {/* Protected Routes */}
+          {user ? (
+            <>
               <Route path="/" element={<Homepage />} />
               <Route path="/single/:id" element={<Single />} />
-
               <Route path="/posts/content/:type" element={<ContentPosts />} />
               <Route path="/write" element={<Write />} />
               <Route path="/profile" element={<Profile />} />
@@ -60,17 +54,15 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/change-password" element={<UpdatePassword />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route
-                path="/reset-password/:id/:token"
-                element={<ResetPassword />}
-              />
               <Route path="/*" element={<NotFoundPage />} />
-            </Routes>
+            </>
+          ) : (
+            <Route path="/*" element={<Navigate to="/login" />} />
+          )}
+        </Routes>
 
-            <Footer />
-          </>
-        )}
+        {/* Show Footer only if the user is logged in */}
+        {user && <Footer />}
 
         <Toaster
           toastOptions={{
