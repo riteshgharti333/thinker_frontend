@@ -70,11 +70,11 @@ const LatestPosts = () => {
               <Skeleton variant="text" height={60} />
             </>
           ) : (
-            <Link to={`/single/${topLatestPost._id}`}>
+            <Link to={`/single/${topLatestPost._id}`} className="latestImg">
               <h1>{topLatestPost.title}</h1>
               <div
                 className="latestDesc"
-                dangerouslySetInnerHTML={{ __html: topLatestPost.desc }}
+                dangerouslySetInnerHTML={{ __html: topLatestPost.desc}} l
               ></div>
               <img src={topLatestPost.photo} alt={topLatestPost.title} />
             </Link>

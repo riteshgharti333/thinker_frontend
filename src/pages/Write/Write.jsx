@@ -63,12 +63,12 @@ const Write = () => {
         errorMessage = "Please select at least one tag.";
       } else if (!title) {
         errorMessage = "Please enter a title.";
-      } else if (title.length < 15) {
-        errorMessage = "Title must be at least 15 characters long.";
+      } else if (title.split(/\s+/).filter(Boolean).length < 30) { // Check for at least 5 words in title
+        errorMessage = "Title must be at least 5 words long.";
       } else if (!plainTextDesc) {
         errorMessage = "Please enter a description.";
-      } else if (plainTextDesc.length < 30) {
-        errorMessage = "Description must be at least 30 characters long.";
+      } else if (plainTextDesc.split(/\s+/).filter(Boolean).length < 60) { // Check for at least 10 words in description
+        errorMessage = "Description must be at least 10 words long.";
       }
 
       toast.error(errorMessage, { duration: 5000 });
