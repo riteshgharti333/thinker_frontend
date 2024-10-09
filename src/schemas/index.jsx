@@ -23,3 +23,16 @@ export const updatePasswordSchema = Yup.object({
     .required("Please enter your confirm password")
     .oneOf([Yup.ref("password"), null], "Password must match"),
 });
+
+
+export const WriteSchema = Yup.object({
+  image: Yup.string().required("Please select an image."),
+  tag: Yup.string().required("Please enter a tag."),
+  title: Yup.string()
+    .min(20, "Title must be at least 20 characters long.")
+    .max(50, "Title cannot exceed 50 characters.")
+    .required("Please enter a title."),
+  desc: Yup.string()
+    .min(30, "Description must be at least 30 characters long.")
+    .required("Please enter a description."),
+});
