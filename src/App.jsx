@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
 import Navbar from "./components/Navbar/Navbar";
@@ -26,12 +27,26 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { Toaster } from "react-hot-toast";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
+
+// Function to scroll to the top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to top
+  }, [pathname]);
+
+  return null;
+};
+
+
 function App() {
   const { user } = useContext(Context);
 
   return (
     <div className="app">
       <Router>
+      <ScrollToTop />
         {user && <Navbar />}
 
         <Routes>
