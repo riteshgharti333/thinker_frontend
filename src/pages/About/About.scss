@@ -10,25 +10,17 @@
     margin: 30px auto;
     display: flex;
     width: 90%;
-    
-
 
     @include md {
       display: block;
       margin: 0 auto;
       width: 100%;
-
-      
     }
     @include sm {
       display: block;
       margin: 0 auto;
       width: 100%;
-
-
     }
-
-    
 
     .aboutLeft {
       text-align: center;
@@ -80,9 +72,8 @@
             margin-top: 10px;
             cursor: pointer;
 
-
             &:last-child {
-            color: #0a66c2;
+              color: #0a66c2;
             }
 
             .sIcon {

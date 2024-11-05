@@ -117,12 +117,12 @@ const SinglePost = () => {
 
   return (
     <div className="singlepostContainer">
-        <img src={singlepost.photo} alt="" />
-    
+      <img src={singlepost.photo} alt="" />
+
       {updateMode ? (
         <>
-        <div className="updateSingle">
-        <p className="updateTag">Tags:</p>
+          <div className="updateSingle">
+            <p className="updateTag">Tags:</p>
             <div className="tagsCat">
               {category.map((tag) => (
                 <div
@@ -135,8 +135,8 @@ const SinglePost = () => {
                 </div>
               ))}
             </div>
-        </div>
-          
+          </div>
+
           <div className="writeFormGroup">
             <input
               type="text"
@@ -154,30 +154,30 @@ const SinglePost = () => {
           </div>
 
           <div className="textarea">
-          <JoditEditor
-            ref={editor}
-            value={desc} 
-            config={editorConfig}
-            onBlur={(newContent) => setDesc(newContent)} 
-            onChange={(newContent) => setDesc(newContent)} 
-          />
-        </div>
+            <JoditEditor
+              ref={editor}
+              value={desc}
+              config={editorConfig}
+              onBlur={(newContent) => setDesc(newContent)}
+              onChange={(newContent) => setDesc(newContent)}
+            />
+          </div>
         </>
       ) : (
         <>
-        <h1>{singlepost.title}</h1>
-        <div className="postTags">
-          {singlepost.categories &&
-            singlepost.categories.map((cat) => (
-              <span key={cat} className="postTag">
-                {cat}
-              </span>
-            ))}
-          <div className="views">
-            <IoEyeSharp className="viewsIcon" />
-            <p>{singlepost.views}</p>
+          <h1>{singlepost.title}</h1>
+          <div className="postTags">
+            {singlepost.categories &&
+              singlepost.categories.map((cat) => (
+                <span key={cat} className="postTag">
+                  {cat}
+                </span>
+              ))}
+            <div className="views">
+              <IoEyeSharp className="viewsIcon" />
+              <p>{singlepost.views}</p>
+            </div>
           </div>
-        </div>
           <div className="singlePostInfo">
             <div className="userInfo">
               <span className="singlePostAuthor">
@@ -206,7 +206,6 @@ const SinglePost = () => {
           </div>
         </>
       )}
-
     </div>
   );
 };

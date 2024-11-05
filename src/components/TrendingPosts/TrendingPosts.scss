@@ -8,19 +8,16 @@
   @include lg {
     flex-direction: column;
     height: 100%;
-
   }
 
   @include lg {
     flex-direction: column;
     height: 100%;
-
   }
-  
+
   @include md {
     display: block;
     height: 100%;
-
   }
 
   @include sm {
@@ -28,14 +25,13 @@
     height: 100%;
   }
 
-
   .left {
     border-radius: 0px 30px 0px 0px;
     margin-right: 20px;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  background-color: #eeeeec;
-    
+    background-color: #eeeeec;
+
     transition: all 0.2s ease-in;
     flex: 1;
 
@@ -58,8 +54,6 @@
       margin-top: 20px;
     }
 
-   
-
     .top {
       display: flex;
       justify-content: space-between;
@@ -75,7 +69,7 @@
       color: #333333;
       font-weight: bold;
       .line {
-        color: red;
+        color: #ff0000;
         font-size: 30px;
         margin: 0px 5px;
       }
@@ -84,7 +78,7 @@
     .postInfo {
       overflow: hidden;
       box-sizing: border-box;
-      .latestImg{
+      .latestImg {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -104,7 +98,7 @@
         height: auto;
         height: 250px;
 
-        @include xl{
+        @include xl {
           height: 240px;
         }
 
@@ -117,7 +111,7 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: white;
+        color: #fff;
         margin-top: 5px;
 
         @include sm {
@@ -127,10 +121,10 @@
     }
   }
   .right {
-    @include  lg{
+    @include lg {
       margin-top: 10px;
     }
-    
+
     @include md {
       margin-top: 10px;
     }

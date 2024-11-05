@@ -5,7 +5,7 @@
   font-family: "Dosis", sans-serif;
   transition: all 0.5s;
 
-  .skInfo{
+  .skInfo {
     margin-top: 10px;
     border-radius: 10px;
   }
@@ -16,7 +16,7 @@
 
   .bgImg {
     position: relative;
-  
+
     img {
       width: 100%;
       height: 400px;
@@ -28,16 +28,20 @@
         height: 300px;
       }
     }
-    
+
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       border-radius: 10px;
-      background-image: linear-gradient(to bottom, transparent, rgb(61, 66, 98));
+      background-image: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(61, 66, 98)
+      );
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       z-index: 2;
@@ -45,7 +49,7 @@
       transition: opacity 0.25s ease;
     }
   }
-  
+
   .info {
     position: absolute;
     bottom: 30px;
@@ -54,31 +58,31 @@
     margin: 0px 40px;
     color: #fff;
     gap: 10px;
-    z-index: 3; 
+    z-index: 3;
 
-    @include lg{
+    @include lg {
       margin: 10px;
       gap: 5px;
     }
 
-    @include md{
+    @include md {
       margin: 10px;
       gap: 5px;
     }
 
-    @include sm{
+    @include sm {
       margin: 5px;
       gap: 5px;
     }
 
     .feature {
-      background-color: red;
+      background-color: #ff0000;
       width: fit-content;
       padding: 5px;
       border-radius: 4px;
       font-weight: 600;
 
-      @include sm{
+      @include sm {
         padding: 2px;
       }
     }
@@ -86,19 +90,16 @@
     .date {
       font-size: 20px;
 
-  
-
-      @include md{
+      @include md {
         font-size: 18px;
       }
-  
 
-      @include sm{
+      @include sm {
         font-size: 15px;
       }
 
       .line {
-        color: red;
+        color: #ff0000;
         margin: 0px 5px;
       }
     }
@@ -110,14 +111,12 @@
       overflow: hidden;
       cursor: pointer;
 
-      
-
-      @include sm{
+      @include sm {
         font-size: 20px;
       }
 
       &:hover {
-        color: aqua;
+        color: #00ffff;
       }
     }
 
@@ -129,7 +128,7 @@
       font-size: 20px;
       font-weight: 500;
 
-      @include sm{
+      @include sm {
         font-size: 16px;
       }
     }
@@ -138,32 +137,30 @@
 
 .mainFeature.feature {
   display: flex;
-  
+
   .bgImg {
     width: 100%;
     margin: 0px 10px;
 
-    @include xl{
-      width: 100%;
-      margin: 0 5px; 
-    }
-
-    @include lg{
-      width: 100%;
-      margin: 0 5px; 
-    }
-
-    @include md{
+    @include xl {
       width: 100%;
       margin: 0 5px;
     }
 
-    @include sm{
+    @include lg {
+      width: 100%;
+      margin: 0 5px;
+    }
+
+    @include md {
+      width: 100%;
+      margin: 0 5px;
+    }
+
+    @include sm {
       width: 100%;
     }
 
-   
-    
     img {
       object-fit: cover;
       border-radius: 5px;
@@ -179,10 +176,10 @@
     margin: 0px 40px;
     color: #fff;
     gap: 10px;
-    z-index: 3; 
+    z-index: 3;
 
     .feature {
-      background-color: red;
+      background-color: #ff0000;
       width: fit-content;
       padding: 5px;
       border-radius: 4px;
@@ -197,7 +194,7 @@
       }
 
       .line {
-        color: red;
+        color: #ff0000;
         margin: 0px 5px;
         display: none;
       }
@@ -212,7 +209,7 @@
       font-size: 20px;
 
       &:hover {
-        color: aqua;
+        color: #00ffff;
       }
     }
 

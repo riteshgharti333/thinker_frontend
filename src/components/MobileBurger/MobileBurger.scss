@@ -7,7 +7,7 @@
 }
 
 .bm-burger-bars {
-  background: black;
+  background: #000;
 }
 
 .bm-burger-bars-hover {
@@ -21,7 +21,7 @@
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background-color: black;
+  background-color: #000;
 }
 
 .bm-menu-wrap {
@@ -63,7 +63,7 @@ body .bm-overlay {
   text-decoration: none;
   transition: color 0.2s;
   font-family: "Dosis", sans-serif;
-  color: black;
+  color: #000;
   font-size: 25px;
   font-weight: 600;
 }
@@ -99,10 +99,10 @@ body .bm-overlay {
 
   .userIcon {
     border-radius: 50%;
-    background: aqua;
+    background: #00FFFF;
     padding: 2px;
     font-size: 30px;
-    color: white;
+    color: #fff;
     margin-right: 5px;
   }
 }

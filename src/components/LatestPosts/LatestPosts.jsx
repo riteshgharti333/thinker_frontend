@@ -74,7 +74,8 @@ const LatestPosts = () => {
               <h1>{topLatestPost.title}</h1>
               <div
                 className="latestDesc"
-                dangerouslySetInnerHTML={{ __html: topLatestPost.desc}} l
+                dangerouslySetInnerHTML={{ __html: topLatestPost.desc }}
+                l
               ></div>
               <img src={topLatestPost.photo} alt={topLatestPost.title} />
             </Link>

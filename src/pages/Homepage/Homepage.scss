@@ -7,16 +7,13 @@
   gap: 30px;
   // overflow: hidden;
 
-  @include xl{
+  @include xl {
     margin: 20px 15px;
-    
-   }
-  
-  
- @include lg{
-  margin: 20px 10px;
-  
- }
+  }
+
+  @include lg {
+    margin: 20px 10px;
+  }
 
   @include md {
     margin: 20px 10px;

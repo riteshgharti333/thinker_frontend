@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../main";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@mui/material"; // Import Skeleton from MUI
+import { Skeleton } from "@mui/material";
 
 const TrendingPosts = () => {
   const [topTrendingPost, setTopTrendingPost] = useState({});

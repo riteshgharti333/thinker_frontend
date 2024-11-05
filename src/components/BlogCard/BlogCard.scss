@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     .line {
-      color: red;
+      color: #ff0000;
       font-size: 20px;
       margin: 0px 5px;
     }
@@ -65,7 +65,7 @@
       }
 
       &:hover {
-        color: aqua;
+        color: #00ffff;
       }
     }
     p {
@@ -91,10 +91,10 @@
   .blogInfo {
     padding: 0 8px;
   }
-  @include xl{
+  @include xl {
     width: 190px;
   }
-  @include  lg{
+  @include lg {
     width: 100%;
   }
 
@@ -117,14 +117,14 @@
   justify-content: space-between;
   border-radius: 5px;
 
-  @include md{
-      flex: none;
-    }
+  @include md {
+    flex: none;
+  }
 
   .cardImg {
     flex: 2;
-  
-    @include md{
+
+    @include md {
       flex: none;
     }
 
@@ -187,5 +187,4 @@
   .blogInfo {
     padding: 5px 5px;
   }
-
 }

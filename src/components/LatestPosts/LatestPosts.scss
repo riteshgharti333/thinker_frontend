@@ -30,9 +30,7 @@
         font-weight: 600;
       }
     }
-
   }
-
 
   .rightLatest {
     flex: 8;
@@ -43,7 +41,7 @@
     background-color: #eeeeec;
     transition: all 0.2s ease-in;
 
-    &.skRightLatest{
+    &.skRightLatest {
       box-shadow: none;
       background-color: transparent;
       pointer-events: none;
@@ -90,34 +88,32 @@
 
       .line {
         font-size: 30px;
-        color: red;
+        color: #ff0000;
         margin: 0px 5px;
       }
     }
 
     .rightArticle {
-      .latestImg{
+      .latestImg {
+        .latestDesc {
+          margin: 9px 0px;
+          font-weight: bold;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
 
-      .latestDesc {
-        margin: 9px 0px;
-        font-weight: bold;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
+        img {
+          width: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+          height: 288px;
 
-      img {
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-        height: 288px;
-
-        @media screen {
-          
+          @media screen {
+          }
         }
       }
     }
   }
-}
 }

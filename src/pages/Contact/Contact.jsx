@@ -6,8 +6,6 @@ import { FaLinkedin } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const Contact = () => {
-
-
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -21,14 +19,14 @@ const Contact = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      body: json
+      body: json,
     }).then((res) => res.json());
-  
+
     if (res.success) {
       console.log("Success", res);
-      toast.success("Message Send Successfuly")
+      toast.success("Message Send Successfuly");
     }
   };
 
@@ -37,23 +35,9 @@ const Contact = () => {
       <div className="contactContainer">
         <h1>Contact Me</h1>
         <div className="contactPart">
-          <form
-            className="contactLeft"
-            target="_blank"
-            onSubmit={onSubmit}
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
+          <form className="contactLeft" target="_blank" onSubmit={onSubmit}>
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
             <textarea
               name="message"
               cols="30"

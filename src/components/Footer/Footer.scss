@@ -23,14 +23,14 @@
       h1 {
         font-family: "ADLaM Display", "cursive";
         font-size: 40px;
-        color: white;
+        color: #fff;
 
 
         @include sm {
           font-size: 30px;
         }
         span {
-          color: red;
+          color: #FF0000;
         }
       }
     }
@@ -54,7 +54,7 @@
   }
 
   .footerCenter {
-    color: white;
+    color: #fff;
     display: flex;
     flex-direction: column;
 
@@ -82,7 +82,7 @@
         margin-right: 10px;
 
         &:hover{
-          color: teal;
+          color: #008080;
         }
 
         @include md {
@@ -102,7 +102,7 @@
 .footerRight {
   font-family: "Dosis", sans-serif;
   cursor: pointer;
-  color: white;
+  color: #fff;
 
   h1 {
     @include sm {
@@ -121,7 +121,7 @@
       font-weight: 600;
 
       &:hover{
-        color: teal;
+        color: #008080;
       }
     }
     .contactLinks {
@@ -141,7 +141,7 @@
 
        
         .contactIcon {
-          color: orange;
+          color: #FFA500;
           margin-right: 10px;
           font-size: 25px;
         }

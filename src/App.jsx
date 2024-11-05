@@ -27,7 +27,6 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { Toaster } from "react-hot-toast";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
-
 // Function to scroll to the top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -39,14 +38,13 @@ const ScrollToTop = () => {
   return null;
 };
 
-
 function App() {
   const { user } = useContext(Context);
 
   return (
     <div className="app">
       <Router>
-      <ScrollToTop />
+        <ScrollToTop />
         {user && <Navbar />}
 
         <Routes>
@@ -60,7 +58,7 @@ function App() {
             element={user ? <Navigate to="/" /> : <Register />}
           />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route 
+          <Route
             path="/reset-password/:id/:token"
             element={<ResetPassword />}
           />

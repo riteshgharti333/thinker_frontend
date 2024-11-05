@@ -13,8 +13,8 @@ const BlogCards = ({ context, limit = 6, contentCat }) => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get(`${baseUrl}/api/posts/${contentCat}`);
-        const queryPosts = res.data;
+        const response = await axios.get(`${baseUrl}/api/posts/${contentCat}`);
+        const queryPosts = response.data;
 
         if (queryPosts) {
           if (contentCat === "trending") {

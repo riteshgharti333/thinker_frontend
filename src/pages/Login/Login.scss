@@ -29,7 +29,7 @@
       font-size: 50px;
       text-align: center;
       span {
-        color: red;
+        color: #ff0000;
       }
     }
   }
@@ -46,7 +46,9 @@
     padding: 30px 60px;
     gap: 20px;
     border-radius: 6px;
-    box-shadow: rgba(8, 215, 223, 0.507) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(8, 215, 223, 0.507) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     @include sm {
       padding: 20px;
       min-width: 300px;
@@ -66,7 +68,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: white;
+        background: #fff;
         border-radius: 10px;
         padding: 10px 30px;
 
@@ -83,11 +85,10 @@
           font-family: "Gabarito", sans-serif;
           font-weight: bold;
           &::placeholder {
-            color: black;
+            color: #000;
             font-size: 15px;
             font-weight: 550;
             font-family: "Gabarito", sans-serif;
-
           }
 
           &:focus {
@@ -97,26 +98,24 @@
       }
       .formError {
         font-family: "Gabarito", sans-serif;
-        color: red;
+        color: #ff0000;
       }
     }
 
-    .forgot{
+    .forgot {
       text-align: center;
       font-weight: bold;
       cursor: pointer;
       font-family: "Gabarito", sans-serif;
-
     }
-
 
     span {
       font-family: "Gabarito", sans-serif;
-      color: black;
+      color: #000;
       font-weight: bold;
 
       .signupLink {
-        color: green;
+        color: #008000;
       }
     }
 

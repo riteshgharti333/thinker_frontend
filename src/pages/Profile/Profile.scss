@@ -7,7 +7,6 @@
   align-items: center;
   position: relative;
 
-
   .profileBack {
     position: absolute;
     font-size: 34px;
@@ -15,7 +14,7 @@
     top: 10px;
     left: 20px;
 
-    @include sm{
+    @include sm {
       left: 5px;
     }
   }
@@ -25,7 +24,7 @@
     border-radius: 5px;
     width: 330px;
 
-    @include sm{
+    @include sm {
       width: 310px;
     }
 
@@ -33,7 +32,7 @@
       position: absolute;
       right: 10px;
       top: 10px;
-      color: white;
+      color: #fff;
       font-size: 20px;
       cursor: pointer;
     }
@@ -50,23 +49,22 @@
         .noImg {
           height: 150px;
           width: 150px;
-          background-color: white;
+          background-color: #fff;
           border-radius: 50%;
           cursor: pointer;
-       
 
           .noImgSmInfo {
             position: absolute;
             top: 33px;
             left: 70px;
 
-            @include sm{
+            @include sm {
               left: 60px;
             }
 
             transition: all 0.3s ease-in-out;
 
-            &:hover{
+            &:hover {
               transform: scale(1.1);
             }
           }
@@ -96,7 +94,7 @@
           font-family: "Dosis", sans-serif;
           cursor: pointer;
           top: 43%;
-          color: white;
+          color: #fff;
           padding: 5px;
           font-size: 20px;
           font-weight: 500;
@@ -112,7 +110,7 @@
 
       .profileName {
         h3 {
-          color: white;
+          color: #fff;
           text-align: center;
           margin: 12px 0px;
           font-family: "Dosis", sans-serif;
@@ -122,7 +120,7 @@
 
       .ProfileEmail {
         text-align: center;
-        color: white;
+        color: #fff;
         font-family: "Dosis", sans-serif;
         font-size: 20px;
         font-weight: 600;
@@ -132,7 +130,7 @@
         margin-top: 8px;
 
         .formError {
-          color: red;
+          color: #ff0000;
           font-family: "Dosis", sans-serif;
 
           font-weight: bold;
@@ -143,9 +141,9 @@
           border: none;
           width: 100%;
           max-width: 200px;
-          border-bottom: 2px solid aqua;
+          border-bottom: 2px solid #00ffff;
           font-family: "Dosis", sans-serif;
-          color: white;
+          color: #fff;
           text-align: center;
           background-color: transparent;
           font-size: 24px;
@@ -156,7 +154,7 @@
 
           &::placeholder {
             font-size: 20px;
-            color: white;
+            color: #fff;
           }
         }
 
@@ -185,15 +183,15 @@
     }
 
     .postCount {
-      color: white;
+      color: #fff;
       display: flex;
       flex-direction: column;
       text-align: center;
       font-family: "Dosis", sans-serif;
       font-weight: 600;
 
-      &:hover{
-        color: aqua;
+      &:hover {
+        color: #00ffff;
       }
 
       :first-child {
@@ -206,14 +204,14 @@
     }
 
     .changePwd {
-      color: white;
+      color: #fff;
       font-family: "Dosis", sans-serif;
       font-size: 18px;
       font-weight: 500;
       cursor: pointer;
 
       &:hover {
-        color: aqua;
+        color: #00ffff;
         cursor: pointer;
       }
     }
@@ -224,7 +222,7 @@
 
       .cancel {
         margin-right: 15px;
-        background-color: red;
+        background-color: #ff0000;
 
         &:hover {
           background-color: rgb(212, 24, 24);
@@ -234,17 +232,17 @@
         border: none;
         font-size: 20px;
         font-weight: 600;
-        background-color: aqua;
+        background-color: #00ffff;
         border-radius: 3px;
         padding: 5px 0px;
-        color: white;
+        color: #fff;
         font-family: "Dosis", sans-serif;
         cursor: pointer;
         width: 100%;
         margin: 10px 0px;
 
         &:hover {
-          background-color: teal;
+          background-color: #008080;
         }
       }
     }
@@ -254,17 +252,17 @@
         border: none;
         font-size: 20px;
         font-weight: 600;
-        background-color: aqua;
+        background-color: #00ffff;
         border-radius: 3px;
         padding: 5px 0px;
-        color: white;
+        color: #fff;
         font-family: "Dosis", sans-serif;
         cursor: pointer;
         width: 100%;
         margin: 10px 0px;
 
         &:hover {
-          background-color: teal;
+          background-color: #008080;
         }
       }
     }

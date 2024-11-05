@@ -20,8 +20,8 @@
     font-family: "Inconsolata", monospace;
     text-transform: uppercase;
     font-weight: 600;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
     width: 70%;
     margin: 15px auto;
     text-align: center;
@@ -61,7 +61,7 @@
       cursor: pointer;
       margin: 10px 0px;
       &:hover {
-        color: aqua;
+        color: #00FFFF;
       }
     }
   }
