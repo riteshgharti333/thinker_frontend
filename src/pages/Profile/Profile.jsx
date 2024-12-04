@@ -22,7 +22,7 @@ export default function Profile() {
     const fetchPostCount = async () => {
       try {
         const { data } = await axios.get(
-          `${baseUrl}/api/user/${user._id}/posts`,
+          `${baseUrl}/api/user/${user._id}/posts`
         );
         setPostCount(data.postCount);
       } catch (error) {
@@ -53,7 +53,7 @@ export default function Profile() {
             username: values.username,
           }),
           ...(values.email !== user.email && { email: values.email }),
-          profilepic: user.profilepic, 
+          profilepic: user.profilepic,
         };
 
         if (file) {
@@ -71,14 +71,14 @@ export default function Profile() {
         try {
           const res = await axios.put(
             `${baseUrl}/api/profile/${user._id}`,
-            updatedUser,
+            updatedUser
           );
           dispatch({ type: "UPDATE_SUCCESS", payload: res.data.updatedUser });
           setUpdateMode(false);
           toast.success("Profile Updated");
 
           const updatedUserData = await axios.get(
-            `${baseUrl}/api/user/${user._id}`,
+            `${baseUrl}/api/user/${user._id}`
           );
           dispatch({ type: "REFRESH_USER", payload: updatedUserData.data });
         } catch (error) {

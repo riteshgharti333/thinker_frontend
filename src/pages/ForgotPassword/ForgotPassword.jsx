@@ -23,7 +23,7 @@ const ForgotPassword = () => {
         `${baseUrl}/api/password/forgot-password`,
         {
           email,
-        },
+        }
       );
       toast.success(response.data.message);
     } catch (error) {

@@ -4,6 +4,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 const MainFeature = ({
   title,
+  desc,
   photo,
   _id,
   createdAt,
@@ -60,6 +61,7 @@ const MainFeature = ({
             <span>{date}</span>
           </div>
           <h1>{title}</h1>
+          <p>{desc}</p>
         </div>
       </div>
     </Link>
