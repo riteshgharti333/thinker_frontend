@@ -74,15 +74,15 @@ const Navbar = () => {
           <div className="userInfo">
             {user ? (
               <>
-                <Link to={"/login"} onClick={handLogout}>
-                  <button>Logout</button>
-                </Link>
-
                 <div className="user">
                   <Link to={"/profile"}>
                     <FaUser className="userIcon" />
                   </Link>
                 </div>
+
+                <Link to={"/login"} onClick={handLogout}>
+                  <button>Logout</button>
+                </Link>
               </>
             ) : (
               <button>

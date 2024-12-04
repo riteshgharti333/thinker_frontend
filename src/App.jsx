@@ -39,65 +39,69 @@ const ScrollToTop = () => {
 };
 
 function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Layout />
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            fontFamily: "Dosis, sans-serif",
+            fontSize: "18px",
+            fontWeight: "600",
+          },
+        }}
+      />
+    </Router>
+  );
+}
+
+function Layout() {
   const { user } = useContext(Context);
+  const location = useLocation();
+
+  // const ProtectedRoute = ({ children }) => {
+  //   return user ? children : <Navigate to="/login" />;
+  // };
+
+  const hideNavbarFooter =
+    location.pathname === "/login" ||
+    location.pathname === "/register" ||
+    location.pathname.startsWith("/reset-password") ||
+    (!user && location.pathname === "/forgot-password");
 
   return (
     <div className="app">
-      <Router>
-        <ScrollToTop />
-        {user && <Navbar />}
+      {!hideNavbarFooter && <Navbar />}
 
-        <Routes>
-          {/* Public Routes */}
-          <Route
-            path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
-          />
-          <Route
-            path="/register"
-            element={user ? <Navigate to="/" /> : <Register />}
-          />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/reset-password/:id/:token"
-            element={<ResetPassword />}
-          />
-
-          {/* Protected Routes */}
-          {user ? (
-            <>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/single/:id" element={<Single />} />
-              <Route path="/posts/content/:type" element={<ContentPosts />} />
-              <Route path="/write" element={<Write />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/posts/query" element={<QueryPosts />} />
-              <Route path="/user/:id/posts" element={<UserPosts />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/change-password" element={<UpdatePassword />} />
-              <Route path="/*" element={<NotFoundPage />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-            </>
-          ) : (
-            <Route path="/*" element={<Navigate to="/login" />} />
-          )}
-        </Routes>
-
-        {/* Show Footer only if the user is logged in */}
-        {user && <Footer />}
-
-        <Toaster
-          toastOptions={{
-            className: "",
-            style: {
-              fontFamily: "Dosis, sans-serif",
-              fontSize: "18px",
-              fontWeight: "600",
-            },
-          }}
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Register />}
         />
-      </Router>
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+
+        {/* Protected Routes */}
+        <>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/single/:id" element={<Single />} />
+          <Route path="/posts/content/:type" element={<ContentPosts />} />
+          <Route path="/write" element={<Write />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/posts/query" element={<QueryPosts />} />
+          <Route path="/user/:id/posts" element={<UserPosts />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/change-password" element={<UpdatePassword />} />
+          <Route path="/*" element={<NotFoundPage />} />
+        </>
+      </Routes>
+
+      {!hideNavbarFooter && <Footer />}
     </div>
   );
 }

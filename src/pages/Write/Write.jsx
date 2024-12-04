@@ -34,7 +34,7 @@ const Write = () => {
     setSelectedTags((prevSelectedTags) => {
       if (prevSelectedTags.includes(category)) {
         return prevSelectedTags.filter(
-          (selectedTag) => selectedTag !== category,
+          (selectedTag) => selectedTag !== category
         );
       } else {
         return [category];
@@ -44,6 +44,12 @@ const Write = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if the user is logged in when the Publish button is clicked
+    if (!user) {
+      toast.error("To write a post, you have to log in.");
+      return; // Prevent submission if not logged in
+    }
 
     // Prevent multiple submissions
     if (isSubmitting) {
@@ -63,11 +69,13 @@ const Write = () => {
         errorMessage = "Please select at least one tag.";
       } else if (!title) {
         errorMessage = "Please enter a title.";
-      } else if (title.split(/\s+/).filter(Boolean).length < 30) { // Check for at least 5 words in title
+      } else if (title.split(/\s+/).filter(Boolean).length < 30) {
+        // Check for at least 5 words in title
         errorMessage = "Title must be at least 5 words long.";
       } else if (!plainTextDesc) {
         errorMessage = "Please enter a description.";
-      } else if (plainTextDesc.split(/\s+/).filter(Boolean).length < 60) { // Check for at least 10 words in description
+      } else if (plainTextDesc.split(/\s+/).filter(Boolean).length < 60) {
+        // Check for at least 10 words in description
         errorMessage = "Description must be at least 10 words long.";
       }
 
@@ -101,7 +109,7 @@ const Write = () => {
       const loadingToast = toast.loading("Creating Post...");
       toast.dismiss(loadingToast.id);
       const postId = res.data.savedPost._id;
-      navigate(`/single/` + postId)
+      navigate(`/single/` + postId);
       toast.success("Post Created", { duration: 5000 });
     } catch (error) {
       console.error("Error creating post:", error);
