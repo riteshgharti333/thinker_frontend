@@ -105,7 +105,9 @@ const Write = () => {
       }
     }
     try {
-      const res = await axios.post(`${baseUrl}/api/posts`, newPost);
+      const res = await axios.post(`${baseUrl}/api/posts`, newPost, {
+        withCredentials: true,
+      });
       const loadingToast = toast.loading("Creating Post...");
       toast.dismiss(loadingToast.id);
       const postId = res.data.savedPost._id;
@@ -113,7 +115,7 @@ const Write = () => {
       toast.success("Post Created", { duration: 5000 });
     } catch (error) {
       console.error("Error creating post:", error);
-      toast.error("Could not create the post.");
+      toast.error(error.response.data.message);
     } finally {
       setIsSubmitting(false); // Reset submission state
     }

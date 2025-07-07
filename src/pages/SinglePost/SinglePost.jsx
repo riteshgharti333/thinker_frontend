@@ -51,30 +51,43 @@ const SinglePost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${baseUrl}/api/posts/single/${path}`, {
-        data: { userId: user._id },
-      });
+      await axios.delete(
+        `${baseUrl}/api/posts/single/${path}`,
+        {
+          data: { userId: user._id },
+        },
+        {
+          withCredentials: true,
+        }
+      );
       window.location.replace("/");
       toast.success(`Post Deleted`, { duration: 5000 });
     } catch (err) {
       console.log("Error deleting post:", err);
+      toast.error(err.response.data.message);
     }
   };
 
   const handleUpdate = async () => {
     setIsSubmitting(true);
     try {
-      await axios.put(`${baseUrl}/api/posts/single/${path}`, {
-        username: user.username,
-        title,
-        desc,
-        categories: [selectedTag],
-      });
+      await axios.put(
+        `${baseUrl}/api/posts/single/${path}`,
+        {
+          username: user.username,
+          title,
+          desc,
+          categories: [selectedTag],
+        },
+        {
+          withCredentials: true,
+        }
+      );
       window.location.reload();
       toast.success(`Post Updated`, { duration: 5000 });
     } catch (err) {
       console.log("Error updating post:", err);
-      toast.error(`Error updating post: ${err.message}`);
+      toast.error(err.response.data.message);
     } finally {
       setIsSubmitting(false);
     }

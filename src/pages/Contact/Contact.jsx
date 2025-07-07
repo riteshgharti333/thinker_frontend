@@ -3,6 +3,7 @@ import { IoMdMail } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+
 import toast from "react-hot-toast";
 
 const Contact = () => {

@@ -71,7 +71,10 @@ export default function Profile() {
         try {
           const res = await axios.put(
             `${baseUrl}/api/profile/${user._id}`,
-            updatedUser
+            updatedUser,
+            {
+              withCredentials: true,
+            }
           );
           dispatch({ type: "UPDATE_SUCCESS", payload: res.data.updatedUser });
           setUpdateMode(false);
